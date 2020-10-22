@@ -47,6 +47,14 @@ var surveyQuestions = [
                        "variableName": "consent",
                        "questionPrompt": "Thank you for your interest in our study. In this study, you will be asked about your social interactions with other people, including people you know, your friends, and your family. We will ask about your experiences, feelings, and attitudes in those interactions and towards those people. You will also be asked to provide some basic demographic data. If you do not wish to answer any question, please leave the question blank; you will not lose compensation for that portion of the study. If you choose to withdraw from the study as a whole, please simply close the browser window or exit the smartphone app. If you choose to withdraw from the study, we will keep the data you have provided as part of the study record. If you wish to have your data removed, simply email any of the researchers to indicate that you wish for your data to be withdrawn. After [INSERT DATE], we will be uploading your anonymous data online to a data bank. None of your identifiable information will be attached to this data.",
                        },
+
+                       /*1.5 intBranch */
+
+                       {
+                           "type": "mult1",
+                           "variableName": "intBranch",
+                           "questionPrompt": "Did you have an interaction today?"
+                       },
                        /*2 intInstructions*/
                        {
                        "type":"instructions",
@@ -1702,7 +1710,7 @@ recordResponse: function(button, count, type) {
 // 		//Uncomment the "/*else*/" below only when customizing question logic (Stage 3), so that the app will just proceed to the next question in the JSON database
 // 		//DO NOT uncomment the "/*else*/" below when testing whether questions are being displayed in the right format (Stage 1) OR if you have no question logic 
 		//in your questionnaire
-	   /*else*/ if (count < surveyQuestions.length-1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(count+1);});}
+	   else if (count < surveyQuestions.length-1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(count+1);});}
 	   else {app.renderLastPage(lastPage[0], count);};
 },
     
