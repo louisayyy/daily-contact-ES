@@ -1744,49 +1744,48 @@ sampleParticipant: function() {
 
 //uncomment this function to test data saving function (Stage 2 of Customization)
 saveDataLastPage:function() {
-// 	var storage = JSON.stringify(localStore);
-// 	var storage_save=JSON.parse(storage);
-//     $.ajax({
-//            type: 'post',
-//            url: 'server url (i.e., url for where to send the data)',
-//            data: storage_save,
-//            crossDomain: true,
-//            success: function (result) {
-//            var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
-//            localStore.clear();
-//            localStore.participant_id = pid;
-//            localStore.snoozed = snoozed;
-// 		localStore.uniqueKey = uniqueKey;
-// 		localStore.pause_time = pause_time;
-//            $("#question").html("<h3>Your responses have been recorded. Thank you for completing this survey.</h3>");
-//            },
-
-//            error: function (request, error) {
-// 				console.log(error);
-//                 $("#question").html("<h3>Please try resending data. If problems persist, please contact the researchers (uoft.dailylifestudy@gmail.com).</h3><br><button>Resend data</button>");
-//                 $("#question button").click(function () {app.saveDataLastPage();});    
-// 				}
-//            });
+ 	var storage = JSON.stringify(localStore);
+ 	var storage_save=JSON.parse(storage);
+     $.ajax({
+            type: 'post',
+            url: 'https://script.google.com/macros/s/AKfycbwphztjEne5e8Ori7KvNA38BFtGctOQ5YQhGNdYE45Fq2SRYw0/exec',
+            data: storage_save,
+            crossDomain: true,
+            success: function (result) {
+            var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
+            localStore.clear();
+            localStore.participant_id = pid;
+            localStore.snoozed = snoozed;
+ 		localStore.uniqueKey = uniqueKey;
+ 		localStore.pause_time = pause_time;
+            $("#question").html("<h3>Your responses have been recorded. Thank you for completing this survey.</h3>");
+            }
+            error: function (request, error) {
+ 				console.log(error);
+                 $("#question").html("<h3>Please try resending data. If problems persist, please contact the researcher(uoft.dailylifestudy@gmail.com).</h3><br><button>Resend data</button>");
+                 $("#question button").click(function () {app.saveDataLastPage();});
+ 				}
+            });
 },
 
 //uncomment this function to test data saving function (Stage 2 of Customization)
 saveData:function() {
-// 	var storage = JSON.stringify(localStore);
-// 	var storage_save=JSON.parse(storage);	
-//     $.ajax({
-//            type: 'post',
-//            url: 'server url (i.e., url for where to send the data)',
-//            data: storage_save,
-//            crossDomain: true,
-//            success: function (result) {
-//            var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
-//            localStore.participant_id = pid;
-//            localStore.snoozed = snoozed;
-// 		localStore.uniqueKey = uniqueKey;
-// 		localStore.pause_time = pause_time;
-//            },
-//            error: function (request, error) {console.log(error);}
-//            });
+ 	var storage = JSON.stringify(localStore);
+ 	var storage_save=JSON.parse(storage);
+     $.ajax({
+            type: 'post',
+            url: 'https://script.google.com/macros/s/AKfycbwphztjEne5e8Ori7KvNA38BFtGctOQ5YQhGNdYE45Fq2SRYw0/exec',
+            data: storage_save,
+            crossDomain: true,
+            success: function (result) {
+            var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
+            localStore.participant_id = pid;
+            localStore.snoozed = snoozed;
+ 		localStore.uniqueKey = uniqueKey;
+ 		localStore.pause_time = pause_time;
+            },
+            error: function (request, error) {console.log(error);}
+            });
 },
     
 // Local Notifications Javascript
