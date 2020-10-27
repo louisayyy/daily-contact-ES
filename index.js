@@ -48,32 +48,97 @@ var surveyQuestions = [
                        "questionPrompt": "Thank you for your interest in our study. In this study, you will be asked about your social interactions with other people, including people you know, your friends, and your family. We will ask about your experiences, feelings, and attitudes in those interactions and towards those people. You will also be asked to provide some basic demographic data. If you do not wish to answer any question, please leave the question blank; you will not lose compensation for that portion of the study. If you choose to withdraw from the study as a whole, please simply close the browser window or exit the smartphone app. If you choose to withdraw from the study, we will keep the data you have provided as part of the study record. If you wish to have your data removed, simply email any of the researchers to indicate that you wish for your data to be withdrawn. After [INSERT DATE], we will be uploading your anonymous data online to a data bank. None of your identifiable information will be attached to this data.",
                        },
 
-                       /*1.5 intBranch */
-
+                       /* genWell*/
                        {
-                           "type": "mult1",
-                           "variableName": "intBranch",
-                           "questionPrompt": "Did you have an interaction today?"
-                       },
-                       /*2 intInstructions*/
-                       {
-                       "type":"instructions",
-                       "variableName": "intInstructions",
-                       "questionPrompt": "Please think about the very first social interaction you had after waking up today. A ‘social interaction’ is any discussion you had with at least one other person, where more than one person was contributing to the conversation. For this interaction, please answer each of the questions below to the best of your ability:",
-                       },
-                       /*3 intDuration*/
+                        "type":"mult1",
+                        "variableName": "genWell",
+                        "questionPrompt": "How are you doing right now?",
+                        "minResponse": 1,
+                        "maxResponse": 7,
+                        "labels": [
+                                {"label": "1 (Bad)"},
+                                {"label": "2"},
+                                {"label": "3"},
+                                {"label": "4"},
+                                {"label": "5"},
+                                {"label": "6"},
+                                {"label": "7 (Good)"},
+                            ]
+                        },
+                        /* genStress*/
+                        {
+                        "type":"mult1",
+                        "variableName": "genStress",
+                        "questionPrompt": "Right now, how stressed, anxious, and overwhelmed do you feel?",
+                        "minResponse": 1,
+                        "maxResponse": 7,
+                        "labels": [
+                                {"label": "1 (Not at all)"},
+                                {"label": "2"},
+                                {"label": "3"},
+                                {"label": "4"},
+                                {"label": "5"},
+                                {"label": "6"},
+                                {"label": "7 (Completely)"},
+                            ]
+                        },
+                        /* genCope*/
+                        {
+                        "type":"mult1",
+                        "variableName": "genCope",
+                        "questionPrompt": "Do you have what you need to cope with stressors right now?",
+                        "minResponse": 1,
+                        "maxResponse": 7,
+                        "labels": [
+                                {"label": "1 (Not at all)"},
+                                {"label": "2"},
+                                {"label": "3"},
+                                {"label": "4"},
+                                {"label": "5"},
+                                {"label": "6"},
+                                {"label": "7 (Completely)"},
+                            ]
+                        },   
+                        /* intBranch*/
+                        {
+                        "type": "mult1",
+                        "variableName": "intBranch",
+                        "questionPrompt": "Did you interact with anyone since you last completed a survey?",
+                        "minResponse": 0,
+                        "maxResponse": 1,
+                        "labels": [
+                                {"label": "No"},
+                                {"label": "Yes"},
+                                ]
+                        },
+                        
+                        /* BRANCH LOGIC HERE */
+                        /* intPartner*/
+                        {
+                        "type": "mult1",
+                        "variableName": "intPartner",
+                        "questionPrompt": "Who was interacting with you?",
+                        "minResponse": 1,
+                        "maxResponse": 3, //this will need to be 1-20
+                        "labels": [
+                                {"label": "piped text"},
+                                {"label": "piped text"},
+                                {"label": "Someone else"},
+                                ]
+                        }, 
+                       /* intDuration*/
                        {
                        "type":"text",
                        "variableName": "intDuration",
                        "questionPrompt": "What was the duration of the interaction in minutes?",
                        },
-                       /*4 intStarttime*/
+                       /* intStarttime*/
                        {
                        "type":"text",
                        "variableName": "intStarttime",
                        "questionPrompt": "What was the approximate start time of the interaction?",
                        },
-                       /*5 intInitiate*/
+                       /* intInitiate*/
                        {
                        "type":"mult1",
                        "variableName": "intInitiate",
@@ -86,7 +151,7 @@ var surveyQuestions = [
                                 {"label": "Neither/Both"},
                                 ]
                        },
-                       /*6 intSupport*/
+                       /* intSupport*/
                        {
                         "type": "mult1",
                         "variableName": "intSupport",
@@ -98,22 +163,24 @@ var surveyQuestions = [
                                 {"label": "Yes"},
                                 ]
                        },
-                       /*7 intLocation*/
+                       /* intLocation*/
                        {
-                       "type":"mult1",
-                       "variableName": "intLocation",
-                       "questionPrompt": "Where did the interaction take place?",
-                       "minResponse": 1,
-                       "maxResponse": 5,
-                       "labels": [
+                        "type":"mult1",
+                        "variableName": "intLocation",
+                        "questionPrompt": "Where did the interaction take place?",
+                        "minResponse": 1,
+                        "maxResponse": 7,
+                        "labels": [
                        			{"label": "In person"},
                        			{"label": "Phone conversation"},
-                       			{"label": "Text communication (e.g. email, texting, messaging chat)"},
+                       			{"label": "Instant messaging (e.g. texting, messaging chat)"},
                        			{"label": "Video conference (e.g. Zoom, Skype, Teams"},
+                                {"label": "Text communication (e.g. email)"},
+                                {"label": "Social media or internet forum"},
                                 {"label": "Other (please describe)"},
                                 ]
                        },
-                        /*8 intConflict*/
+                        /* intConflict*/
                        {
                        "type":"mult1",
                        "variableName": "intConflict",
@@ -125,7 +192,7 @@ var surveyQuestions = [
                        			{"label": "No"},
                                 ]
                        },
-                       /*9 intConflictR*/
+                       /* intConflictR*/
                        {
                         "type":"mult1",
                         "variableName": "intConflictR",
@@ -137,7 +204,7 @@ var surveyQuestions = [
                                     {"label": "No"},
                                  ]
                         },
-                        /*10 intHappiness*/
+                        /* intHappiness*/
                        {
                         "type":"mult1",
                         "variableName": "intHappiness",
@@ -155,7 +222,7 @@ var surveyQuestions = [
                                     {"label": "7 A great deal"},
                                  ]
                         },
-                        /*11 intAnger*/
+                        /* intAnger*/
                        {
                         "type":"mult1",
                         "variableName": "intAnger",
@@ -173,7 +240,7 @@ var surveyQuestions = [
                                     {"label": "7 A great deal"},
                                  ]
                         },
-                        /*12 intRelax*/
+                        /* intRelax*/
                        {
                         "type":"mult1",
                         "variableName": "intRelax",
@@ -191,7 +258,7 @@ var surveyQuestions = [
                                     {"label": "7 A great deal"},
                                  ]
                         },
-                        /*13 intAnxiety*/
+                        /* intAnxiety*/
                         {
                             "type":"mult1",
                             "variableName": "intAnxiety",
@@ -199,7 +266,7 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 7,
                             "labels": [
-                                        {"label": "0 Not at all"},
+                                    {"label": "0 Not at all"},
                                         {"label": "1"},
                                         {"label": "2"},
                                         {"label": "3"},
@@ -209,24 +276,7 @@ var surveyQuestions = [
                                         {"label": "7 A great deal"},
                                      ]
                             },
-                        /*14 intPleasant*/
-                        {
-                            "type":"mult1",
-                            "variableName": "intPleasant",
-                            "questionPrompt": "In general, how would you describe the interation you just had? Was it pleasant or unpleasant?",
-                            "minResponse": 1,
-                            "maxResponse": 7,
-                            "labels": [
-                                        {"label": "1 Very unpleasant"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7 Very pleasant"},
-                                     ]
-                            },
-                        /*15 intValence*/
+                        /* intValence*/
                         {
                             "type":"mult1",
                             "variableName": "intValence",
@@ -243,7 +293,7 @@ var surveyQuestions = [
                                         {"label": "7 Very positive"},
                                      ]
                             },
-                         /*16 intDesire*/
+                         /* intDesire*/
                         {
                             "type":"mult1",
                             "variableName": "intDesire",
@@ -260,57 +310,127 @@ var surveyQuestions = [
                                         {"label": "7 A great deal"},
                                      ]
                             },
-                         /*17 intLikely*/
-                         {
+                         /* intPressure*/
+                        {
                             "type":"mult1",
-                            "variableName": "intLikely",
-                            "questionPrompt": "In general, how likely are you to seek out or initiate interaction with this person again?",
-                            "minResponse": 1,
-                            "maxResponse": 7,
+                            "variableName": "intPressure",
+                            "questionPrompt": "During the interaction, did you feel a pressure to think differently?",
+                            "minResponse": 0,
+                            "maxResponse": 1,
                             "labels": [
-                                        {"label": "1 Not at all"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7 A great deal"},
+                                        {"label": "Yes"},
+                                        {"label": "No"},
                                      ]
                             },
-                         /*18 partnerID*/
-                         {
+                         /* intConceal*/
+                        {
+                            "type":"mult1",
+                            "variableName": "intConceal",
+                            "questionPrompt": "During the interaction, did you conceal any of your identities?",
+                            "minResponse": 0,
+                            "maxResponse": 1,
+                            "labels": [
+                                        {"label": "Yes"},
+                                        {"label": "No"},
+                                     ]
+                            },
+                        /*SKIP LOGIC HERE FOR ID CONCEAL */
+                         /* intConcealID*/
+                        {
                             "type":"text",
-                            "variableName": "partnerID",
-                            "questionPrompt": "Who was this person? Please enter their first name here. If this person is not one of the 20 people you identified in the first survey, you will be asked some questions about them.",
+                            "variableName": "intConcealID",
+                            "questionPrompt": "What identities did you conceal?",
                             },
-                         /*19 partCloseness*/
-                         {
+                        /*SKIP LOGIC HERE FOR IDENTIFIED NEW SOCIAL CONTACT/SOCIAL INTERACTION PARTNERS*/
+                         /* partName*/
+                        {
+                            "type":"text",
+                            "variableName": "partName",
+                            "questionPrompt": "Please give this person a nickname.",
+                            },
+                         /* partRel*/
+                         /* I'm not sure ES can handle multiple selections on a mult1 type questions???*/
+                        {
                             "type":"mult1",
-                            "variableName": "partCloseness",
-                            "questionPrompt": "How close do you feel to this person?",
+                            "variableName": "partRel",
+                            "questionPrompt": "What is your relationship with this person, if any? (Check all tht apply)",
+                            "minResponse": 0,
+                            "maxResponse": 9,
+                            "labels": [
+                                        {"label": "Stranger/No relationship"},
+                                        {"label": "Friend"},
+                                        {"label": "Best Friend"},
+                                        {"label": "Romantic Partner"},
+                                        {"label": "Coworker"},
+                                        {"label": "Neighbour"},
+                                        {"label": "Teammate"},
+                                        {"label": "Classmate"},
+                                        {"label": "Family"},
+                                        {"label": "Other Acquaintance"}
+                                     ]
+                            },
+                         /* partLiking*/
+                        {
+                            "type":"mult1",
+                            "variableName": "partLiking",
+                            "questionPrompt": "How much do you like **piped text**?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
-                                        {"label": "1 Not at all"},
+                                        {"label": "-3 (Really dislike)"},
+                                        {"label": "-2"},
+                                        {"label": "-1"},
+                                        {"label": "0"},
+                                        {"label": "1"},
+                                        {"label": "2"},
+                                        {"label": "3 (Really like)"},
+                                     ]
+                            },
+                         /* partTrust*/
+                        {
+                            "type":"mult1",
+                            "variableName": "partTrust",
+                            "questionPrompt": "How much do you trust **piped text**?",
+                            "minResponse": 1,
+                            "maxResponse": 7,
+                            "labels": [
+                                        {"label": "1 (Not at all)"},
                                         {"label": "2"},
                                         {"label": "3"},
                                         {"label": "4"},
                                         {"label": "5"},
                                         {"label": "6"},
-                                        {"label": "7 A great deal"},
+                                        {"label": "7 (Completely)"},
                                      ]
                             },
-                        /*20 partAge*/
+                         /* partCare*/
+                        {
+                            "type":"mult1",
+                            "variableName": "partCare",
+                            "questionPrompt": "How much do you care about **piped text**?",
+                            "minResponse": 1,
+                            "maxResponse": 7,
+                            "labels": [
+                                        {"label": "1 (Not at all)"},
+                                        {"label": "2"},
+                                        {"label": "3"},
+                                        {"label": "4"},
+                                        {"label": "5"},
+                                        {"label": "6"},
+                                        {"label": "7 (Very much)"},
+                                     ]
+                            },
+                         /* partAge*/
                         {
                             "type":"text",
                             "variableName": "partAge",
-                            "questionPrompt": "How old is this person (years)?",
+                            "questionPrompt": "How old is **piped text** (years)?",
                             },
-                        /*21 partGender*/
+                         /* partGender*/
                         {
                             "type":"mult1",
                             "variableName": "partGender",
-                            "questionPrompt": "What is this person's gender identity?",
+                            "questionPrompt": "What is **piped text**'s gender identity?",
                             "minResponse": 1,
                             "maxResponse": 4,
                             "labels": [
@@ -320,23 +440,11 @@ var surveyQuestions = [
                                         {"label": "Another"},
                                      ]
                             },
-                        /*22 partFamily*/
-                        {
-                            "type":"mult1",
-                            "variableName": "partFamily",
-                            "questionPrompt": "Is this person a family member?",
-                            "minResponse": 0,
-                            "maxResponse": 1,
-                            "labels": [
-                                        {"label": "Yes"},
-                                        {"label": "No"},
-                                     ]
-                            },
-                        /*23 partSexualID*/
+                         /* partSexualID*/
                          {
                             "type":"mult1",
                             "variableName": "partSexualID",
-                            "questionPrompt": "What is this person's sexual identity?",
+                            "questionPrompt": "What is **piped test**'s sexual identity?",
                             "minResponse": 1,
                             "maxResponse": 5,
                             "labels": [
@@ -347,46 +455,102 @@ var surveyQuestions = [
                                         {"label": "Another"},
                                      ]
                             },
-                        /*24 partEthnicity*/
+                         /* partEthnicity*/
                          {
                             "type":"mult1",
                             "variableName": "partEthnicity",
-                            "questionPrompt": "What is this person's ethnicity?",
-                            "minResponse": 1,
-                            "maxResponse": 8,
+                            "questionPrompt": "What is **piped text**'s ethnicity?",
+                            "minResponse": 0,
+                            "maxResponse": 9,
                             "labels": [
                                         {"label": "Indigenous (North America)"},
-                                        {"label": "Black"},
+                                        {"label": "Black or African"},
                                         {"label": "East Asian"},
-                                        {"label": "White"},
+                                        {"label": "White or European"},
                                         {"label": "Latino/a"},
                                         {"label": "Native Hawaiian or Pacific Islander"},
                                         {"label": "Middle Eastern"},
-                                        {"label": "South Asian"}
+                                        {"label": "South Asian"},
+                                        {"label": "South East Asian"},
+                                        {"label": "Another"},
                                      ]
                             },
-                        /*25 partPolitical*/
+                        /* partPolitical*/
                         {
                             "type":"mult1",
                             "variableName": "partPolitical",
-                            "questionPrompt": "What is this person's political orientation?",
+                            "questionPrompt": "What is **piped text**'s political orientation?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
-                                        {"label": "Extremely liberal (Strong NDP/Liberal)"},
+                                        {"label": "Extremely liberal"},
                                         {"label": "Moderately liberal"},
                                         {"label": "Slightly liberal"},
                                         {"label": "Neither liberal nor conservative"},
                                         {"label": "Slightly conservative"},
                                         {"label": "Moderately conservative"},
-                                        {"label": "Extremely conservative (Strong Conservative)"},
+                                        {"label": "Extremely conservative"},
                                      ]
                             },
-                        /*26 mediaCon*/
+                         /* partReligiony*/
+                         {
+                            "type":"mult1",
+                            "variableName": "partReligion",
+                            "questionPrompt": "What are **piped text**'s religious beliefs?",
+                            "minResponse": 1,
+                            "maxResponse": 9,
+                            "labels": [
+                                        {"label": "Christian"},
+                                        {"label": "Muslim"},
+                                        {"label": "Jewish"},
+                                        {"label": "Buddhist"},
+                                        {"label": "Hindu"},
+                                        {"label": "Sikh"},
+                                        {"label": "Atheist"},
+                                        {"label": "Agnostic"},
+                                        {"label": "Another"},
+                                     ]
+                            },
+                        /*SHOW BELOW IF PARTICIPANT DID NOT CHOOSE REL AS STRANGER*/
+                         /* partCloseness*/
                         {
                             "type":"mult1",
-                            "variableName": "mediaCon",
-                            "questionPrompt": "Did you consume any media in the last 2 hours (magazines, newspapers, newsletters, videos)?",
+                            "variableName": "partCloseness",
+                            "questionPrompt": "How close do you feel to **piped text**?",
+                            "minResponse": 1,
+                            "maxResponse": 7,
+                            "labels": [
+                                        {"label": "1 (Not at all)"},
+                                        {"label": "2"},
+                                        {"label": "3"},
+                                        {"label": "4"},
+                                        {"label": "5"},
+                                        {"label": "6"},
+                                        {"label": "7 (Very)"},
+                                     ]
+                            },
+                         /* partVoluntary*/
+                        {
+                            "type":"mult1",
+                            "variableName": "partVoluntary",
+                            "questionPrompt": "How voluntary is your relationship to **piped text**?",
+                            "minResponse": 1,
+                            "maxResponse": 7,
+                            "labels": [
+                                        {"label": "1 (Not at all)"},
+                                        {"label": "2"},
+                                        {"label": "3"},
+                                        {"label": "4"},
+                                        {"label": "5"},
+                                        {"label": "6"},
+                                        {"label": "7 (Completely)"},
+                                     ]
+                            },
+                        /* mediaPresence*/
+                        {
+                            "type":"mult1",
+                            "variableName": "mediaPresence",
+                            "questionPrompt": "Did you consume any media since you last completed a survey (magazines, newspapers, newsletters, videos)?",
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
@@ -394,35 +558,66 @@ var surveyQuestions = [
                                         {"label": "No"},
                                      ]
                             },
-                        /*27 pieceDuration*/
+                         /* mediaGroups*/
                         {
-                            "type":"text",
-                            "variableName": "pieceDuration",
-                            "questionPrompt": "Please think about the very first piece of media you consumed in the last 2 hours. How long did you spend consuming this piece?",
+                            "type":"mult1",
+                            "variableName": "mediaGroups",
+                            "questionPrompt": "Were any of these groups depicted in the media (select all that apply)?",
+                            "minResponse": 0,
+                            "maxResponse": 32,
+                            "labels": [
+                                        {"label": "Children"},
+                                        {"label": "Teenagers"},
+                                        {"label": "Young adults"},
+                                        {"label": "Middle-aged adults"},
+                                        {"label": "Older adults"},
+                                        {"label": "Men"},
+                                        {"label": "Women"},
+                                        {"label": "Transgender or Gender Non-conforming people"},
+                                        {"label": "Bisexual people"},
+                                        {"label": "Gay/Lesbian people"},
+                                        {"label": "Queer people"},
+                                        {"label": "Heterosexual/Straight people"},
+                                        {"label": "Indigenous people"},
+                                        {"label": "Black people"},
+                                        {"label": "East Asian people"},
+                                        {"label": "White people"},
+                                        {"label": "Latino/a people"},
+                                        {"label": "Native Hawaiian or Pacific Islander people"},
+                                        {"label": "Middle Eastern people"},
+                                        {"label": "South Asian people"},
+                                        {"label": "South East Asian people"},
+                                        {"label": "Christians"},
+                                        {"label": "Muslims"},
+                                        {"label": "Jews"},
+                                        {"label": "Buddhists"},
+                                        {"label": "Hindus"},
+                                        {"label": "Sikhs"},
+                                        {"label": "Atheists"},
+                                        {"label": "Agnostics"},
+                                        {"label": "Liberals"},
+                                        {"label": "Conservatives"},
+                                        {"label": "Political Moderates"},
+                                        {"label": "Immigrants"},
+                                     ]
                             },
-                        /*28 pieceStart*/
+                        /* mediaDuration*/
                         {
                             "type":"text",
-                            "variableName": "pieceStart",
+                            "variableName": "mediaDuration",
+                            "questionPrompt": "How long did you spend consuming this media, in minutes?",
+                            },
+                        /* mediaStart*/
+                        {
+                            "type":"text",
+                            "variableName": "mediaStart",
                             "questionPrompt": "What was the approximate time you started consuming this media?",
                             },
-                        /*29 pieceSeek*/
+                        /* mediaInitiate*/
                         {
                             "type":"mult1",
-                            "variableName": "pieceSeek",
+                            "variableName": "mediaInitiate",
                             "questionPrompt": "Did you actively seek out the media?",
-                            "minResponse": 0,
-                            "maxResponse": 1,
-                            "labels": [
-                                {"label": "Yes"},
-                                {"label": "No, indirectly"},
-                            ]
-                        },
-                        /*30 piecePurpose*/
-                        {
-                            "type":"mult1",
-                            "variableName": "piecePurpose",
-                            "questionPrompt": "Were you seeking something from the media (e.g. education, self-help, promoting a cause?",
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
@@ -430,17 +625,29 @@ var surveyQuestions = [
                                 {"label": "No"},
                             ]
                         },
-                        /*31 pieceMedium*/
+                        /* pieceMedium*/
                         {
-                            "type":"text",
+                            "type":"mult1",
                             "variableName": "pieceMedium",
-                            "questionPrompt": "Please think about the very first piece of media you consumed in the last 2 hours. What type of medium did you use (radio, print, television, movie, video, podcast, or other)?",
+                            "questionPrompt": "What type of medium did you use?",
+                            "minResponse": 0,
+                            "minResponse": 7,
+                            "labels": [
+                                {"label": "Internet"},
+                                {"label": "Radio"},
+                                {"label": "Print"},
+                                {"label": "Television"},
+                                {"label": "Movie"},
+                                {"label": "Video"},
+                                {"label": "Podcast"},
+                                {"label": "Other"},
+                            ]
                         },
-                        /*32 pieceConflict*/
+                        /* mediaConflict*/
                        {
                         "type":"mult1",
-                        "variableName": "pieceConflict",
-                        "questionPrompt": "Did the media describe, depict, or involve any conflict?",
+                        "variableName": "mediaConflict",
+                        "questionPrompt": "Was there any conflict depicted in the media?",
                         "minResponse": 0,
                         "maxResponse": 1,
                         "labels": [
@@ -448,11 +655,11 @@ var surveyQuestions = [
                                     {"label": "No"},
                                  ]
                         },
-                        /*33 pieceConflictR*/
+                        /* mediaViolence*/
                         {
                          "type":"mult1",
-                         "variableName": "pieceConflictR",
-                         "questionPrompt": "If yes, has the conflict been resolved?",
+                         "variableName": "mediaViolence",
+                         "questionPrompt": "Was there any violence depicted in the media?",
                          "minResponse": 0,
                          "maxResponse": 1,
                          "labels": [
@@ -468,16 +675,16 @@ var surveyQuestions = [
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
-                                        {"label": "1 Not at all"},
+                                        {"label": "1 (Not at all)"},
                                         {"label": "2"},
                                         {"label": "3"},
                                         {"label": "4"},
                                         {"label": "5"},
                                         {"label": "6"},
-                                        {"label": "7 A great deal"},
+                                        {"label": "7 (Very)"},
                                      ]
                             },
-                        /*35 mediaAnger*/
+                        /* mediaAnger*/
                         {
                             "type":"mult1",
                             "variableName": "mediaAnger",
@@ -485,16 +692,16 @@ var surveyQuestions = [
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
-                                        {"label": "1 Not at all"},
+                                        {"label": "1 (Not at all)"},
                                         {"label": "2"},
                                         {"label": "3"},
                                         {"label": "4"},
                                         {"label": "5"},
                                         {"label": "6"},
-                                        {"label": "7 A great deal"},
+                                        {"label": "7 (Very)"},
                                      ]
                             },
-                        /*36 mediaRelax*/
+                        /* mediaRelax*/
                         {
                             "type":"mult1",
                             "variableName": "mediaRelax",
@@ -502,16 +709,16 @@ var surveyQuestions = [
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
-                                        {"label": "1 Not at all"},
+                                        {"label": "1 (Not at all)"},
                                         {"label": "2"},
                                         {"label": "3"},
                                         {"label": "4"},
                                         {"label": "5"},
                                         {"label": "6"},
-                                        {"label": "7 A great deal"},
+                                        {"label": "7 (Very)"},
                                      ]
                             },
-                        /*37 mediaAnxiety*/
+                        /* mediaAnxiety*/
                         {
                             "type":"mult1",
                             "variableName": "mediaAnxiety",
@@ -519,762 +726,88 @@ var surveyQuestions = [
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
-                                        {"label": "1 Not at all"},
+                                        {"label": "1 (Not at all)"},
                                         {"label": "2"},
                                         {"label": "3"},
                                         {"label": "4"},
                                         {"label": "5"},
                                         {"label": "6"},
-                                        {"label": "7 A great deal"},
+                                        {"label": "7 (Very)"},
                                      ]
                             },
-                        /*38 mediaPleasant*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaPleasant",
-                            "questionPrompt": "In general, how would you describe the media you just consumed? Was it pleasant or unpleasant?",
-                            "minResponse": 1,
-                            "maxResponse": 7,
-                            "labels": [
-                                        {"label": "1 Very unpleasant"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7 Very pleasant"},
-                                     ]
-                            },
-                        /*39 mediaValence*/
+                        /* mediaValence*/
                         {
                             "type":"mult1",
                             "variableName": "mediaValence",
-                            "questionPrompt": "In general, how would you describe the media you just consumed? Was it positive or negative?",
+                            "questionPrompt": "In general, was the media you consumed positive or negative?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
-                                        {"label": "1 Very negative"},
+                                        {"label": "1 (Very negative)"},
                                         {"label": "2"},
                                         {"label": "3"},
                                         {"label": "4"},
                                         {"label": "5"},
                                         {"label": "6"},
-                                        {"label": "7 Very positive"},
+                                        {"label": "7 (Very positive)"},
                                      ]
                             },
-                         /*40 mediaDesire*/
+                         /* mediaDesire*/
                         {
                             "type":"mult1",
                             "variableName": "mediaDesire",
-                            "questionPrompt": "In general, how much would you would you want to consume media like this or from this source in the future?",
+                            "questionPrompt": "In general, how much would you would you want to consume media like this in the future?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
-                                        {"label": "1 Not at all"},
+                                        {"label": "1 (Not at all)"},
                                         {"label": "2"},
                                         {"label": "3"},
                                         {"label": "4"},
                                         {"label": "5"},
                                         {"label": "6"},
-                                        {"label": "7 A great deal"},
+                                        {"label": "7 (A great deal)"},
                                      ]
                             },
-                         /*41 mediaLikely*/
+                         /* mediaSource*/
                          {
                             "type":"mult1",
-                            "variableName": "mediaLikely",
-                            "questionPrompt": "In general, how likely are you to seek out media like this or from this source again?",
+                            "variableName": "mediaSource",
+                            "questionPrompt": "In general, how much would you want to consume media from this source in the future?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
-                                        {"label": "1 Not at all"},
+                                        {"label": "1 (Not at all)"},
                                         {"label": "2"},
                                         {"label": "3"},
                                         {"label": "4"},
                                         {"label": "5"},
                                         {"label": "6"},
-                                        {"label": "7 A great deal"},
+                                        {"label": "7 (A great deal)"},
                                      ]
                             },
-                        
-                        /*42 mediaCons*/
+                         /* mediaReflect*/
                         {
                             "type":"mult1",
-                            "variableName": "mediaCons",
-                            "questionPrompt": "How much were conservative people discussed (if any) in this media?",
+                            "variableName": "mediaReflect",
+                            "questionPrompt": "Did the media make you reflect on yourself?",
                             "minResponse": 0,
-                            "maxResponse": 10,
+                            "maxResponse": 1,
                             "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
+                                        {"label": "Yes"},
+                                        {"label": "No"},
                                      ]
                             },
-                        /*43 mediaLib*/
+                         /* mediaPressure*/
                         {
                             "type":"mult1",
-                            "variableName": "media Lib",
-                            "questionPrompt": "How much were liberal people discussed (if any) in this media?",
+                            "variableName": "mediaPressure",
+                            "questionPrompt": "Did the media make you feel a pressure to think differently?",
                             "minResponse": 0,
-                            "maxResponse": 10,
+                            "maxResponse": 1,
                             "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-                        
-                        /*44 mediaMod*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaMod",
-                            "questionPrompt": "How much were politically moderate people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-                        
-                        /*45 mediaWhite*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaWhite",
-                            "questionPrompt": "How much were white people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-                        
-                         /*46 mediaBlack*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaBlack",
-                            "questionPrompt": "How much were Black people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-                        
-                        /*47 mediaSAsian*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaSAsian",
-                            "questionPrompt": "How much were South Asian people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-                        
-                        /*48 mediaEAsian*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaEAsian",
-                            "questionPrompt": "How much were East Asian people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-                        
-                        /*49 mediaMEast*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaMEast",
-                            "questionPrompt": "How much were Middle Eastern people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*50 mediaLatin*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaLatin",
-                            "questionPrompt": "How much were Latino/a people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-                        
-                        /*51 mediaIndig*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaIndig",
-                            "questionPrompt": "How much were Indigenous people (North America) discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-                        
-                        /*52 mediaElder*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaElder",
-                            "questionPrompt": "How much were elderly people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-                        
-                        /*53 mediaYoungA*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaYoungA",
-                            "questionPrompt": "How much were young adults discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*54 mediaChild*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaChild",
-                            "questionPrompt": "How much were children discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-                        
-                        /*55 mediaTeen*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaTeen",
-                            "questionPrompt": "How much were teenagers discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*56 mediaMiddleA*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaMiddleA",
-                            "questionPrompt": "How much were midlle-aged adults discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-                        
-                        /*57 mediaMen*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaMen",
-                            "questionPrompt": "How much were men discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*58 mediaWomen*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaWomen",
-                            "questionPrompt": "How much were women discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*59 mediaTrans*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaTrans",
-                            "questionPrompt": "How much were transgender or gender-nonconforming people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*60 mediaBi*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaBi",
-                            "questionPrompt": "How much were bisexual people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*61 mediaLes*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaLes",
-                            "questionPrompt": "How much were lesbian people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*62 mediaGay*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaGay",
-                            "questionPrompt": "How much were gay people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*63 mediaHet*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaHet",
-                            "questionPrompt": "How much were heterosexual or straight people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*64 mediaQueer*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaQueer",
-                            "questionPrompt": "How much were queer people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*65 mediaMuslim*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaMuslim",
-                            "questionPrompt": "How much were Muslim people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*66 mediaJew*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaJew",
-                            "questionPrompt": "How much were Jewish people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*67 mediaBudd*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaBudd",
-                            "questionPrompt": "How much were Buddhist people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*68 mediaHindu*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaHindu",
-                            "questionPrompt": "How much were Hindu people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*69 mediaSikh*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaSikh",
-                            "questionPrompt": "How much were Sikh people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*70 mediaAthe*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaAthe",
-                            "questionPrompt": "How much were atheist people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*71 mediaChrist*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaChrist",
-                            "questionPrompt": "How much were Christian people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
-                                     ]
-                            },
-
-                        /*72 mediaImm*/
-                        {
-                            "type":"mult1",
-                            "variableName": "mediaImm",
-                            "questionPrompt": "How much were immigrant people discussed (if any) in this media?",
-                            "minResponse": 0,
-                            "maxResponse": 10,
-                            "labels": [
-                                        {"label": "0 Not at all"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7"},
-                                        {"label": "8"},
-                                        {"label": "9"},
-                                        {"label": "10 A great deal"},
+                                        {"label": "Yes"},
+                                        {"label": "No"},
                                      ]
                             },
                        ];
@@ -1710,7 +1243,7 @@ recordResponse: function(button, count, type) {
 // 		//Uncomment the "/*else*/" below only when customizing question logic (Stage 3), so that the app will just proceed to the next question in the JSON database
 // 		//DO NOT uncomment the "/*else*/" below when testing whether questions are being displayed in the right format (Stage 1) OR if you have no question logic 
 		//in your questionnaire
-	   else if (count < surveyQuestions.length-1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(count+1);});}
+	   /*else*/ if (count < surveyQuestions.length-1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(count+1);});}
 	   else {app.renderLastPage(lastPage[0], count);};
 },
     
@@ -1759,7 +1292,7 @@ saveDataLastPage:function() {
  		localStore.uniqueKey = uniqueKey;
  		localStore.pause_time = pause_time;
             $("#question").html("<h3>Your responses have been recorded. Thank you for completing this survey.</h3>");
-            }
+            },
             error: function (request, error) {
  				console.log(error);
                  $("#question").html("<h3>Please try resending data. If problems persist, please contact the researcher(uoft.dailylifestudy@gmail.com).</h3><br><button>Resend data</button>");
