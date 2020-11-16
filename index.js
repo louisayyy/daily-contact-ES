@@ -48,7 +48,7 @@ var surveyQuestions = [
                        "questionPrompt": "Thank you for your interest in our study. In this study, you will be asked about your social interactions with other people, including people you know, your friends, and your family. We will ask about your experiences, feelings, and attitudes in those interactions and towards those people. You will also be asked to provide some basic demographic data. If you do not wish to answer any question, please leave the question blank; you will not lose compensation for that portion of the study. If you choose to withdraw from the study as a whole, please simply close the browser window or exit the smartphone app. If you choose to withdraw from the study, we will keep the data you have provided as part of the study record. If you wish to have your data removed, simply email any of the researchers to indicate that you wish for your data to be withdrawn. After [INSERT DATE], we will be uploading your anonymous data online to a data bank. None of your identifiable information will be attached to this data.",
                        },
 
-                       /* genWell*/
+                       /* 2 genWell*/
                        {
                         "type":"mult1",
                         "variableName": "genWell",
@@ -65,7 +65,7 @@ var surveyQuestions = [
                                 {"label": "7 (Good)"},
                             ]
                         },
-                        /* genStress*/
+                        /* 3 genStress*/
                         {
                         "type":"mult1",
                         "variableName": "genStress",
@@ -82,7 +82,7 @@ var surveyQuestions = [
                                 {"label": "7 (Completely)"},
                             ]
                         },
-                        /* genCope*/
+                        /* 4 genCope*/
                         {
                         "type":"mult1",
                         "variableName": "genCope",
@@ -99,7 +99,7 @@ var surveyQuestions = [
                                 {"label": "7 (Completely)"},
                             ]
                         },   
-                        /* intBranch*/
+                        /* 5 intBranch*/
                         {
                         "type": "mult1",
                         "variableName": "intBranch",
@@ -113,7 +113,7 @@ var surveyQuestions = [
                         },
                         
                         /* BRANCH LOGIC HERE */
-                        /* intPartner*/
+                        /* 6 intPartner*/
                         {
                         "type": "mult1",
                         "variableName": "intPartner",
@@ -126,19 +126,19 @@ var surveyQuestions = [
                                 {"label": "Someone else"},
                                 ]
                         }, 
-                       /* intDuration*/
+                       /* 7 intDuration*/
                        {
-                       "type":"text",
+                       "type":"number",
                        "variableName": "intDuration",
                        "questionPrompt": "What was the duration of the interaction in minutes?",
                        },
-                       /* intStarttime*/
+                       /* 8 intStarttime*/
                        {
-                       "type":"text",
+                       "type":"timePicker",
                        "variableName": "intStarttime",
                        "questionPrompt": "What was the approximate start time of the interaction?",
                        },
-                       /* intInitiate*/
+                       /* 9 intInitiate*/
                        {
                        "type":"mult1",
                        "variableName": "intInitiate",
@@ -151,7 +151,7 @@ var surveyQuestions = [
                                 {"label": "Neither/Both"},
                                 ]
                        },
-                       /* intSupport*/
+                       /* 10 intSupport*/
                        {
                         "type": "mult1",
                         "variableName": "intSupport",
@@ -163,7 +163,7 @@ var surveyQuestions = [
                                 {"label": "Yes"},
                                 ]
                        },
-                       /* intLocation*/
+                       /* 11 intLocation*/
                        {
                         "type":"mult1",
                         "variableName": "intLocation",
@@ -180,7 +180,7 @@ var surveyQuestions = [
                                 {"label": "Other (please describe)"},
                                 ]
                        },
-                        /* intConflict*/
+                        /* 12 intConflict*/
                        {
                        "type":"mult1",
                        "variableName": "intConflict",
@@ -188,11 +188,11 @@ var surveyQuestions = [
                        "minResponse": 0,
                        "maxResponse": 1,
                        "labels": [
-                       			{"label": "Yes"},
                        			{"label": "No"},
+                       			{"label": "Yes"},
                                 ]
                        },
-                       /* intConflictR*/
+                       /* 13 intConflictR*/
                        {
                         "type":"mult1",
                         "variableName": "intConflictR",
@@ -200,11 +200,11 @@ var surveyQuestions = [
                         "minResponse": 0,
                         "maxResponse": 1,
                         "labels": [
-                                    {"label": "Yes"},
                                     {"label": "No"},
+                                    {"label": "Yes"},
                                  ]
                         },
-                        /* intHappiness*/
+                        /* 14 intHappiness*/
                        {
                         "type":"mult1",
                         "variableName": "intHappiness",
@@ -222,7 +222,7 @@ var surveyQuestions = [
                                     {"label": "7 A great deal"},
                                  ]
                         },
-                        /* intAnger*/
+                        /* 15 intAnger*/
                        {
                         "type":"mult1",
                         "variableName": "intAnger",
@@ -240,7 +240,7 @@ var surveyQuestions = [
                                     {"label": "7 A great deal"},
                                  ]
                         },
-                        /* intRelax*/
+                        /* 16 intRelax*/
                        {
                         "type":"mult1",
                         "variableName": "intRelax",
@@ -258,7 +258,7 @@ var surveyQuestions = [
                                     {"label": "7 A great deal"},
                                  ]
                         },
-                        /* intAnxiety*/
+                        /* 17 intAnxiety*/
                         {
                             "type":"mult1",
                             "variableName": "intAnxiety",
@@ -276,7 +276,7 @@ var surveyQuestions = [
                                         {"label": "7 A great deal"},
                                      ]
                             },
-                        /* intValence*/
+                        /* 18 intValence*/
                         {
                             "type":"mult1",
                             "variableName": "intValence",
@@ -293,7 +293,7 @@ var surveyQuestions = [
                                         {"label": "7 Very positive"},
                                      ]
                             },
-                         /* intDesire*/
+                         /* 19 intDesire*/
                         {
                             "type":"mult1",
                             "variableName": "intDesire",
@@ -310,7 +310,7 @@ var surveyQuestions = [
                                         {"label": "7 A great deal"},
                                      ]
                             },
-                         /* intPressure*/
+                         /* 20 intPressure*/
                         {
                             "type":"mult1",
                             "variableName": "intPressure",
@@ -318,11 +318,11 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
-                                        {"label": "Yes"},
                                         {"label": "No"},
+                                        {"label": "Yes"},
                                      ]
                             },
-                         /* intConceal*/
+                         /* 21 intConceal*/
                         {
                             "type":"mult1",
                             "variableName": "intConceal",
@@ -330,30 +330,31 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
-                                        {"label": "Yes"},
                                         {"label": "No"},
+                                        {"label": "Yes"},
                                      ]
                             },
                         /*SKIP LOGIC HERE FOR ID CONCEAL */
-                         /* intConcealID*/
+                         /* 22 intConcealID*/
                         {
                             "type":"text",
                             "variableName": "intConcealID",
                             "questionPrompt": "What identities did you conceal?",
                             },
                         /*SKIP LOGIC HERE FOR IDENTIFIED NEW SOCIAL CONTACT/SOCIAL INTERACTION PARTNERS*/
-                         /* partName*/
+                         /* 23 partName*/
                         {
                             "type":"text",
                             "variableName": "partName",
                             "questionPrompt": "Please give this person a nickname.",
                             },
-                         /* partRel*/
-                         /* I'm not sure ES can handle multiple selections on a mult1 type questions???*/
+                         /* 24 partRel*/
+                         /*  I'm not sure ES can handle multiple selections on a mult1 type questions???*/
+                         // sabrina here: change this to a checklist question. 
                         {
-                            "type":"mult1",
+                            "type":"checklist",
                             "variableName": "partRel",
-                            "questionPrompt": "What is your relationship with this person, if any? (Check all tht apply)",
+                            "questionPrompt": "What is your relationship with this person (NAME), if any? (Check all that apply)",
                             "minResponse": 0,
                             "maxResponse": 9,
                             "labels": [
@@ -369,11 +370,11 @@ var surveyQuestions = [
                                         {"label": "Other Acquaintance"}
                                      ]
                             },
-                         /* partLiking*/
+                         /* 25 partLiking*/
                         {
                             "type":"mult1",
                             "variableName": "partLiking",
-                            "questionPrompt": "How much do you like **piped text**?",
+                            "questionPrompt": "How much do you like NAME?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -386,11 +387,11 @@ var surveyQuestions = [
                                         {"label": "3 (Really like)"},
                                      ]
                             },
-                         /* partTrust*/
+                         /* 26 partTrust*/
                         {
                             "type":"mult1",
                             "variableName": "partTrust",
-                            "questionPrompt": "How much do you trust **piped text**?",
+                            "questionPrompt": "How much do you trust NAME?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -403,11 +404,11 @@ var surveyQuestions = [
                                         {"label": "7 (Completely)"},
                                      ]
                             },
-                         /* partCare*/
+                         /* 27 partCare*/
                         {
                             "type":"mult1",
                             "variableName": "partCare",
-                            "questionPrompt": "How much do you care about **piped text**?",
+                            "questionPrompt": "How much do you care about NAME?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -420,17 +421,17 @@ var surveyQuestions = [
                                         {"label": "7 (Very much)"},
                                      ]
                             },
-                         /* partAge*/
+                         /* 28 partAge*/
                         {
-                            "type":"text",
+                            "type":"number",
                             "variableName": "partAge",
-                            "questionPrompt": "How old is **piped text** (years)?",
+                            "questionPrompt": "How old is NAME (years)?",
                             },
-                         /* partGender*/
+                         /* 29 partGender*/
                         {
                             "type":"mult1",
                             "variableName": "partGender",
-                            "questionPrompt": "What is **piped text**'s gender identity?",
+                            "questionPrompt": "What is NAME's gender identity?",
                             "minResponse": 1,
                             "maxResponse": 4,
                             "labels": [
@@ -440,11 +441,11 @@ var surveyQuestions = [
                                         {"label": "Another"},
                                      ]
                             },
-                         /* partSexualID*/
+                         /* 30 partSexualID*/
                          {
                             "type":"mult1",
                             "variableName": "partSexualID",
-                            "questionPrompt": "What is **piped test**'s sexual identity?",
+                            "questionPrompt": "What is NAME's sexual identity?",
                             "minResponse": 1,
                             "maxResponse": 5,
                             "labels": [
@@ -455,11 +456,11 @@ var surveyQuestions = [
                                         {"label": "Another"},
                                      ]
                             },
-                         /* partEthnicity*/
+                         /* 31 partEthnicity*/
                          {
                             "type":"mult1",
                             "variableName": "partEthnicity",
-                            "questionPrompt": "What is **piped text**'s ethnicity?",
+                            "questionPrompt": "What is NAME's ethnicity?",
                             "minResponse": 0,
                             "maxResponse": 9,
                             "labels": [
@@ -475,11 +476,11 @@ var surveyQuestions = [
                                         {"label": "Another"},
                                      ]
                             },
-                        /* partPolitical*/
+                        /* 32 partPolitical*/
                         {
                             "type":"mult1",
                             "variableName": "partPolitical",
-                            "questionPrompt": "What is **piped text**'s political orientation?",
+                            "questionPrompt": "What is NAME's political orientation?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -492,11 +493,11 @@ var surveyQuestions = [
                                         {"label": "Extremely conservative"},
                                      ]
                             },
-                         /* partReligiony*/
+                         /* 33 partReligiony*/
                          {
                             "type":"mult1",
                             "variableName": "partReligion",
-                            "questionPrompt": "What are **piped text**'s religious beliefs?",
+                            "questionPrompt": "What are NAME's religious beliefs?",
                             "minResponse": 1,
                             "maxResponse": 9,
                             "labels": [
@@ -512,11 +513,11 @@ var surveyQuestions = [
                                      ]
                             },
                         /*SHOW BELOW IF PARTICIPANT DID NOT CHOOSE REL AS STRANGER*/
-                         /* partCloseness*/
+                         /* 34 partCloseness*/
                         {
                             "type":"mult1",
                             "variableName": "partCloseness",
-                            "questionPrompt": "How close do you feel to **piped text**?",
+                            "questionPrompt": "How close do you feel to NAME?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -529,11 +530,11 @@ var surveyQuestions = [
                                         {"label": "7 (Very)"},
                                      ]
                             },
-                         /* partVoluntary*/
+                         /* 35 partVoluntary*/
                         {
                             "type":"mult1",
                             "variableName": "partVoluntary",
-                            "questionPrompt": "How voluntary is your relationship to **piped text**?",
+                            "questionPrompt": "How voluntary is your relationship to NAME?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -546,7 +547,7 @@ var surveyQuestions = [
                                         {"label": "7 (Completely)"},
                                      ]
                             },
-                        /* mediaPresence*/
+                        /* 36 mediaPresence*/
                         {
                             "type":"mult1",
                             "variableName": "mediaPresence",
@@ -554,13 +555,13 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
-                                        {"label": "Yes"},
                                         {"label": "No"},
+                                        {"label": "Yes"},
                                      ]
                             },
-                         /* mediaGroups*/
+                         /* 37 mediaGroups*/
                         {
-                            "type":"mult1",
+                            "type":"checklist",
                             "variableName": "mediaGroups",
                             "questionPrompt": "Were any of these groups depicted in the media (select all that apply)?",
                             "minResponse": 0,
@@ -601,19 +602,19 @@ var surveyQuestions = [
                                         {"label": "Immigrants"},
                                      ]
                             },
-                        /* mediaDuration*/
+                        /* 38 mediaDuration*/
                         {
-                            "type":"text",
+                            "type":"number",
                             "variableName": "mediaDuration",
                             "questionPrompt": "How long did you spend consuming this media, in minutes?",
                             },
-                        /* mediaStart*/
+                        /* 39 mediaStart*/
                         {
-                            "type":"text",
+                            "type":"timePicker",
                             "variableName": "mediaStart",
                             "questionPrompt": "What was the approximate time you started consuming this media?",
                             },
-                        /* mediaInitiate*/
+                        /* 40 mediaInitiate*/
                         {
                             "type":"mult1",
                             "variableName": "mediaInitiate",
@@ -621,29 +622,29 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
-                                {"label": "Yes"},
                                 {"label": "No"},
+                                {"label": "Yes"},
                             ]
                         },
-                        /* pieceMedium*/
+                        /* 41 pieceMedium */
                         {
-                            "type":"mult1",
-                            "variableName": "pieceMedium",
-                            "questionPrompt": "What type of medium did you use?",
-                            "minResponse": 0,
-                            "minResponse": 7,
-                            "labels": [
-                                {"label": "Internet"},
-                                {"label": "Radio"},
-                                {"label": "Print"},
-                                {"label": "Television"},
-                                {"label": "Movie"},
-                                {"label": "Video"},
-                                {"label": "Podcast"},
-                                {"label": "Other"},
-                            ]
+                        "type":"mult1",
+                        "variableName":"pieceMedium",
+                        "questionPrompt":"What type of medium did you use?",
+                        "minResponse": 0,
+                        "maxResponse": 7,
+                        "labels": [
+                        	{"label":"Internet"},
+                        	{"label":"Radio"},
+                        	{"label":"Print"},
+                        	{"label":"Television"},
+                        	{"label":"Movie"},
+                        	{"label":"Video"},
+                        	{"label":"Podcast"},
+                        	{"label":"Other"},
+                        ]        
                         },
-                        /* mediaConflict*/
+                        /* 42 mediaConflict*/
                        {
                         "type":"mult1",
                         "variableName": "mediaConflict",
@@ -651,11 +652,11 @@ var surveyQuestions = [
                         "minResponse": 0,
                         "maxResponse": 1,
                         "labels": [
-                                    {"label": "Yes"},
                                     {"label": "No"},
+                                    {"label": "Yes"},
                                  ]
                         },
-                        /* mediaViolence*/
+                        /* 43 mediaViolence*/
                         {
                          "type":"mult1",
                          "variableName": "mediaViolence",
@@ -663,11 +664,11 @@ var surveyQuestions = [
                          "minResponse": 0,
                          "maxResponse": 1,
                          "labels": [
-                                     {"label": "Yes"},
                                      {"label": "No"},
+                                     {"label": "Yes"},
                                   ]
                          },
-                        /*34 mediaHappiness*/
+                        /*44 mediaHappiness*/
                         {
                             "type":"mult1",
                             "variableName": "mediaHappiness",
@@ -684,11 +685,11 @@ var surveyQuestions = [
                                         {"label": "7 (Very)"},
                                      ]
                             },
-                        /* mediaAnger*/
+                        /* 45 mediaAnger*/
                         {
                             "type":"mult1",
                             "variableName": "mediaAnger",
-                            "questionPrompt": "While consuing this media, how angry did you feel?",
+                            "questionPrompt": "While consuming this media, how angry did you feel?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -701,7 +702,7 @@ var surveyQuestions = [
                                         {"label": "7 (Very)"},
                                      ]
                             },
-                        /* mediaRelax*/
+                        /* 46 mediaRelax*/
                         {
                             "type":"mult1",
                             "variableName": "mediaRelax",
@@ -718,7 +719,7 @@ var surveyQuestions = [
                                         {"label": "7 (Very)"},
                                      ]
                             },
-                        /* mediaAnxiety*/
+                        /* 47 mediaAnxiety*/
                         {
                             "type":"mult1",
                             "variableName": "mediaAnxiety",
@@ -735,7 +736,7 @@ var surveyQuestions = [
                                         {"label": "7 (Very)"},
                                      ]
                             },
-                        /* mediaValence*/
+                        /* 48 mediaValence*/
                         {
                             "type":"mult1",
                             "variableName": "mediaValence",
@@ -752,7 +753,7 @@ var surveyQuestions = [
                                         {"label": "7 (Very positive)"},
                                      ]
                             },
-                         /* mediaDesire*/
+                         /* 49 mediaDesire*/
                         {
                             "type":"mult1",
                             "variableName": "mediaDesire",
@@ -769,7 +770,7 @@ var surveyQuestions = [
                                         {"label": "7 (A great deal)"},
                                      ]
                             },
-                         /* mediaSource*/
+                         /* 50 mediaSource*/
                          {
                             "type":"mult1",
                             "variableName": "mediaSource",
@@ -786,7 +787,7 @@ var surveyQuestions = [
                                         {"label": "7 (A great deal)"},
                                      ]
                             },
-                         /* mediaReflect*/
+                         /* 51 mediaReflect*/
                         {
                             "type":"mult1",
                             "variableName": "mediaReflect",
@@ -794,11 +795,11 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
-                                        {"label": "Yes"},
                                         {"label": "No"},
+                                        {"label": "Yes"},
                                      ]
                             },
-                         /* mediaPressure*/
+                         /* 52 mediaPressure*/
                         {
                             "type":"mult1",
                             "variableName": "mediaPressure",
@@ -806,8 +807,8 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
-                                        {"label": "Yes"},
                                         {"label": "No"},
+                                        {"label": "Yes"},
                                      ]
                             },
                        ];
@@ -916,9 +917,9 @@ renderQuestion: function(question_index) {
     //Below is an example of how you would look for the NAME placeholder in your surveyQuestion questionPrompts 
     //and replace it with the response value that you assign to the name variable
     //See our example app to see how you can implement this
-	/*if (questionPrompt.indexOf('NAME') >= 0) {
+	if (questionPrompt.indexOf('NAME') >= 0) {
 		questionPrompt = questionPrompt.replace("NAME", function replacer() {return name;});
-      	}*/
+      	}
     question.questionText = Mustache.render(questionTextTmpl, {questionPrompt: questionPrompt});    
     //Now populate the view for this question, depending on what the question type is
     //This part of the function will render different question formats depending on the type specified
@@ -1136,63 +1137,63 @@ recordResponse: function(button, count, type) {
 		//uncomment up to "localStore[uniqueRecord] = response;" to test whether app is recording and sending data correctly (Stage 2 of Customization)
 		//This tells ExperienceSampler how to save data from the various formats
     //Record date (create new date object)
-//     var datestamp = new Date();
-//     var year = datestamp.getFullYear(), month = datestamp.getMonth(), day=datestamp.getDate(), hours=datestamp.getHours(), minutes=datestamp.getMinutes(), seconds=datestamp.getSeconds(), milliseconds=datestamp.getMilliseconds();
-//     //Record value of text field
-//     var response, currentQuestion, uniqueRecord;
-//     if (type == 'text') {
-//         response = button.val();
-//         // remove newlines from user input
-//         response = response.replace(/(\r\n|\n|\r)/g, ""); //encodeURIComponent(); decodeURIComponent()
-//         currentQuestion = button.attr('id').slice(0,-1);
-//     }
-//     else if (type == 'number') {
-//         response = button.val();
-//         // remove newlines from user input
-//         response = response.replace(/(\r\n|\n|\r)/g, ""); //encodeURIComponent(); decodeURIComponent()
-//         currentQuestion = button.attr('id').slice(0,-1);
-//     }        	
-//     else if (type == 'slider') {
-//     	response = button.split(/,(.+)/)[1];
-//         currentQuestion = button.split(",",1);
-//     }
-//     //Record the array
-//     else if (type == 'checklist') {
-//         response = button.split(/,(.+)/)[1];
-//         currentQuestion = button.split(",",1);
-//     }
-//     else if (type == 'instructions') {
-//     	response = button.split(/,(.+)/)[1];
-//         currentQuestion = button.split(",",1);
-//     }
-//     //Record value of clicked button
-//     else if (type == 'mult1') {
-//         response = button.value;
-//         //Create a unique identifier for this response
-//         currentQuestion = button.id.slice(0,-1);
-//     }
-//     //Record value of clicked button
-//     else if (type == 'mult2') {
-//         response = button.value;
-//         //Create a unique identifier for this response
-//         currentQuestion = button.id.slice(0,-1);
-//     }
-//     else if (type == 'datePicker') {
-// 		response = button.split(/,(.+)/)[1];
-//      	currentQuestion = button.split(",",1);
-//     }
-//     else if (type == 'dateAndTimePicker') {
-// 		response = button.split(/,(.+)/)[1];
-//      	currentQuestion = button.split(",",1);
-//     }
-//     else if (type == 'timePicker') {
-//     	response = button.val();
-//         currentQuestion = button.attr('id').slice(0,-1);
-//     }
-//     if (count <= -1) {uniqueRecord = currentQuestion}
-//     else {uniqueRecord = uniqueKey + "_" + currentQuestion + "_" + year + "_" + month + "_" + day + "_" + hours + "_" + minutes + "_" + seconds + "_" + milliseconds;}
-//     //Save this to local storage
-//     localStore[uniqueRecord] = response;
+    var datestamp = new Date();
+    var year = datestamp.getFullYear(), month = datestamp.getMonth(), day=datestamp.getDate(), hours=datestamp.getHours(), minutes=datestamp.getMinutes(), seconds=datestamp.getSeconds(), milliseconds=datestamp.getMilliseconds();
+    //Record value of text field
+    var response, currentQuestion, uniqueRecord;
+    if (type == 'text') {
+        response = button.val();
+        // remove newlines from user input
+        response = response.replace(/(\r\n|\n|\r)/g, ""); //encodeURIComponent(); decodeURIComponent()
+        currentQuestion = button.attr('id').slice(0,-1);
+    }
+    else if (type == 'number') {
+        response = button.val();
+        // remove newlines from user input
+        response = response.replace(/(\r\n|\n|\r)/g, ""); //encodeURIComponent(); decodeURIComponent()
+        currentQuestion = button.attr('id').slice(0,-1);
+    }        	
+    else if (type == 'slider') {
+    	response = button.split(/,(.+)/)[1];
+        currentQuestion = button.split(",",1);
+    }
+    //Record the array
+    else if (type == 'checklist') {
+        response = button.split(/,(.+)/)[1];
+        currentQuestion = button.split(",",1);
+    }
+    else if (type == 'instructions') {
+    	response = button.split(/,(.+)/)[1];
+        currentQuestion = button.split(",",1);
+    }
+    //Record value of clicked button
+    else if (type == 'mult1') {
+        response = button.value;
+        //Create a unique identifier for this response
+        currentQuestion = button.id.slice(0,-1);
+    }
+    //Record value of clicked button
+    else if (type == 'mult2') {
+        response = button.value;
+        //Create a unique identifier for this response
+        currentQuestion = button.id.slice(0,-1);
+    }
+    else if (type == 'datePicker') {
+		response = button.split(/,(.+)/)[1];
+     	currentQuestion = button.split(",",1);
+    }
+    else if (type == 'dateAndTimePicker') {
+		response = button.split(/,(.+)/)[1];
+     	currentQuestion = button.split(",",1);
+    }
+    else if (type == 'timePicker') {
+    	response = button.val();
+        currentQuestion = button.attr('id').slice(0,-1);
+    }
+    if (count <= -1) {uniqueRecord = currentQuestion}
+    else {uniqueRecord = uniqueKey + "_" + currentQuestion + "_" + year + "_" + month + "_" + day + "_" + hours + "_" + minutes + "_" + seconds + "_" + milliseconds;}
+    //Save this to local storage
+    localStore[uniqueRecord] = response;
 //		
 
 
@@ -1206,13 +1207,13 @@ recordResponse: function(button, count, type) {
 //		//if you have piped text, you would assign your response variable here
 //		//where X is the question index number of the question you ask for response you would like to pipe
 //		//In this example, we just use name to consist with our earlier variables
-//		if (count ==X) {name = response;}
+		if (count ==23) {name = response;}
 //		//The line below states that if the app is on the last question of participant setup, it should schedule all the notifications
 //		//then display the default end of survey message, and then record which notifications have been scheduled.
 //		//You will test local notifications in Stage 4 of customizing the app
 //		********IF YOU HAVE NO QUESTION LOGIC BUT HAVE SCHEDULED NOTIFICATIONS, YOU NEED TO UNCOMMENT THE FOLLOWING LINE
 //		TO EXECUTE THE scheduleNotifs() FUNCTION********
-//     		if (count == -1){app.scheduleNotifs();app.renderLastPage(lastPage[0], count);app.scheduledNotifs();}
+    	if (count == -1){app.scheduleNotifs();app.renderLastPage(lastPage[0], count);app.scheduledNotifs();}
 //     //Identify the next question to populate the view
 //		//the next statement is about the snooze function
 // 		//This statement says that if the participant says they are currently unable to complete the questionnaire now,
@@ -1280,24 +1281,32 @@ saveDataLastPage:function() {
  	var storage = JSON.stringify(localStore);
  	var storage_save=JSON.parse(storage);
      $.ajax({
-            type: 'post',
+            type: 'get',
             url: 'https://script.google.com/macros/s/AKfycbwphztjEne5e8Ori7KvNA38BFtGctOQ5YQhGNdYE45Fq2SRYw0/exec',
             data: storage_save,
             crossDomain: true,
+            timeout: 180000,
             success: function (result) {
-            var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
-            localStore.clear();
-            localStore.participant_id = pid;
-            localStore.snoozed = snoozed;
- 		localStore.uniqueKey = uniqueKey;
- 		localStore.pause_time = pause_time;
-            $("#question").html("<h3>Your responses have been recorded. Thank you for completing this survey.</h3>");
+            	var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
+            	localStore.clear();
+            	localStore.participant_id = pid;
+            	localStore.snoozed = snoozed;
+ 				localStore.uniqueKey = uniqueKey;
+ 				localStore.pause_time = pause_time;
+            	$("#question").html("<h3>Your responses have been recorded. Thank you for completing this survey.</h3>");
             },
-            error: function (request, error) {
- 				console.log(error);
-                 $("#question").html("<h3>Please try resending data. If problems persist, please contact the researcher(uoft.dailylifestudy@gmail.com).</h3><br><button>Resend data</button>");
-                 $("#question button").click(function () {app.saveDataLastPage();});
- 				}
+			error: function (request, error, textstatus) {
+						if (textstatus === "timeout"){
+							$("#question").html("<h3>It looks like the server is currently overloaded. Please try resending your data later. Click on the button below, and we'll remind you in 30 minutes to try sending your data again. If problems persist, please contact the researchers (seeinghumanlab@gmail.com).</h3><br><button>Set Data Sending Reminder</button>");
+							$("#question button").click(function () {app.dataSendingNotif();localStore.snoozed=2;console.log("localStore.snoozed is " + localStore.snoozed);});    
+
+						}
+						else {
+							console.log(error);
+							$("#question").html("<h3>Please try resending data. If problems persist, please contact the researchers (dailysurveystudy@gmail.com).</h3><br><button>Resend data</button>");
+							$("#question button").click(function () {app.saveDataLastPage();});    
+						}
+					}
             });
 },
 
@@ -1305,8 +1314,9 @@ saveDataLastPage:function() {
 saveData:function() {
  	var storage = JSON.stringify(localStore);
  	var storage_save=JSON.parse(storage);
+ 	alert("storage is " + storage);
      $.ajax({
-            type: 'post',
+            type: 'get',
             url: 'https://script.google.com/macros/s/AKfycbwphztjEne5e8Ori7KvNA38BFtGctOQ5YQhGNdYE45Fq2SRYw0/exec',
             data: storage_save,
             crossDomain: true,
@@ -1314,8 +1324,8 @@ saveData:function() {
             var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
             localStore.participant_id = pid;
             localStore.snoozed = snoozed;
- 		localStore.uniqueKey = uniqueKey;
- 		localStore.pause_time = pause_time;
+ 			localStore.uniqueKey = uniqueKey;
+ 			localStore.pause_time = pause_time;
             },
             error: function (request, error) {console.log(error);}
             });
