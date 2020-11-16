@@ -188,8 +188,8 @@ var surveyQuestions = [
                        "minResponse": 0,
                        "maxResponse": 1,
                        "labels": [
-                       			{"label": "No"},
                        			{"label": "Yes"},
+                       			{"label": "No"},
                                 ]
                        },
                        /* 13 intConflictR*/
@@ -200,8 +200,8 @@ var surveyQuestions = [
                         "minResponse": 0,
                         "maxResponse": 1,
                         "labels": [
-                                    {"label": "No"},
                                     {"label": "Yes"},
+                                    {"label": "No"},
                                  ]
                         },
                         /* 14 intHappiness*/
@@ -318,8 +318,8 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
-                                        {"label": "No"},
                                         {"label": "Yes"},
+                                        {"label": "No"},
                                      ]
                             },
                          /* 21 intConceal*/
@@ -330,8 +330,8 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
-                                        {"label": "No"},
                                         {"label": "Yes"},
+                                        {"label": "No"},
                                      ]
                             },
                         /*SKIP LOGIC HERE FOR ID CONCEAL */
@@ -555,8 +555,8 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
-                                        {"label": "No"},
                                         {"label": "Yes"},
+                                        {"label": "No"},
                                      ]
                             },
                          /* 37 mediaGroups*/
@@ -622,14 +622,14 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
-                                {"label": "No"},
                                 {"label": "Yes"},
+                                {"label": "No"},
                             ]
                         },
                         /* 41 pieceMedium */
                         {
                         "type":"mult1",
-                        "variableName":"pieceMedium",
+                        "variableName":"What type of medium did you use?",
                         "questionPrompt":"What type of medium did you use?",
                         "minResponse": 0,
                         "maxResponse": 7,
@@ -652,8 +652,8 @@ var surveyQuestions = [
                         "minResponse": 0,
                         "maxResponse": 1,
                         "labels": [
-                                    {"label": "No"},
                                     {"label": "Yes"},
+                                    {"label": "No"},
                                  ]
                         },
                         /* 43 mediaViolence*/
@@ -664,8 +664,8 @@ var surveyQuestions = [
                          "minResponse": 0,
                          "maxResponse": 1,
                          "labels": [
-                                     {"label": "No"},
                                      {"label": "Yes"},
+                                     {"label": "No"},
                                   ]
                          },
                         /*44 mediaHappiness*/
@@ -795,8 +795,8 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
-                                        {"label": "No"},
                                         {"label": "Yes"},
+                                        {"label": "No"},
                                      ]
                             },
                          /* 52 mediaPressure*/
@@ -807,8 +807,8 @@ var surveyQuestions = [
                             "minResponse": 0,
                             "maxResponse": 1,
                             "labels": [
-                                        {"label": "No"},
                                         {"label": "Yes"},
+                                        {"label": "No"},
                                      ]
                             },
                        ];
