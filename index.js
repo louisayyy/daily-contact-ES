@@ -208,7 +208,7 @@ var surveyQuestions = [
                        {
                         "type":"mult1",
                         "variableName": "intHappiness",
-                        "questionPrompt": "During the interaction, how happy did you feel?",
+                        "questionPrompt": "During the interaction, <br />how <b>happy</b> did you feel?",
                         "minResponse": 0,
                         "maxResponse": 7,
                         "labels": [
@@ -226,7 +226,7 @@ var surveyQuestions = [
                        {
                         "type":"mult1",
                         "variableName": "intAnger",
-                        "questionPrompt": "During the interaction, how angry did you feel?",
+                        "questionPrompt": "During the interaction, <br />how <b>angry</b> did you feel?",
                         "minResponse": 0,
                         "maxResponse": 7,
                         "labels": [
@@ -244,7 +244,7 @@ var surveyQuestions = [
                        {
                         "type":"mult1",
                         "variableName": "intRelax",
-                        "questionPrompt": "During the interaction, how relaxed did you feel?",
+                        "questionPrompt": "During the interaction, <br />how <b>relaxed</b> did you feel?",
                         "minResponse": 0,
                         "maxResponse": 7,
                         "labels": [
@@ -262,7 +262,7 @@ var surveyQuestions = [
                         {
                             "type":"mult1",
                             "variableName": "intAnxiety",
-                            "questionPrompt": "During the interaction, how anxious did you feel?",
+                            "questionPrompt": "During the interaction, <br />how <b>anxious</b> did you feel?",
                             "minResponse": 0,
                             "maxResponse": 7,
                             "labels": [
@@ -280,7 +280,7 @@ var surveyQuestions = [
                         {
                             "type":"mult1",
                             "variableName": "intValence",
-                            "questionPrompt": "In general, how would you describe the interation you just had? Was it positive or negative?",
+                            "questionPrompt": "In general, how would you describe the interaction you just had? <br />Was it positive or negative?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -374,7 +374,7 @@ var surveyQuestions = [
                         {
                             "type":"mult1",
                             "variableName": "partLiking",
-                            "questionPrompt": "How much do you like NAME?",
+                            "questionPrompt": "How much do you <b>like</b> NAME?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -391,7 +391,7 @@ var surveyQuestions = [
                         {
                             "type":"mult1",
                             "variableName": "partTrust",
-                            "questionPrompt": "How much do you trust NAME?",
+                            "questionPrompt": "How much do you <b>trust</b> NAME?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -408,7 +408,7 @@ var surveyQuestions = [
                         {
                             "type":"mult1",
                             "variableName": "partCare",
-                            "questionPrompt": "How much do you care about NAME?",
+                            "questionPrompt": "How much do you <b>care</b> about NAME?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -517,7 +517,7 @@ var surveyQuestions = [
                         {
                             "type":"mult1",
                             "variableName": "partCloseness",
-                            "questionPrompt": "How close do you feel to NAME?",
+                            "questionPrompt": "How <b>close</b> do you feel to NAME?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -672,7 +672,7 @@ var surveyQuestions = [
                         {
                             "type":"mult1",
                             "variableName": "mediaHappiness",
-                            "questionPrompt": "While consuming this media, how happy did you feel?",
+                            "questionPrompt": "While consuming this media, <br />how <b>happy</b> did you feel?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -689,7 +689,7 @@ var surveyQuestions = [
                         {
                             "type":"mult1",
                             "variableName": "mediaAnger",
-                            "questionPrompt": "While consuming this media, how angry did you feel?",
+                            "questionPrompt": "While consuming this media, <br />how <b>angry</b> did you feel?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -706,7 +706,7 @@ var surveyQuestions = [
                         {
                             "type":"mult1",
                             "variableName": "mediaRelax",
-                            "questionPrompt": "While consuming this media, how relaxed did you feel?",
+                            "questionPrompt": "While consuming this media, <br />how <b>relaxed</b> did you feel?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -723,7 +723,7 @@ var surveyQuestions = [
                         {
                             "type":"mult1",
                             "variableName": "mediaAnxiety",
-                            "questionPrompt": "While consuming this media, how anxious did you feel?",
+                            "questionPrompt": "While consuming this media, <br />how <b>anxious</b> did you feel?",
                             "minResponse": 1,
                             "maxResponse": 7,
                             "labels": [
@@ -1281,8 +1281,8 @@ saveDataLastPage:function() {
  	var storage = JSON.stringify(localStore);
  	var storage_save=JSON.parse(storage);
      $.ajax({
-            type: 'get',
-            url: 'https://script.google.com/macros/s/AKfycbwphztjEne5e8Ori7KvNA38BFtGctOQ5YQhGNdYE45Fq2SRYw0/exec',
+            type: 'post',
+            url: 'https://script.google.com/macros/s/AKfycbx70b5IZvOh4HzUfgfXRYwnQxngOW-5yfYBB6fVNS6TgP6uq74/exec',
             data: storage_save,
             crossDomain: true,
             timeout: 180000,
@@ -1293,42 +1293,57 @@ saveDataLastPage:function() {
             	localStore.snoozed = snoozed;
  				localStore.uniqueKey = uniqueKey;
  				localStore.pause_time = pause_time;
+ 				console.log("storage is " + storage);
             	$("#question").html("<h3>Your responses have been recorded. Thank you for completing this survey.</h3>");
             },
-			error: function (request, error, textstatus) {
-						if (textstatus === "timeout"){
+            complete: function(data){
+            	console.log("completed");
+            },
+			error: function (request, textStatus, errorThrown) {
+						if (textStatus === "timeout"){
 							$("#question").html("<h3>It looks like the server is currently overloaded. Please try resending your data later. Click on the button below, and we'll remind you in 30 minutes to try sending your data again. If problems persist, please contact the researchers (seeinghumanlab@gmail.com).</h3><br><button>Set Data Sending Reminder</button>");
 							$("#question button").click(function () {app.dataSendingNotif();localStore.snoozed=2;console.log("localStore.snoozed is " + localStore.snoozed);});    
 
 						}
 						else {
-							console.log(error);
+							var response = JSON.stringify(request);
+							console.log("request is " + response); 
+							console.log(errorThrown);
+							console.log("textstatus is " + textStatus);
 							$("#question").html("<h3>Please try resending data. If problems persist, please contact the researchers (dailysurveystudy@gmail.com).</h3><br><button>Resend data</button>");
 							$("#question button").click(function () {app.saveDataLastPage();});    
 						}
 					}
             });
+            e.preventDefault();
 },
 
 //uncomment this function to test data saving function (Stage 2 of Customization)
 saveData:function() {
  	var storage = JSON.stringify(localStore);
  	var storage_save=JSON.parse(storage);
- 	alert("storage is " + storage);
      $.ajax({
-            type: 'get',
-            url: 'https://script.google.com/macros/s/AKfycbwphztjEne5e8Ori7KvNA38BFtGctOQ5YQhGNdYE45Fq2SRYw0/exec',
+            type: 'post',
+            url: 'https://script.google.com/macros/s/AKfycbx70b5IZvOh4HzUfgfXRYwnQxngOW-5yfYBB6fVNS6TgP6uq74/exec',
             data: storage_save,
             crossDomain: true,
             success: function (result) {
-            var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
-            localStore.participant_id = pid;
-            localStore.snoozed = snoozed;
- 			localStore.uniqueKey = uniqueKey;
- 			localStore.pause_time = pause_time;
+            	var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
+            	localStore.participant_id = pid;
+            	localStore.snoozed = snoozed;
+ 				localStore.uniqueKey = uniqueKey;
+ 				localStore.pause_time = pause_time;
             },
-            error: function (request, error) {console.log(error);}
+            complete: function(data){
+            	console.log("completed");
+            },
+            error: function (request, error) {
+            	console.log(error);
+            	var response = JSON.stringify(request);
+				console.log("request is " + response); 
+            	}
             });
+            e.preventDefault();
 },
     
 // Local Notifications Javascript
