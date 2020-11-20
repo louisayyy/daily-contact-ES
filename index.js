@@ -124,21 +124,223 @@ var surveyQuestions = [
                                 {"label": "piped text"},
                                 {"label": "piped text"},
                                 {"label": "Someone else"},
-                                ]
+                            ]
                         }, 
-                       /* 7 intDuration*/
+                        /* 7 partName*/
+                        {
+                        "type":"text",
+                        "variableName": "partName",
+                        "questionPrompt": "Please give this person a nickname.",
+                            },
+                        /* 8 partRel*/
+                        {
+                        "type":"checklist",
+                        "variableName": "partRel",
+                        "questionPrompt": "What is your relationship with this person (NAME), if any? (Check all that apply)",
+                        "minResponse": 0,
+                        "maxResponse": 9,
+                        "labels": [
+                                {"label": "Stranger/No relationship"},
+                                {"label": "Friend"},
+                                {"label": "Best Friend"},
+                                {"label": "Romantic Partner"},
+                                {"label": "Coworker"},
+                                {"label": "Neighbour"},
+                                {"label": "Teammate"},
+                                {"label": "Classmate"},
+                                {"label": "Family"},
+                                {"label": "Other Acquaintance"}
+                                ]
+                            },
+                         /* 9 partCloseness*/
+                         {
+                            "type":"mult1",
+                            "variableName": "partCloseness",
+                            "questionPrompt": "How <b>close</b> do you feel to NAME?",
+                            "minResponse": 1,
+                            "maxResponse": 7,
+                            "labels": [
+                                    {"label": "1 (Not at all)"},
+                                    {"label": "2"},
+                                    {"label": "3"},
+                                    {"label": "4"},
+                                    {"label": "5"},
+                                    {"label": "6"},
+                                    {"label": "7 (Very)"},
+                                    ]
+                                },                            
+                         /* 10 partLiking*/
+                        {
+                        "type":"mult1",
+                        "variableName": "partLiking",
+                        "questionPrompt": "How much do you <b>like</b> NAME?",
+                        "minResponse": 1,
+                        "maxResponse": 7,
+                        "labels": [
+                                {"label": "-3 (Really dislike)"},
+                                {"label": "-2"},
+                                {"label": "-1"},
+                                {"label": "0"},
+                                {"label": "1"},
+                                {"label": "2"},
+                                {"label": "3 (Really like)"},
+                                ]
+                            },
+                         /* 11 partTrust*/
+                        {
+                        "type":"mult1",
+                        "variableName": "partTrust",
+                        "questionPrompt": "How much do you <b>trust</b> NAME?",
+                        "minResponse": 1,
+                        "maxResponse": 7,
+                        "labels": [
+                                {"label": "1 (Not at all)"},
+                                {"label": "2"},
+                                {"label": "3"},
+                                {"label": "4"},
+                                {"label": "5"},
+                                {"label": "6"},
+                                {"label": "7 (Completely)"},
+                                ]
+                            },
+                         /* 12 partCare*/
+                        {
+                        "type":"mult1",
+                        "variableName": "partCare",
+                        "questionPrompt": "How much do you <b>care</b> about NAME?",
+                        "minResponse": 1,
+                        "maxResponse": 7,
+                        "labels": [
+                                {"label": "1 (Not at all)"},
+                                {"label": "2"},
+                                {"label": "3"},
+                                {"label": "4"},
+                                {"label": "5"},
+                                {"label": "6"},
+                                {"label": "7 (Very much)"},
+                                     ]
+                            },
+                         /* 13 partAge*/
+                        {
+                        "type":"number",
+                        "variableName": "partAge",
+                        "questionPrompt": "How old is NAME (years)?",
+                            },
+                         /* 14 partGender*/
+                        {
+                        "type":"mult1",
+                        "variableName": "partGender",
+                        "questionPrompt": "What is NAME's gender identity?",
+                        "minResponse": 1,
+                        "maxResponse": 4,
+                        "labels": [
+                                {"label": "Man"},
+                                {"label": "Woman"},
+                                {"label": "Transgender/Gender non-conforming"},
+                                {"label": "Another"},
+                                ]
+                            },
+                         /* 15 partSexualID*/
+                         {
+                        "type":"mult1",
+                        "variableName": "partSexualID",
+                        "questionPrompt": "What is NAME's sexual identity?",
+                        "minResponse": 1,
+                        "maxResponse": 5,
+                        "labels": [
+                                {"label": "Bisexual"},
+                                {"label": "Gay/Lesbian"},
+                                {"label": "Queer"},
+                                {"label": "Heterosexual/Straight"},
+                                {"label": "Another"},
+                                ]
+                            },
+                         /* 16 partEthnicity*/
+                         {
+                        "type":"mult1",
+                        "variableName": "partEthnicity",
+                        "questionPrompt": "What is NAME's ethnicity?",
+                        "minResponse": 0,
+                        "maxResponse": 9,
+                        "labels": [
+                                {"label": "Indigenous (North America)"},
+                                {"label": "Black or African"},
+                                {"label": "East Asian"},
+                                {"label": "White or European"},
+                                {"label": "Latino/a"},
+                                {"label": "Native Hawaiian or Pacific Islander"},
+                                {"label": "Middle Eastern"},
+                                {"label": "South Asian"},
+                                {"label": "South East Asian"},
+                                {"label": "Another"},
+                                ]
+                            },
+                        /* 17 partPolitical*/
+                        {
+                        "type":"mult1",
+                        "variableName": "partPolitical",
+                        "questionPrompt": "What is NAME's political orientation?",
+                        "minResponse": 1,
+                        "maxResponse": 7,
+                        "labels": [
+                                {"label": "Extremely liberal"},
+                                {"label": "Moderately liberal"},
+                                {"label": "Slightly liberal"},
+                                {"label": "Neither liberal nor conservative"},
+                                {"label": "Slightly conservative"},
+                                {"label": "Moderately conservative"},
+                                {"label": "Extremely conservative"},
+                                ]
+                            },
+                         /* 18 partReligiony*/
+                         {
+                        "type":"mult1",
+                        "variableName": "partReligion",
+                        "questionPrompt": "What are NAME's religious beliefs?",
+                        "minResponse": 1,
+                        "maxResponse": 9,
+                        "labels": [
+                                {"label": "Christian"},
+                                {"label": "Muslim"},
+                                {"label": "Jewish"},
+                                {"label": "Buddhist"},
+                                {"label": "Hindu"},
+                                {"label": "Sikh"},
+                                {"label": "Atheist"},
+                                {"label": "Agnostic"},
+                                {"label": "Another"},
+                                ]
+                            },
+                         /* 19 partVoluntary*/
+                        {
+                        "type":"mult1",
+                        "variableName": "partVoluntary",
+                        "questionPrompt": "How voluntary is your relationship to NAME?",
+                        "minResponse": 1,
+                        "maxResponse": 7,
+                        "labels": [
+                                {"label": "1 (Not at all)"},
+                                {"label": "2"},
+                                {"label": "3"},
+                                {"label": "4"},
+                                {"label": "5"},
+                                {"label": "6"},
+                                {"label": "7 (Completely)"},
+                                ]
+                            },
+                       /* 20 intDuration*/
                        {
                        "type":"number",
                        "variableName": "intDuration",
                        "questionPrompt": "What was the duration of the interaction in minutes?",
                        },
-                       /* 8 intStarttime*/
+                       /* 21 intStarttime*/
                        {
                        "type":"timePicker",
                        "variableName": "intStarttime",
                        "questionPrompt": "What was the approximate start time of the interaction?",
                        },
-                       /* 9 intInitiate*/
+                       /* 22 intInitiate*/
                        {
                        "type":"mult1",
                        "variableName": "intInitiate",
@@ -151,7 +353,7 @@ var surveyQuestions = [
                                 {"label": "Neither/Both"},
                                 ]
                        },
-                       /* 10 intSupport*/
+                       /* 23 intSupport*/
                        {
                         "type": "mult1",
                         "variableName": "intSupport",
@@ -163,7 +365,7 @@ var surveyQuestions = [
                                 {"label": "Yes"},
                                 ]
                        },
-                       /* 11 intLocation*/
+                       /* 24 intLocation*/
                        {
                         "type":"mult1",
                         "variableName": "intLocation",
@@ -180,7 +382,7 @@ var surveyQuestions = [
                                 {"label": "Other (please describe)"},
                                 ]
                        },
-                        /* 12 intConflict*/
+                        /* 25 intConflict*/
                        {
                        "type":"mult1",
                        "variableName": "intConflict",
@@ -192,7 +394,7 @@ var surveyQuestions = [
                        			{"label": "No"},
                                 ]
                        },
-                       /* 13 intConflictR*/
+                       /* 26 intConflictR*/
                        {
                         "type":"mult1",
                         "variableName": "intConflictR",
@@ -204,7 +406,7 @@ var surveyQuestions = [
                                     {"label": "No"},
                                  ]
                         },
-                        /* 14 intHappiness*/
+                        /* 27 intHappiness*/
                        {
                         "type":"mult1",
                         "variableName": "intHappiness",
@@ -222,7 +424,7 @@ var surveyQuestions = [
                                     {"label": "7 A great deal"},
                                  ]
                         },
-                        /* 15 intAnger*/
+                        /* 28 intAnger*/
                        {
                         "type":"mult1",
                         "variableName": "intAnger",
@@ -240,7 +442,7 @@ var surveyQuestions = [
                                     {"label": "7 A great deal"},
                                  ]
                         },
-                        /* 16 intRelax*/
+                        /* 29 intRelax*/
                        {
                         "type":"mult1",
                         "variableName": "intRelax",
@@ -258,7 +460,7 @@ var surveyQuestions = [
                                     {"label": "7 A great deal"},
                                  ]
                         },
-                        /* 17 intAnxiety*/
+                        /* 30 intAnxiety*/
                         {
                             "type":"mult1",
                             "variableName": "intAnxiety",
@@ -276,7 +478,7 @@ var surveyQuestions = [
                                         {"label": "7 A great deal"},
                                      ]
                             },
-                        /* 18 intValence*/
+                        /* 31 intValence*/
                         {
                             "type":"mult1",
                             "variableName": "intValence",
@@ -293,7 +495,7 @@ var surveyQuestions = [
                                         {"label": "7 Very positive"},
                                      ]
                             },
-                         /* 19 intDesire*/
+                         /* 32 intDesire*/
                         {
                             "type":"mult1",
                             "variableName": "intDesire",
@@ -310,7 +512,7 @@ var surveyQuestions = [
                                         {"label": "7 A great deal"},
                                      ]
                             },
-                         /* 20 intPressure*/
+                         /* 33 intPressure*/
                         {
                             "type":"mult1",
                             "variableName": "intPressure",
@@ -322,7 +524,7 @@ var surveyQuestions = [
                                         {"label": "No"},
                                      ]
                             },
-                         /* 21 intConceal*/
+                         /* 34 intConceal*/
                         {
                             "type":"mult1",
                             "variableName": "intConceal",
@@ -334,218 +536,11 @@ var surveyQuestions = [
                                         {"label": "No"},
                                      ]
                             },
-                        /*SKIP LOGIC HERE FOR ID CONCEAL */
-                         /* 22 intConcealID*/
+                         /* 35 intConcealID*/
                         {
                             "type":"text",
                             "variableName": "intConcealID",
-                            "questionPrompt": "What identities did you conceal?",
-                            },
-                        /*SKIP LOGIC HERE FOR IDENTIFIED NEW SOCIAL CONTACT/SOCIAL INTERACTION PARTNERS*/
-                         /* 23 partName*/
-                        {
-                            "type":"text",
-                            "variableName": "partName",
-                            "questionPrompt": "Please give this person a nickname.",
-                            },
-                         /* 24 partRel*/
-                         /*  I'm not sure ES can handle multiple selections on a mult1 type questions???*/
-                         // sabrina here: change this to a checklist question. 
-                        {
-                            "type":"checklist",
-                            "variableName": "partRel",
-                            "questionPrompt": "What is your relationship with this person (NAME), if any? (Check all that apply)",
-                            "minResponse": 0,
-                            "maxResponse": 9,
-                            "labels": [
-                                        {"label": "Stranger/No relationship"},
-                                        {"label": "Friend"},
-                                        {"label": "Best Friend"},
-                                        {"label": "Romantic Partner"},
-                                        {"label": "Coworker"},
-                                        {"label": "Neighbour"},
-                                        {"label": "Teammate"},
-                                        {"label": "Classmate"},
-                                        {"label": "Family"},
-                                        {"label": "Other Acquaintance"}
-                                     ]
-                            },
-                         /* 25 partLiking*/
-                        {
-                            "type":"mult1",
-                            "variableName": "partLiking",
-                            "questionPrompt": "How much do you <b>like</b> NAME?",
-                            "minResponse": 1,
-                            "maxResponse": 7,
-                            "labels": [
-                                        {"label": "-3 (Really dislike)"},
-                                        {"label": "-2"},
-                                        {"label": "-1"},
-                                        {"label": "0"},
-                                        {"label": "1"},
-                                        {"label": "2"},
-                                        {"label": "3 (Really like)"},
-                                     ]
-                            },
-                         /* 26 partTrust*/
-                        {
-                            "type":"mult1",
-                            "variableName": "partTrust",
-                            "questionPrompt": "How much do you <b>trust</b> NAME?",
-                            "minResponse": 1,
-                            "maxResponse": 7,
-                            "labels": [
-                                        {"label": "1 (Not at all)"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7 (Completely)"},
-                                     ]
-                            },
-                         /* 27 partCare*/
-                        {
-                            "type":"mult1",
-                            "variableName": "partCare",
-                            "questionPrompt": "How much do you <b>care</b> about NAME?",
-                            "minResponse": 1,
-                            "maxResponse": 7,
-                            "labels": [
-                                        {"label": "1 (Not at all)"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7 (Very much)"},
-                                     ]
-                            },
-                         /* 28 partAge*/
-                        {
-                            "type":"number",
-                            "variableName": "partAge",
-                            "questionPrompt": "How old is NAME (years)?",
-                            },
-                         /* 29 partGender*/
-                        {
-                            "type":"mult1",
-                            "variableName": "partGender",
-                            "questionPrompt": "What is NAME's gender identity?",
-                            "minResponse": 1,
-                            "maxResponse": 4,
-                            "labels": [
-                                        {"label": "Man"},
-                                        {"label": "Woman"},
-                                        {"label": "Transgender/Gender non-conforming"},
-                                        {"label": "Another"},
-                                     ]
-                            },
-                         /* 30 partSexualID*/
-                         {
-                            "type":"mult1",
-                            "variableName": "partSexualID",
-                            "questionPrompt": "What is NAME's sexual identity?",
-                            "minResponse": 1,
-                            "maxResponse": 5,
-                            "labels": [
-                                        {"label": "Bisexual"},
-                                        {"label": "Gay/Lesbian"},
-                                        {"label": "Queer"},
-                                        {"label": "Heterosexual/Straight"},
-                                        {"label": "Another"},
-                                     ]
-                            },
-                         /* 31 partEthnicity*/
-                         {
-                            "type":"mult1",
-                            "variableName": "partEthnicity",
-                            "questionPrompt": "What is NAME's ethnicity?",
-                            "minResponse": 0,
-                            "maxResponse": 9,
-                            "labels": [
-                                        {"label": "Indigenous (North America)"},
-                                        {"label": "Black or African"},
-                                        {"label": "East Asian"},
-                                        {"label": "White or European"},
-                                        {"label": "Latino/a"},
-                                        {"label": "Native Hawaiian or Pacific Islander"},
-                                        {"label": "Middle Eastern"},
-                                        {"label": "South Asian"},
-                                        {"label": "South East Asian"},
-                                        {"label": "Another"},
-                                     ]
-                            },
-                        /* 32 partPolitical*/
-                        {
-                            "type":"mult1",
-                            "variableName": "partPolitical",
-                            "questionPrompt": "What is NAME's political orientation?",
-                            "minResponse": 1,
-                            "maxResponse": 7,
-                            "labels": [
-                                        {"label": "Extremely liberal"},
-                                        {"label": "Moderately liberal"},
-                                        {"label": "Slightly liberal"},
-                                        {"label": "Neither liberal nor conservative"},
-                                        {"label": "Slightly conservative"},
-                                        {"label": "Moderately conservative"},
-                                        {"label": "Extremely conservative"},
-                                     ]
-                            },
-                         /* 33 partReligiony*/
-                         {
-                            "type":"mult1",
-                            "variableName": "partReligion",
-                            "questionPrompt": "What are NAME's religious beliefs?",
-                            "minResponse": 1,
-                            "maxResponse": 9,
-                            "labels": [
-                                        {"label": "Christian"},
-                                        {"label": "Muslim"},
-                                        {"label": "Jewish"},
-                                        {"label": "Buddhist"},
-                                        {"label": "Hindu"},
-                                        {"label": "Sikh"},
-                                        {"label": "Atheist"},
-                                        {"label": "Agnostic"},
-                                        {"label": "Another"},
-                                     ]
-                            },
-                        /*SHOW BELOW IF PARTICIPANT DID NOT CHOOSE REL AS STRANGER*/
-                         /* 34 partCloseness*/
-                        {
-                            "type":"mult1",
-                            "variableName": "partCloseness",
-                            "questionPrompt": "How <b>close</b> do you feel to NAME?",
-                            "minResponse": 1,
-                            "maxResponse": 7,
-                            "labels": [
-                                        {"label": "1 (Not at all)"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7 (Very)"},
-                                     ]
-                            },
-                         /* 35 partVoluntary*/
-                        {
-                            "type":"mult1",
-                            "variableName": "partVoluntary",
-                            "questionPrompt": "How voluntary is your relationship to NAME?",
-                            "minResponse": 1,
-                            "maxResponse": 7,
-                            "labels": [
-                                        {"label": "1 (Not at all)"},
-                                        {"label": "2"},
-                                        {"label": "3"},
-                                        {"label": "4"},
-                                        {"label": "5"},
-                                        {"label": "6"},
-                                        {"label": "7 (Completely)"},
-                                     ]
+                            "questionPrompt": "If yes, what identities did you conceal?",
                             },
                         /* 36 mediaPresence*/
                         {
@@ -1194,57 +1189,59 @@ recordResponse: function(button, count, type) {
     else {uniqueRecord = uniqueKey + "_" + currentQuestion + "_" + year + "_" + month + "_" + day + "_" + hours + "_" + minutes + "_" + seconds + "_" + milliseconds;}
     //Save this to local storage
     localStore[uniqueRecord] = response;
-//		
+		
 
 
-//		/*Question Logic Statements*/
+		/*Question Logic Statements*/
 		//Stage 3 of Customization
-// 		//if your questionnaire has two branches based on the absence or presence of a phenomenon, you will need the next statement
-// 		//this statement allows you to record whether the phenomenon was absent or present so you can specify which branch the participant should complete when
-// 		//the questionnaire splits into the two branches
-// 		//if not then you do not need the next statement and should leave it commented out
-//     if (count == 0) {phenomenonPresence = response;}
-//		//if you have piped text, you would assign your response variable here
-//		//where X is the question index number of the question you ask for response you would like to pipe
-//		//In this example, we just use name to consist with our earlier variables
-		if (count ==23) {name = response;}
-//		//The line below states that if the app is on the last question of participant setup, it should schedule all the notifications
-//		//then display the default end of survey message, and then record which notifications have been scheduled.
-//		//You will test local notifications in Stage 4 of customizing the app
-//		********IF YOU HAVE NO QUESTION LOGIC BUT HAVE SCHEDULED NOTIFICATIONS, YOU NEED TO UNCOMMENT THE FOLLOWING LINE
-//		TO EXECUTE THE scheduleNotifs() FUNCTION********
-    	if (count == -1){app.scheduleNotifs();app.renderLastPage(lastPage[0], count);app.scheduledNotifs();}
-//     //Identify the next question to populate the view
-//		//the next statement is about the snooze function
-// 		//This statement says that if the participant says they are currently unable to complete the questionnaire now,
-// 		//the app will display the snooze end of survey message. You can customize the snooze function in Stage 4 of Customization 
-//     else if (count == SNOOZEQ && response == 0) {app.renderLastPage(lastPage[1], count);}
-// 		//The statement below tells the survey under what conditions should participants be shown one branch of the questionnaire as opposed to the other
-// 		//Remember each question logic requires at least two lines of code
-// 		//Replace X with the question number where the questionnaire splits into two branches
-// 		//Replace Y with the response associated with the presence of the phenomenon and A with the number of the question participants should be presented with
-// 		//Replace Z with the response associated with the absence of the phenomenon and B with the number of the question participants should be presented with
-//		//The code that preceded the app.renderQuestion function is just telling ExperienceSampler that the previous question should fade out
-//		//You can choose not implement this feature; however, we have made the question fade in feature a default function of ExperienceSampler (another shout-out to 
-//		//to Rebecca Grunberg for the great idea), and it looks more aesthetically pleasing if the fade in is accompanied by a fade out
-//     else if (count == X & response < 10 && phenomenonPresence == Y) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(A);});}
-//     else if (count == X & response < 10 && phenomenonPresence == Z) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(B);});}
-// 		//The next two statements illustrate the structure that all other question logic statements will follow
-// 		//They are similar to the ones regarding the absence and presence of the phenomenon, except this time the critical condition is the response chosen
-// 		//The first statement says if the question number is X and the response is less than Y, display question number Z
-//		//In that statement, replace X with the question number where the question logic occurs, Y with the specific response value that will trigger the question logic, 
-// 		//and Z with the question number that should be displayed if response Y is chosen
-// 		//The second statement, says if the question number is X and the response is not equal to Y, display question number A
-//		//Remember that to do question logic for one question, you need to have AT LEAST two conditional statements about what to do if the trigger response is chosen, AND
-// 		//what to do if the trigger response is NOT chosen. 
-//     else if (count == X && response == Y) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(Z);});}
-//     else if (count == X && response !== Y) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(A);});}
+		//if your questionnaire has two branches based on the absence or presence of a phenomenon, you will need the next statement
+		//this statement allows you to record whether the phenomenon was absent or present so you can specify which branch the participant should complete when
+		//the questionnaire splits into the two branches
+		//if not then you do not need the next statement and should leave it commented out
+        //if (count == 5) {phenomenonPresence = response;}
+		//if you have piped text, you would assign your response variable here
+		//where X is the question index number of the question you ask for response you would like to pipe
+		//In this example, we just use name to consist with our earlier variables
+		//if (count ==23) {name = response;}
+		//The line below states that if the app is on the last question of participant setup, it should schedule all the notifications
+		//then display the default end of survey message, and then record which notifications have been scheduled.
+		//You will test local notifications in Stage 4 of customizing the app
+		//********IF YOU HAVE NO QUESTION LOGIC BUT HAVE SCHEDULED NOTIFICATIONS, YOU NEED TO UNCOMMENT THE FOLLOWING LINE
+		//TO EXECUTE THE scheduleNotifs() FUNCTION********
+   	if (count == -1){app.scheduleNotifs();app.renderLastPage(lastPage[0], count);app.scheduledNotifs();}
+    //Identify the next question to populate the view
+		//the next statement is about the snooze function
+		//This statement says that if the participant says they are currently unable to complete the questionnaire now,
+		//the app will display the snooze end of survey message. You can customize the snooze function in Stage 4 of Customization 
+    else if (count == SNOOZEQ && response == 0) {app.renderLastPage(lastPage[1], count);}
+		//The statement below tells the survey under what conditions should participants be shown one branch of the questionnaire as opposed to the other
+		//Remember each question logic requires at least two lines of code
+		//Replace X with the question number where the questionnaire splits into two branches
+		//Replace Y with the response associated with the presence of the phenomenon and A with the number of the question participants should be presented with
+		//Replace Z with the response associated with the absence of the phenomenon and B with the number of the question participants should be presented with
+		//The code that preceded the app.renderQuestion function is just telling ExperienceSampler that the previous question should fade out
+		//You can choose not implement this feature; however, we have made the question fade in feature a default function of ExperienceSampler (another shout-out to 
+		//to Rebecca Grunberg for the great idea), and it looks more aesthetically pleasing if the fade in is accompanied by a fade out
+    //else if (count == X & response < 10 && phenomenonPresence == Y) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(A);});}
+    //else if (count == X & response < 10 && phenomenonPresence == Z) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(B);});}
+		//The next two statements illustrate the structure that all other question logic statements will follow
+		//They are similar to the ones regarding the absence and presence of the phenomenon, except this time the critical condition is the response chosen
+		//The first statement says if the question number is X and the response is less than Y, display question number Z
+		//In that statement, replace X with the question number where the question logic occurs, Y with the specific response value that will trigger the question logic, 
+		//and Z with the question number that should be displayed if response Y is chosen
+		//The second statement, says if the question number is X and the response is not equal to Y, display question number A
+		//Remember that to do question logic for one question, you need to have AT LEAST two conditional statements about what to do if the trigger response is chosen, AND
+		//what to do if the trigger response is NOT chosen. 
+    else if (count == 5 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(6);});}
+    else if (count == 5 && response !== 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(36);});}
+    else if (count == 6 && response == 3) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(7);});}
+    else if (count == 6 && response !== 3) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(20);});}
 
 
 // 		//Uncomment the "/*else*/" below only when customizing question logic (Stage 3), so that the app will just proceed to the next question in the JSON database
 // 		//DO NOT uncomment the "/*else*/" below when testing whether questions are being displayed in the right format (Stage 1) OR if you have no question logic 
 		//in your questionnaire
-	   /*else*/ if (count < surveyQuestions.length-1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(count+1);});}
+	   else if (count < surveyQuestions.length-1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(count+1);});}
 	   else {app.renderLastPage(lastPage[0], count);};
 },
     
