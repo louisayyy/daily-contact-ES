@@ -1086,13 +1086,13 @@ renderLastPage: function(pageData, question_index) {
 	//It tells ExperienceSampler that if the participant has chosen to snooze the app,
 	//the app should save a snooze value of 1 (this value will be used to reset the unique key, so that
 	//this data is does not have the same unique key as the subsequent questionnaire)
-    /*if ( question_index == SNOOZEQ ) {
+    if ( question_index == SNOOZEQ ) {
         app.snoozeNotif();
         localStore.snoozed = 1;
         app.saveData();        
-    }*/
+    }
     //If you choose to implement the snooze function, uncomment the else in the statement below
-    /*else*/ if ( question_index == -1) {
+    else if ( question_index == -1) {
     	app.saveDataLastPage();
     }
     //This part of the code says that if the participant has completed the entire questionnaire,
@@ -1259,9 +1259,9 @@ sampleParticipant: function() {
     //change X to the amount of time the participant is locked out of the app for in milliseconds
     //e.g., if you want to lock the participant out of the app for 10 minutes, replace X with 600000
     //If you don't have a snooze feature, remove the "|| localStore.snoozed == 1"
-    if ((current_time - localStore.pause_time) > X || localStore.snoozed == 1) {
+    if ((current_time - localStore.pause_time) > 600000 || localStore.snoozed == 1) {
         uniqueKey = new Date().getTime();
-        localStore.snoozed = 0;
+        localStore.snoozed = 1;
     	var startTime = new Date(uniqueKey);
     	var syear = startTime.getFullYear(), smonth = startTime.getMonth(), sday=startTime.getDate(), shours=startTime.getHours(), sminutes=startTime.getMinutes(), sseconds=startTime.getSeconds(), smilliseconds=startTime.getMilliseconds();
     	localStore[uniqueKey + "_" + "startTime"  + "_" + syear + "_" + smonth + "_" + sday + "_" + shours + "_" + sminutes + "_" + sseconds + "_" + smilliseconds] = 1;	   	    
@@ -1550,14 +1550,14 @@ scheduleNotifs:function(){
 //Replace X with the number of seconds you want the app to snooze for (e.g., 10 minutes is 600 seconds)
 //You can also customize the Title of the message, the snooze message that appears in the notification
 snoozeNotif:function() {
-//     var now = new Date().getTime(), snoozeDate = new Date(now + X*1000);
-//     var id = '99';
-//     cordova.plugins.notification.local.schedule({
-//                                          id: id,
-//                                          title: 'Title of message',
-//                                          text: 'Snooze message',
-//                                          at: snoozeDate,
-//                                          });
+    var now = new Date().getTime(), snoozeDate = new Date(now + 600*1000);
+    var id = '99';
+    cordova.plugins.notification.local.schedule({
+                                         id: id,
+                                         title: 'Title of message',
+                                         text: 'Are you able to take the survey now?',
+                                         at: snoozeDate,
+                                         });
 },
 //This function forces participants to respond to an open-ended question if they have left it blank
 validateResponse: function(data){
