@@ -877,6 +877,25 @@ var surveyQuestions = [
                                         {"label": "7 A great deal"},
                                      ]
                             },
+                            
+                         /* 56  nightlySurveyLink*/
+                        {
+                       		"type":"link",
+                       		"variableName": "nightlySurveyLink",
+                       		"questionPrompt": "Please click <a href='https://utorontopsych.az1.qualtrics.com/jfe/form/SV_4TKpItlOKb398fr?pid=PID' target='_blank'>HERE</a> to open your nightly survey. The survey will open in a web browser window. <br /> Please return to the app <b>AFTER</b> completing the survey. <br /> <br /> <br /> <br />",
+                       		},
+                       	/* 57  goBackToLink*/	
+                       {
+                       		"type":"mult1",
+                       		"variableName": "goBackToLink",
+                       		"questionPrompt": "Did you accidentally skip the survey link? <br /><br />Click <b>YES</b> to go back to your survey link page.",
+                       		"minResponse": 0,
+                       		"maxResponse": 1,
+                       		"labels": [
+                                {"label": "No"},
+                                {"label": "Yes"}
+                                ],
+                       }, 
                        ];
 
 /*These are the messages that are displayed at the end of the questionnaire*/
@@ -991,8 +1010,8 @@ renderQuestion: function(question_index) {
     //Below is an example of how you would look for the NAME placeholder in your surveyQuestion questionPrompts
     //and replace it with the response value that you assign to the name variable
     //See our example app to see how you can implement this
-	if (questionPrompt.indexOf('NAME') >= 0) {
-		questionPrompt = questionPrompt.replace("NAME", function replacer() {return partName;});
+	if (questionPrompt.indexOf('PID') >= 0) {
+		questionPrompt = questionPrompt.replace("PID", function replacer() {return localStore.participant_id;});
       	}
     question.questionText = Mustache.render(questionTextTmpl, {questionPrompt: questionPrompt});
     //Now populate the view for this question, depending on what the question type is
@@ -1222,11 +1241,48 @@ renderLastPage: function(pageData, question_index) {
 /* Initialize the whole thing */
 init: function() {
 	//First, we assign a value to the unique key when we initialize ExperienceSampler
-	uniqueKey = new Date().getTime();
+// 	uniqueKey = new Date().getTime();
+	uniqueKey = 1622687432000; 
+	var nowDayOfWeek = new Date().getDay();
+	var surveyHour, surveyMinutes; 
 	//The statement below states that if there is no participant id or if the participant id is left blank,
 	//ExperienceSampler would present the participant set up questions
 	if (localStore.participant_id === " " || !localStore.participant_id || localStore.participant_id == "undefined") {app.renderQuestion(-NUMSETUPQS);}
+	
+	
+	var weekendSleepTime = localStore.weekendSleepTime.split(":");
+	var weekdaySleepTime = localStore.weekdaySleepTime.split(":");
+		
+	if (nowDayOfWeek == 0 || nowDayOfWeek == 6) {
+		surveyHour = Number(weekendSleepTime[0]) - 1;
+   		surveyMinutes = Number(weekendSleepTime[1]);
+	}
+	else {
+		surveyHour = Number(weekdaySleepTime[0]) - 1;
+		surveyMinutes = Number(weekdaySleepTime[1]);
+	}
+	var surveyTime = new Date(); 
+	surveyTime.setHours(Number(surveyHour), surveyMinutes, 0 , 0);
+
+	var surveyTimeEpoch = surveyTime.getTime(); 
+
+	var nextExpSampling = new Date(); 
+	var tomorrow = new Date().getDate() + 1; 
+	nextExpSampling.setDate(tomorrow);
+	nextExpSampling.setHours(10, 0, 0, 0);
+	var nextExpSamplingEpoch = nextExpSampling.getTime(); 
+
 	//otherwise ExperienceSampler should just save the unique key and display the first question in survey questions
+	
+	if (uniqueKey >= surveyTimeEpoch && uniqueKey < nextExpSamplingEpoch){
+		uniqueKey = new Date().getTime();
+        localStore.uniqueKey = uniqueKey;
+    	var startTime = new Date(uniqueKey);
+    	var syear = startTime.getFullYear(), smonth = startTime.getMonth(), sday=startTime.getDate(), shours=startTime.getHours(), sminutes=startTime.getMinutes(), sseconds=startTime.getSeconds(), smilliseconds=startTime.getMilliseconds();
+    	localStore[uniqueKey + "_" + "startTime"  + "_" + syear + "_" + smonth + "_" + sday + "_" + shours + "_" + sminutes + "_" + sseconds + "_" + smilliseconds] = 1;
+      	networkString = localStore.networkString;
+      	app.renderQuestion(56);
+	}
 	else {
     	uniqueKey = new Date().getTime();
         localStore.uniqueKey = uniqueKey;
@@ -1374,6 +1430,11 @@ recordResponse: function(button, count, type) {
     else if (count == 37 && response == 0) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(38);});}
     else if (count == 37 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(39);});}
 
+	// logic in case participant missed the survey link 
+	// go back to survey link if they mixed it
+	else if (count == 57 && response == 1){$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(56);});}
+	// or else, just go to the end of the survey
+	else if (count == 57 && response == 0){app.renderLastPage(lastPage[0], count);}
 // 		//Uncomment the "/*else*/" below only when customizing question logic (Stage 3), so that the app will just proceed to the next question in the JSON database
 // 		//DO NOT uncomment the "/*else*/" below when testing whether questions are being displayed in the right format (Stage 1) OR if you have no question logic
 		//in your questionnaire
@@ -1392,10 +1453,44 @@ pauseEvents: function() {
 sampleParticipant: function() {
     var current_moment = new Date();
     var current_time = current_moment.getTime();
+    current_time = 1622687432000; 
     //change X to the amount of time the participant is locked out of the app for in milliseconds
     //e.g., if you want to lock the participant out of the app for 10 minutes, replace X with 600000
     //If you don't have a snooze feature, remove the "|| localStore.snoozed == 1"
-    if ((current_time - localStore.pause_time) > 100 || localStore.snoozed == 1) { //Liz Here: Return to 10 minutes or 600000 ms
+    
+    var nowDayOfWeek = new Date().getDay();
+	var weekendSleepTime = localStore.weekendSleepTime.split(":");
+	var weekdaySleepTime = localStore.weekdaySleepTime.split(":");
+		
+	if (nowDayOfWeek == 0 || nowDayOfWeek == 6) {
+		var surveyHour = Number(weekendSleepTime[0]) - 1;
+   		var surveyMinutes = Number(weekendSleepTime[1]);
+	}
+	else {
+		var surveyHour = Number(weekdaySleepTime[0]) - 1;
+		var surveyMinutes = Number(weekdaySleepTime[1]);
+
+	}
+	var surveyTime = new Date(); 
+	surveyTime.setHours(surveyHour, surveyMinutes, 0 , 0);
+	var surveyTimeEpoch = surveyTime.getTime(); 
+	
+	var nextExpSampling = new Date(); 
+	var tomorrow = new Date().getDate() + 1; 
+	nextExpSampling.setDate(tomorrow);
+	nextExpSampling.setHours(10, 0, 0, 0);
+	var nextExpSamplingEpoch = nextExpSampling.getTime(); 
+    
+    if (current_time >= surveyTimeEpoch && current_time < nextExpSamplingEpoch){
+		uniqueKey = localStore.uniqueKey;
+    	var startTime = new Date(uniqueKey);
+    	var syear = startTime.getFullYear(), smonth = startTime.getMonth(), sday=startTime.getDate(), shours=startTime.getHours(), sminutes=startTime.getMinutes(), sseconds=startTime.getSeconds(), smilliseconds=startTime.getMilliseconds();
+    	localStore[uniqueKey + "_" + "startTime"  + "_" + syear + "_" + smonth + "_" + sday + "_" + shours + "_" + sminutes + "_" + sseconds + "_" + smilliseconds] = 1;
+      	networkString = localStore.networkString;
+      	app.renderQuestion(56);
+	}
+	
+    else if ((current_time - localStore.pause_time) > 100 || localStore.snoozed == 1) { //Liz Here: Return to 10 minutes or 600000 ms
         uniqueKey = new Date().getTime();
         localStore.snoozed = 1;
     	var startTime = new Date(uniqueKey);
@@ -1421,6 +1516,7 @@ saveDataLastPage:function() {
             timeout: 180000,
             success: function (result) {
             	var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;//, networkString = localStore.networkString;
+            	var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime; 
             	localStore.clear();
             	localStore.participant_id = pid;
               localStore.networkString = networkString;
@@ -1428,6 +1524,8 @@ saveDataLastPage:function() {
             	localStore.snoozed = snoozed;
  				localStore.uniqueKey = uniqueKey;
  				localStore.pause_time = pause_time;
+ 				localStore.weekendSleepTime = weekendSleepTime; 
+ 				localStore.weekdaySleepTime = weekdaySleepTime; 
  				console.log("storage is " + storage);
             	$("#question").html("<h3>Your responses have been recorded. Thank you for completing this survey.</h3>");
             },
@@ -1464,12 +1562,16 @@ saveData:function() {
             crossDomain: true,
             success: function (result) {
               var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
+              var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime; 
             	localStore.participant_id = pid;
-              localStore.networkString = networkString;
-              localStore.mediaCondition = mediaCondition;
+              	localStore.networkString = networkString;
+              	localStore.mediaCondition = mediaCondition;
             	localStore.snoozed = snoozed;
  				localStore.uniqueKey = uniqueKey;
  				localStore.pause_time = pause_time;
+ 				localStore.weekendSleepTime = weekendSleepTime; 
+ 				localStore.weekdaySleepTime = weekdaySleepTime; 
+
             },
             complete: function(data){
             	console.log("completed");
@@ -1610,7 +1712,7 @@ scheduleNotifs:function() {
 		//Sleep time; SleepInterval)
     var currentLag, maxInterval, SleepInterval;
 
-		//These represents the participants time values
+		//These variables represent the participant's time values
 		var weekendSleepTime = localStore.weekendSleepTime.split(":");
 		var weekendWakeTime = localStore.weekendWakeTime.split(":");
 		var weekdaySleepTime = localStore.weekdaySleepTime.split(":");
@@ -1618,10 +1720,9 @@ scheduleNotifs:function() {
 
 		//Then you can declare any values that you might use more than once such as the number of milliseconds in a day
    	var day = 86400000;
-   	var minDiaryLag = 6300000;
-   	var randomDiaryLag = 1800000;
-   	var minDiaryLagAfterSleep = 5400000;
-
+   	var minDiaryLag = 6000000;
+   	var randomDiaryLag = 1200000;
+ 
 		//This is a loop that repeats this block of codes for the number of days there are in the experience sampling period
 		//Replace X with the number of days in the experience sampling period (e.g., collecting data for 7 days, replace X with 7)
 		//Note that iOS apps can only have 64 unique notifications, so you should keep that in mind if you are collecting data
@@ -1630,45 +1731,33 @@ scheduleNotifs:function() {
     {
 		//The code below (up to "else { nightlyLag = ...}" is only necessary if you allow the daily data collection period to vary across
 		//weekdays and weekends
-        var alarmDay = dayOfWeek + 1 + i;
-        if (alarmDay > 6) {alarmDay = alarmDay-7;}
-        //enter time weekendSleepTime hour and then enter weekendSleepTime minute
-   			if (alarmDay > 6) {alarmDay = alarmDay - 7;}
-   			if (alarmDay == 0 || alarmDay == 6) {
-   				currentMaxHour = weekendSleepTime[0];
-   				currentMaxMinutes = weekendSleepTime[1];
-   				currentMinHour = weekendWakeTime[0];
-   				currentMinMinutes = weekendWakeTime[1];
-   				if (alarmDay == 0) {
-   					nextMinHour = weekdayWakeTime[0];
-   					nextMinMinutes = weekdayWakeTime[1];
-   				}
-   				else {
-   					nextMinHour = weekendWakeTime[0];
-   					nextMinMinutes = weekendWakeTime[1];
-   				}
-   				currentLag = (((((24 - parseInt(currentHour) + parseInt(weekendWakeTime[0]))*60) - parseInt(currentMinute) + parseInt(weekendWakeTime[1]))*60)*1000);
-
+   		currentMaxHour = 20;
+   		currentMaxMinutes = 0;
+   		currentMinHour = 10;
+   		currentMinMinutes = 0;
+   		nextMinHour = 10;
+   		nextMinMinutes = 0;
+   		currentLag = (((((24 - parseInt(currentHour) + parseInt(weekendWakeTime[0]))*60) - parseInt(currentMinute) + parseInt(weekendWakeTime[1]))*60)*1000);
+    	
+    	// determine lag for nightly diary
+    	var alarmDay = dayOfWeek + 1 + i;
+    	if (alarmDay > 6) {alarmDay = alarmDay-7;}
+        //enter time weekendDinnerTime hour and then enter weekendDinnerTime minute
+   		if (alarmDay == 0 || alarmDay == 6) {
+   			surveyHour = Number(weekendSleepTime[0]) - 1;
+   			surveyMinutes = Number(weekendSleepTime[1]);
    			}
-   			else {
-   				currentMaxHour = weekdaySleepTime[0];
-   				currentMaxMinutes = weekdaySleepTime[1];
-   				currentMinHour = weekdayWakeTime[0];
-   				currentMinMinutes = weekdayWakeTime[1];
-   				if (alarmDay == 5) {
-   					nextMinHour = weekendWakeTime[0];
-   					nextMinMinutes = weekendWakeTime[1];
+   				
+   		else {
+   				surveyHour = Number(weekdaySleepTime[0]) - 1;
+   				surveyMinutes = Number(weekdaySleepTime[1]);
    				}
-   				else {
-   					nextMinHour = weekdayWakeTime[0];
-   					nextMinMinutes = weekdayWakeTime[1];
-   				}
-                currentLag = (((((24 - parseInt(currentHour) + parseInt(weekdayWakeTime[0]))*60) - parseInt(currentMinute) + parseInt(weekdayWakeTime[1]))*60)*1000);
-   			}
-   			if (alarmDay == 5 || alarmDay == 0) {nightlyLag = currentLag;}
-   			else {
-            	nightlyLag= (((((24 - parseInt(currentHour) + parseInt(nextMinHour))*60) - parseInt(currentMinute) + parseInt(nextMinMinutes))*60)*1000);
-   			}
+		surveyLag = (((((24 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
+			
+    
+    	
+    	
+ 
 
         //The maxInterval is the number of milliseconds between wakeup time and Sleep time
         maxInterval = (((((parseInt(currentMaxHour) - parseInt(currentMinHour))*60) + parseInt(currentMaxMinute) - parseInt(currentMinMinute))*60)*1000);
@@ -1685,7 +1774,8 @@ scheduleNotifs:function() {
    			interval4 = interval3 + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag));
    			interval5 = interval4 + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag));
             interval6 = interval5 + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag));
-            interval7 = interval6 + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag));
+            // schedule nightly survey link
+            interval7 = parseInt(surveyLag) + day*i;
 
 
 			//This part of the code calculates a unique ID for each notification
@@ -1695,6 +1785,7 @@ scheduleNotifs:function() {
         d = 104+(parseInt(i)*100);
         e = 105+(parseInt(i)*100);
         f = 106+(parseInt(i)*100);
+        //survey nightly survey link
         g = 107+(parseInt(i)*100);
 
 			//This part of the code calculates the time when the notification should be sent by adding the time interval to the current date and time
