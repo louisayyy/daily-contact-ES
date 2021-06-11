@@ -1241,8 +1241,8 @@ renderLastPage: function(pageData, question_index) {
 /* Initialize the whole thing */
 init: function() {
 	//First, we assign a value to the unique key when we initialize ExperienceSampler
-// 	uniqueKey = new Date().getTime();
-	uniqueKey = 1622687432000; 
+	uniqueKey = new Date().getTime();
+// 	uniqueKey = 1622687432000; 
 	var nowDayOfWeek = new Date().getDay();
 	var surveyHour, surveyMinutes; 
 	//The statement below states that if there is no participant id or if the participant id is left blank,
@@ -1429,6 +1429,7 @@ recordResponse: function(button, count, type) {
     else if (count == 36) {app.renderLastPage(lastPage[0], count);}
     else if (count == 37 && response == 0) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(38);});}
     else if (count == 37 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(39);});}
+    else if (count == 55) {app.renderLastPage(lastPage[0], count);}
 
 	// logic in case participant missed the survey link 
 	// go back to survey link if they mixed it
@@ -1453,7 +1454,7 @@ pauseEvents: function() {
 sampleParticipant: function() {
     var current_moment = new Date();
     var current_time = current_moment.getTime();
-    current_time = 1622687432000; 
+//     current_time = 1622687432000; 
     //change X to the amount of time the participant is locked out of the app for in milliseconds
     //e.g., if you want to lock the participant out of the app for 10 minutes, replace X with 600000
     //If you don't have a snooze feature, remove the "|| localStore.snoozed == 1"
@@ -1541,8 +1542,6 @@ saveDataLastPage:function() {
 						else {
 							var response = JSON.stringify(request);
 							console.log("request is " + response);
-							console.log(errorThrown);
-							console.log("textstatus is " + textStatus);
 							$("#question").html("<h3>Please try resending data. If problems persist, please contact the researchers (dailysurveystudy@gmail.com).</h3><br><button>Resend data</button>");
 							$("#question button").click(function () {app.saveDataLastPage();});
 						}
@@ -1695,6 +1694,8 @@ scheduleNotifs:function() {
 		//Declare a variable to represent new date to be calculated for each beep
 		//That is, if there are 6 intervals, declare 6 new dates
     var date1, date2, date3, date4, date5, date6, date7;
+    
+    var epoch1, epoch2, epoch3, epoch4, epoch5, epoch6, epoch7; 
 
 		//The statement below declares the start and end time of the daily data collection period
 		//These variables are not necessary if the start and end time of the daily data collection period do not vary across the experience
@@ -1711,6 +1712,7 @@ scheduleNotifs:function() {
 		//in the data collection period (maxInterval), and the time between until the end of the next data collection period (in our case
 		//Sleep time; SleepInterval)
     var currentLag, maxInterval, SleepInterval;
+    var surveyHour, surveyMinutes; 
 
 		//These variables represent the participant's time values
 		var weekendSleepTime = localStore.weekendSleepTime.split(":");
@@ -1737,7 +1739,7 @@ scheduleNotifs:function() {
    		currentMinMinutes = 0;
    		nextMinHour = 10;
    		nextMinMinutes = 0;
-   		currentLag = (((((24 - parseInt(currentHour) + parseInt(weekendWakeTime[0]))*60) - parseInt(currentMinute) + parseInt(weekendWakeTime[1]))*60)*1000);
+   		currentLag = (((((24 - parseInt(currentHour) + parseInt(currentMinHour))*60) - parseInt(currentMinute) + parseInt(currentMinMinutes))*60)*1000);
     	
     	// determine lag for nightly diary
     	var alarmDay = dayOfWeek + 1 + i;
@@ -1752,13 +1754,13 @@ scheduleNotifs:function() {
    				surveyHour = Number(weekdaySleepTime[0]) - 1;
    				surveyMinutes = Number(weekdaySleepTime[1]);
    				}
-		surveyLag = (((((24 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
-			
-    
-    	
-    	
- 
-
+   		if (surveyHour <= 10){
+   			surveyLag = (((((48 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
+   		}
+   		else {
+   			surveyLag = (((((24 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
+   		}	
+		
         //The maxInterval is the number of milliseconds between wakeup time and Sleep time
         maxInterval = (((((parseInt(currentMaxHour) - parseInt(currentMinHour))*60) + parseInt(currentMaxMinute) - parseInt(currentMinMinute))*60)*1000);
 			//This part of the code calculates how much time there should be between the questionnaires
@@ -1768,7 +1770,7 @@ scheduleNotifs:function() {
 			//That is, X + Y = maximum amount of time that can elapse between beeps
 
 			//If designing an interval-based design, delete "Math.round(Math.random()*Y)+" and replace X with the amount of time in seconds between each beep
-   			interval1 = parseInt(currentLag) + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag)) + day*i;
+   			interval1 = parseInt(currentLag) + (parseInt(Math.round(Math.random()*30))) + day*i;
    			interval2 = interval1 + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag));
    			interval3 = interval2 + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag));
    			interval4 = interval3 + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag));
@@ -1796,15 +1798,28 @@ scheduleNotifs:function() {
         date5 = new Date(now + interval5);
         date6 = new Date(now + interval6);
         date7 = new Date(now + interval7);
+        
+        epoch1 = date1.getTime(); 
+        epoch2 = date2.getTime();
+        epoch3 = date3.getTime();
+        epoch4 = date4.getTime(); 
+        epoch5 = date5.getTime(); 
+        epoch6 = date6.getTime();
+        epoch7 = date7.getTime();
+        
+        
 
 			//This part of the code schedules the notifications. It pushes all the properties into the notif array
-        	notifs.push({id: a, at: date1, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'});
-        	notifs.push({id: b, at: date2, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'});
-        	notifs.push({id: c, at: date3, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'});
-        	notifs.push({id: d, at: date4, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'});
-        	notifs.push({id: e, at: date5, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'});
-        	notifs.push({id: f, at: date6, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'});
-            notifs.push({id: g, at: date7, text: 'Time for your nightly Diary Survey!', title: 'Nightly Survey'});
+        	cordova.plugins.notification.local.schedule([
+        		{id: a, trigger: {at: new Date(epoch1)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: b, trigger: {at: new Date(epoch2)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: c, trigger: {at: new Date(epoch3)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: d, trigger: {at: new Date(epoch4)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: e, trigger: {at: new Date(epoch5)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: f, trigger: {at: new Date(epoch6)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: g, trigger: {at: new Date(epoch7)}, text: 'Time for your nightly Diary Survey!', title: 'Nightly Survey'}
+        		
+        	]);
 
 			//This part of the code records when the notifications are scheduled for and sends it to the server
         	localStore['notification_' + i + '_1'] = localStore.participant_id + "_" + a + "_" + date1;
@@ -1815,7 +1830,6 @@ scheduleNotifs:function() {
         	localStore['notification_' + i + '_6'] = localStore.participant_id + "_" + f + "_" + date6;
             localStore['notification_' + i + '_7'] = localStore.participant_id + "_" + g + "_" + date7;
     }
-    cordova.plugins.notification.local.schedule(notifs);
 },
 
 //Stage 4 of Customization
