@@ -49,7 +49,7 @@ var surveyQuestions = [
                         "variableName": "genWell",
                         "questionPrompt": "How are you doing right now?",
                         "minResponse": 1,
-                        "maxResponse": 7,
+                        "maxResponse": 8,
                         "labels": [
                                 {"label": "1 (Bad)"},
                                 {"label": "2"},
@@ -58,6 +58,7 @@ var surveyQuestions = [
                                 {"label": "5"},
                                 {"label": "6"},
                                 {"label": "7 (Good)"},
+                                {"label": "I choose not to answer"}
                             ]
                         },
                         /* 2 genStress*/
@@ -66,7 +67,7 @@ var surveyQuestions = [
                         "variableName": "genStress",
                         "questionPrompt": "Right now, how stressed, anxious, and overwhelmed do you feel?",
                         "minResponse": 1,
-                        "maxResponse": 7,
+                        "maxResponse": 8,
                         "labels": [
                                 {"label": "1 (Not at all)"},
                                 {"label": "2"},
@@ -75,6 +76,7 @@ var surveyQuestions = [
                                 {"label": "5"},
                                 {"label": "6"},
                                 {"label": "7 (Completely)"},
+                                {"label": "I choose not to answer"}
                             ]
                         },
                         /* 3 genCope*/
@@ -83,7 +85,7 @@ var surveyQuestions = [
                         "variableName": "genCope",
                         "questionPrompt": "Do you have what you need to cope with stressors right now?",
                         "minResponse": 1,
-                        "maxResponse": 7,
+                        "maxResponse": 8,
                         "labels": [
                                 {"label": "1 (Not at all)"},
                                 {"label": "2"},
@@ -92,6 +94,7 @@ var surveyQuestions = [
                                 {"label": "5"},
                                 {"label": "6"},
                                 {"label": "7 (Completely)"},
+                                {"label": "I choose not to answer"}
                             ]
                         },
                         /* 4 intBranch*/
@@ -138,11 +141,12 @@ var surveyQuestions = [
                        "variableName": "intInitiate",
                        "questionPrompt": "Who initiated the interaction?",
                        "minResponse": 1,
-                       "maxResponse": 3,
+                       "maxResponse": 4,
                        "labels": [
                                 {"label": "Self"},
                                 {"label": "Other"},
                                 {"label": "Neither/Both"},
+                                {"label": "I choose not to answer"}
                                 ]
                        },
                        /* 9 intSupport*/
@@ -163,7 +167,7 @@ var surveyQuestions = [
                         "variableName": "intLocation",
                         "questionPrompt": "Where did the interaction take place?",
                         "minResponse": 1,
-                        "maxResponse": 7,
+                        "maxResponse": 8,
                         "labels": [
                        			{"label": "In person"},
                        			{"label": "Phone conversation"},
@@ -171,10 +175,18 @@ var surveyQuestions = [
                        			{"label": "Video conference (e.g. Zoom, Skype, Teams"},
                                 {"label": "Text communication (e.g. email)"},
                                 {"label": "Social media or internet forum"},
-                                {"label": "Other (please describe)"},
+                                {"label": "Other"},
+                                {"label": "I choose not to answer"}
                                 ]
                        },
-                        /* 11 intConflict*/
+                       /* 11 */
+                       {
+                        "type":"text",
+                        "variableName": "intLocationOther",
+                        "questionPrompt": "Please describe where the interaction took place.",
+                       },
+                       
+                        /* 12 intConflict*/
                        {
                        "type":"mult1",
                        "variableName": "intConflict",
@@ -187,7 +199,7 @@ var surveyQuestions = [
                                 ]
                        },
                        /* BRANCH LOGIC HERE */
-                       /* 12 intConflictR*/
+                       /* 13 intConflictR*/
                        {
                         "type":"mult1",
                         "variableName": "intConflictR",
@@ -199,13 +211,13 @@ var surveyQuestions = [
                                     {"label": "Yes"},
                                  ]
                         },
-                        /* 13 intHappiness*/
+                        /* 14 intHappiness*/
                        {
                         "type":"mult1",
                         "variableName": "intHappiness",
                         "questionPrompt": "During the interaction, <br />how <b>happy</b> did you feel?",
                         "minResponse": 1,
-                        "maxResponse": 7,
+                        "maxResponse": 8,
                         "labels": [
                                     {"label": "1 Not at all"},
                                     {"label": "2"},
@@ -214,15 +226,16 @@ var surveyQuestions = [
                                     {"label": "5"},
                                     {"label": "6"},
                                     {"label": "7 A great deal"},
+                                    {"label": "I choose not to answer"}
                                  ]
                         },
-                        /* 14 intAnger*/
+                        /* 15 intAnger*/
                        {
                         "type":"mult1",
                         "variableName": "intAnger",
                         "questionPrompt": "During the interaction, <br />how <b>angry</b> did you feel?",
                         "minResponse": 1,
-                        "maxResponse": 7,
+                        "maxResponse": 8,
                         "labels": [
                                     {"label": "1 Not at all"},
                                     {"label": "2"},
@@ -231,15 +244,16 @@ var surveyQuestions = [
                                     {"label": "5"},
                                     {"label": "6"},
                                     {"label": "7 A great deal"},
+                                    {"label": "I choose not to answer"}
                                  ]
                         },
-                        /* 15 intRelax*/
+                        /* 16 intRelax*/
                        {
                         "type":"mult1",
                         "variableName": "intRelax",
                         "questionPrompt": "During the interaction, <br />how <b>relaxed</b> did you feel?",
                         "minResponse": 1,
-                        "maxResponse": 7,
+                        "maxResponse": 8,
                         "labels": [
                                     {"label": "1 Not at all"},
                                     {"label": "2"},
@@ -248,15 +262,16 @@ var surveyQuestions = [
                                     {"label": "5"},
                                     {"label": "6"},
                                     {"label": "7 A great deal"},
+                                    {"label": "I choose not to answer"}
                                  ]
                         },
-                        /* 16 intAnxiety*/
+                        /* 17 intAnxiety*/
                         {
                             "type":"mult1",
                             "variableName": "intAnxiety",
                             "questionPrompt": "During the interaction, <br />how <b>anxious</b> did you feel?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                     {"label": "1 Not at all"},
                                         {"label": "2"},
@@ -265,15 +280,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 A great deal"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                        /* 17 intAnxiety*/
+                        /* 18 intAnxiety*/
                         {
                             "type":"mult1",
                             "variableName": "intAnxiety",
                             "questionPrompt": "During the interaction, <br />how <b>scared</b> did you feel?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                     {"label": "1 Not at all"},
                                         {"label": "2"},
@@ -282,15 +298,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 A great deal"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                        /* 18 intValence*/
+                        /* 19 intValence*/
                         {
                             "type":"mult1",
                             "variableName": "intValence",
                             "questionPrompt": "In general, how would you describe the interaction you just had? <br />Was it positive or negative?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 Very negative"},
                                         {"label": "2"},
@@ -299,15 +316,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 Very positive"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                         /* 19 intDesire*/
+                         /* 20 intDesire*/
                         {
                             "type":"mult1",
                             "variableName": "intDesire",
                             "questionPrompt": "In general, how much would you would you want to interact with this person again?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 Not at all"},
                                         {"label": "2"},
@@ -316,15 +334,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 A great deal"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                         /* 20 intPressure*/
+                         /* 21 intPressure*/
                         {
                             "type":"mult1",
                             "variableName": "intPressure",
                             "questionPrompt": "During the interaction, did you feel pressured to change your beliefs?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 Not at all"},
                                         {"label": "2"},
@@ -333,15 +352,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 A great deal"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                        /* 21 intPersuade*/
+                        /* 22 intPersuade*/
                         {
                             "type":"mult1",
                             "variableName": "intPersuade",
                             "questionPrompt": "During the interaction, did you think that the other person might try to change your beliefs?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 Not at all"},
                                         {"label": "2"},
@@ -350,9 +370,10 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 A great deal"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                         /* 22 intConceal*/
+                         /* 23 intConceal*/
                         {
                             "type":"mult1",
                             "variableName": "intConceal",
@@ -365,26 +386,26 @@ var surveyQuestions = [
                                      ]
                             },
                          /* BRANCH LOGIC HERE */
-                         /* 23 intConcealID*/
+                         /* 24 intConcealID*/
                         {
                             "type":"text",
                             "variableName": "intConcealID",
                             "questionPrompt": "What identities did you conceal?",
                             },
                         /* BRANCH LOGIC HERE */
-                        /* 24 partName*/
+                        /* 25 partName*/
                             {
                             "type":"text",
                             "variableName": "partName",
                             "questionPrompt": "This is a new person. Please give them a nickname.",
                                 },
-                            /* 25 partRel*/
+                            /* 26 partRel*/
                             {
                             "type":"checklist",
                             "variableName": "partRel",
                             "questionPrompt": "What is your relationship with this person (NAME), if any? (Check all that apply)",
                             "minResponse": 0,
-                            "maxResponse": 9,
+                            "maxResponse": 10,
                             "labels": [
                                     {"label": "Stranger/No relationship"},
                                     {"label": "Friend"},
@@ -395,16 +416,17 @@ var surveyQuestions = [
                                     {"label": "Teammate"},
                                     {"label": "Classmate"},
                                     {"label": "Family"},
-                                    {"label": "Other Acquaintance"}
+                                    {"label": "Other Acquaintance"},
+                                    {"label": "I choose not to answer"}
                                     ]
                                 },
-                             /* 26 partCloseness*/
+                             /* 27 partCloseness*/
                              {
                                 "type":"mult1",
                                 "variableName": "partCloseness",
                                 "questionPrompt": "How <b>close</b> do you feel to NAME?",
                                 "minResponse": 1,
-                                "maxResponse": 7,
+                                "maxResponse": 8,
                                 "labels": [
                                         {"label": "1 (Not at all)"},
                                         {"label": "2"},
@@ -413,15 +435,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 (Very)"},
+                                        {"label": "I choose not to answer"}
                                         ]
                                     },
-                            /* 27 partVoluntary*/
+                            /* 28 partVoluntary*/
                             {
                                 "type":"mult1",
                                 "variableName": "partVoluntary",
                                 "questionPrompt": "How voluntary is your relationship to NAME?",
                                 "minResponse": 1,
-                                "maxResponse": 7,
+                                "maxResponse": 8,
                                 "labels": [
                                         {"label": "1 (Not at all)"},
                                         {"label": "2"},
@@ -430,15 +453,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 (Completely)"},
+                                        {"label": "I choose not to answer"}
                                         ]
                                     },
-                             /* 28 partLiking*/
+                             /* 29 partLiking*/
                             {
                             "type":"mult1",
                             "variableName": "partLiking",
                             "questionPrompt": "How much do you <b>like</b> NAME?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                     {"label": "-3 (Really dislike)"},
                                     {"label": "-2"},
@@ -447,15 +471,16 @@ var surveyQuestions = [
                                     {"label": "1"},
                                     {"label": "2"},
                                     {"label": "3 (Really like)"},
+                                    {"label": "I choose not to answer"}
                                     ]
                                 },
-                             /* 29 partTrust*/
+                             /* 30 partTrust*/
                             {
                             "type":"mult1",
                             "variableName": "partTrust",
                             "questionPrompt": "How much do you <b>trust</b> NAME?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                     {"label": "1 (Not at all)"},
                                     {"label": "2"},
@@ -464,15 +489,16 @@ var surveyQuestions = [
                                     {"label": "5"},
                                     {"label": "6"},
                                     {"label": "7 (Completely)"},
+                                    {"label": "I choose not to answer"}
                                     ]
                                 },
-                             /* 30 partCare*/
+                             /* 31 partCare*/
                             {
                             "type":"mult1",
                             "variableName": "partCare",
                             "questionPrompt": "How much do you <b>care</b> about NAME?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                     {"label": "1 (Not at all)"},
                                     {"label": "2"},
@@ -481,52 +507,55 @@ var surveyQuestions = [
                                     {"label": "5"},
                                     {"label": "6"},
                                     {"label": "7 (Very much)"},
+                                    {"label": "I choose not to answer"}
                                          ]
                                 },
-                             /* 31 partAge*/
+                             /* 32 partAge*/
                             {
                             "type":"number",
                             "variableName": "partAge",
                             "questionPrompt": "How old is NAME (years)?",
                                 },
-                             /* 32 partGender*/
+                             /* 33 partGender*/
                             {
                             "type":"mult1",
                             "variableName": "partGender",
                             "questionPrompt": "What is NAME's gender identity?",
                             "minResponse": 1,
-                            "maxResponse": 5,
+                            "maxResponse": 6,
                             "labels": [
                                     {"label": "Man"},
                                     {"label": "Woman"},
-                                    {"label": "Transgender/Gender non-conforming"},
+                                    {"label": "Nonbinary"},
                                     {"label": "Another"},
-                                    {"label": "Don't know/unsure"}
+                                    {"label": "Don't know/unsure"},
+                                    {"label": "I choose not to answer"}
                                     ]
                                 },
-                             /* 33 partSexualID*/
+                             /* 34 partSexualID*/
                              {
                             "type":"mult1",
                             "variableName": "partSexualID",
                             "questionPrompt": "What is NAME's sexual identity?",
                             "minResponse": 1,
-                            "maxResponse": 6,
+                            "maxResponse": 7,
                             "labels": [
                                     {"label": "Bisexual"},
                                     {"label": "Gay/Lesbian"},
                                     {"label": "Queer"},
                                     {"label": "Heterosexual/Straight"},
                                     {"label": "Another"},
-                                    {"label": "Don't know/unsure"}
+                                    {"label": "Don't know/unsure"},
+                                    {"label": "I choose not to answer"}
                                     ]
                                 },
-                             /* 34 partEthnicity*/
+                             /* 35 partEthnicity*/
                              {
                             "type":"checklist",
                             "variableName": "partEthnicity",
                             "questionPrompt": "What is NAME's ethnicity?",
                             "minResponse": 0,
-                            "maxResponse": 10,
+                            "maxResponse": 11,
                             "labels": [
                                     {"label": "Indigenous (North America)"},
                                     {"label": "Black or African"},
@@ -538,16 +567,17 @@ var surveyQuestions = [
                                     {"label": "South Asian"},
                                     {"label": "South East Asian"},
                                     {"label": "Another"},
-                                    {"label": "Don't know/unsure"}
+                                    {"label": "Don't know/unsure"},
+                                    {"label": "I choose not to answer"}
                                     ]
                                 },
-                            /* 35 partPolitical*/
+                            /* 36 partPolitical*/
                             {
                             "type":"mult1",
                             "variableName": "partPolitical",
                             "questionPrompt": "What is NAME's political orientation?",
                             "minResponse": 1,
-                            "maxResponse": 8,
+                            "maxResponse": 9,
                             "labels": [
                                     {"label": "Extremely liberal"},
                                     {"label": "Moderately liberal"},
@@ -556,16 +586,17 @@ var surveyQuestions = [
                                     {"label": "Slightly conservative"},
                                     {"label": "Moderately conservative"},
                                     {"label": "Extremely conservative"},
-                                    {"label": "Don't know/unsure"}
+                                    {"label": "Don't know/unsure"},
+                                    {"label": "I choose not to answer"}
                                     ]
                                 },
-                             /* 36 partReligion*/
+                             /* 37 partReligion*/
                              {
                             "type":"mult1",
                             "variableName": "partReligion",
                             "questionPrompt": "What are NAME's religious beliefs?",
                             "minResponse": 1,
-                            "maxResponse": 10,
+                            "maxResponse": 11,
                             "labels": [
                                     {"label": "Christian"},
                                     {"label": "Muslim"},
@@ -576,11 +607,12 @@ var surveyQuestions = [
                                     {"label": "Atheist"},
                                     {"label": "Agnostic"},
                                     {"label": "Another"},
-                                    {"label": "Don't know/unsure"}
+                                    {"label": "Don't know/unsure"},
+                                    {"label": "I choose not to answer"}
                                     ]
                                 },
                             /* BRANCH LOGIC HERE */
-                        /* 37 mediaPresence*/
+                        /* 38 mediaPresence*/
                         {
                             "type":"mult1",
                             "variableName": "mediaPresence",
@@ -592,24 +624,24 @@ var surveyQuestions = [
                                         {"label": "Yes"},
                                      ]
                             },
-                            /* 38 oldMedia*/
+                            /* 39 oldMedia*/
                             {
                                 "type":"mult1",
                                 "variableName": "mediaPresence",
-                                "questionPrompt": "Since you did not consume any new media, please answer the next few questions for the last media you remember consuming.",
+                                "questionPrompt": "Since you did not consume any new media, please answer the next few questions for the <br /> <b>last</b> media you remember consuming.",
                                 "minResponse": 1,
                                 "maxResponse": 1,
                                 "labels": [
                                             {"label": "OK"},
                                          ]
                                 },
-                         /* 39 mediaGroups*/
+                         /* 40 mediaGroups*/
                         {
                             "type":"checklist",
                             "variableName": "mediaGroups",
                             "questionPrompt": "Were any of these groups depicted in the media (select all that apply)?",
                             "minResponse": 0,
-                            "maxResponse": 32,
+                            "maxResponse": 33,
                             "labels": [
                                         {"label": "Children"},
                                         {"label": "Teenagers"},
@@ -618,7 +650,7 @@ var surveyQuestions = [
                                         {"label": "Older adults"},
                                         {"label": "Men"},
                                         {"label": "Women"},
-                                        {"label": "Transgender or Gender Non-conforming people"},
+                                        {"label": "Nonbinary people"},
                                         {"label": "Bisexual people"},
                                         {"label": "Gay/Lesbian people"},
                                         {"label": "Queer people"},
@@ -644,39 +676,41 @@ var surveyQuestions = [
                                         {"label": "Conservatives"},
                                         {"label": "Political Moderates"},
                                         {"label": "Immigrants"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                        /* 40 mediaDuration*/
+                        /* 41 mediaDuration*/
                         {
                             "type":"number",
                             "variableName": "mediaDuration",
                             "questionPrompt": "How long did you spend consuming this media, in minutes?",
                             },
-                        /* 41 mediaStart*/
+                        /* 42 mediaStart*/
                         {
                             "type":"timePicker",
                             "variableName": "mediaStart",
                             "questionPrompt": "What was the approximate time you started consuming this media?",
                             },
-                        /* 42 mediaInitiate*/
+                        /* 43 mediaInitiate*/
                         {
                             "type":"mult1",
                             "variableName": "mediaInitiate",
                             "questionPrompt": "Did you actively seek out the media?",
                             "minResponse": 0,
-                            "maxResponse": 1,
+                            "maxResponse": 2,
                             "labels": [
                                 {"label": "No"},
                                 {"label": "Yes"},
+                                {"label": "I choose not to answer"}
                             ]
                         },
-                        /* 43 pieceMedium */
+                        /* 44 pieceMedium */
                         {
                         "type":"mult1",
                         "variableName":"What type of medium did you use?",
                         "questionPrompt":"What type of medium did you use?",
                         "minResponse": 0,
-                        "maxResponse": 7,
+                        "maxResponse": 8,
                         "labels": [
                         	{"label":"Internet"},
                         	{"label":"Radio"},
@@ -686,39 +720,42 @@ var surveyQuestions = [
                         	{"label":"Video"},
                         	{"label":"Podcast"},
                         	{"label":"Other"},
+                        	{"label": "I choose not to answer"}
                         ]
                         },
-                        /* 44 mediaConflict*/
+                        /* 45 mediaConflict*/
                        {
                         "type":"mult1",
                         "variableName": "mediaConflict",
                         "questionPrompt": "Was there any conflict depicted in the media?",
                         "minResponse": 0,
-                        "maxResponse": 1,
+                        "maxResponse": 2,
                         "labels": [
                                     {"label": "No"},
                                     {"label": "Yes"},
+                                    {"label": "I choose not to answer"}
                                  ]
                         },
-                        /* 45 mediaViolence*/
+                        /* 46 mediaViolence*/
                         {
                          "type":"mult1",
                          "variableName": "mediaViolence",
                          "questionPrompt": "Was there any violence depicted in the media?",
                          "minResponse": 0,
-                         "maxResponse": 1,
+                         "maxResponse": 2,
                          "labels": [
                                      {"label": "No"},
                                      {"label": "Yes"},
+                                     {"label": "I choose not to answer"}
                                   ]
                          },
-                        /*46 mediaHappiness*/
+                        /*47 mediaHappiness*/
                         {
                             "type":"mult1",
                             "variableName": "mediaHappiness",
                             "questionPrompt": "While consuming this media, <br />how <b>happy</b> did you feel?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 (Not at all)"},
                                         {"label": "2"},
@@ -727,15 +764,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 (Very)"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                        /* 47 mediaAnger*/
+                        /* 48 mediaAnger*/
                         {
                             "type":"mult1",
                             "variableName": "mediaAnger",
                             "questionPrompt": "While consuming this media, <br />how <b>angry</b> did you feel?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 (Not at all)"},
                                         {"label": "2"},
@@ -744,15 +782,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 (Very)"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                        /* 48 mediaRelax*/
+                        /* 49 mediaRelax*/
                         {
                             "type":"mult1",
                             "variableName": "mediaRelax",
                             "questionPrompt": "While consuming this media, <br />how <b>relaxed</b> did you feel?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 (Not at all)"},
                                         {"label": "2"},
@@ -761,15 +800,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 (Very)"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                        /* 49 mediaAnxiety*/
+                        /* 50 mediaAnxiety*/
                         {
                             "type":"mult1",
                             "variableName": "mediaAnxiety",
                             "questionPrompt": "While consuming this media, <br />how <b>anxious</b> did you feel?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 (Not at all)"},
                                         {"label": "2"},
@@ -778,15 +818,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 (Very)"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                        /* 50 mediaValence*/
+                        /* 51 mediaValence*/
                         {
                             "type":"mult1",
                             "variableName": "mediaValence",
                             "questionPrompt": "In general, was the media you consumed positive or negative?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 (Very negative)"},
                                         {"label": "2"},
@@ -795,15 +836,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 (Very positive)"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                         /* 51 mediaDesire*/
+                         /* 52 mediaDesire*/
                         {
                             "type":"mult1",
                             "variableName": "mediaDesire",
                             "questionPrompt": "In general, how much would you would you want to consume media like this in the future?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 (Not at all)"},
                                         {"label": "2"},
@@ -812,15 +854,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 (A great deal)"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                         /* 52 mediaSource*/
+                         /* 53 mediaSource*/
                          {
                             "type":"mult1",
                             "variableName": "mediaSource",
                             "questionPrompt": "In general, how much would you want to consume media from this source in the future?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 (Not at all)"},
                                         {"label": "2"},
@@ -829,27 +872,29 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 (A great deal)"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                         /* 53 mediaReflect*/
+                         /* 54 mediaReflect*/
                         {
                             "type":"mult1",
                             "variableName": "mediaReflect",
                             "questionPrompt": "Did the media make you reflect on yourself?",
                             "minResponse": 0,
-                            "maxResponse": 1,
+                            "maxResponse": 2,
                             "labels": [
                                         {"label": "No"},
                                         {"label": "Yes"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                         /* 54 mediaPressure*/
+                         /* 55 mediaPressure*/
                         {
                             "type":"mult1",
                             "variableName": "mediaPressure",
                             "questionPrompt": "Did the media make you feel pressured to change your beliefs?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 Not at all"},
                                         {"label": "2"},
@@ -858,15 +903,16 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 A great deal"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
-                        /* 55 mediaPersuade*/
+                        /* 56 mediaPersuade*/
                         {
                             "type":"mult1",
                             "variableName": "mediaPersuade",
                             "questionPrompt": "Did you think the media might try to change your beliefs?",
                             "minResponse": 1,
-                            "maxResponse": 7,
+                            "maxResponse": 8,
                             "labels": [
                                         {"label": "1 Not at all"},
                                         {"label": "2"},
@@ -875,16 +921,17 @@ var surveyQuestions = [
                                         {"label": "5"},
                                         {"label": "6"},
                                         {"label": "7 A great deal"},
+                                        {"label": "I choose not to answer"}
                                      ]
                             },
                             
-                         /* 56  nightlySurveyLink*/
+                         /* 57  nightlySurveyLink*/
                         {
                        		"type":"link",
                        		"variableName": "nightlySurveyLink",
                        		"questionPrompt": "Please click <a href='https://utorontopsych.az1.qualtrics.com/jfe/form/SV_4TKpItlOKb398fr?pid=PID' target='_blank'>HERE</a> to open your nightly survey. The survey will open in a web browser window. <br /> Please return to the app <b>AFTER</b> completing the survey. <br /> <br /> <br /> <br />",
                        		},
-                       	/* 57  goBackToLink*/	
+                       	/* 58  goBackToLink*/	
                        {
                        		"type":"mult1",
                        		"variableName": "goBackToLink",
@@ -902,41 +949,91 @@ var surveyQuestions = [
 var lastPage = [
 				/*input your last-page message*/
                 {
-                message: "Saving data..."
+                "message": "Saving data..."
                 },
                 /*input snooze last-page message*/
                 {
-                message: "Snoozed! We will ask again later."
-                }
+                "message": "Snoozed! We will ask again later."
+                },
+                {
+                "message": "Thank you for your interest in our study. Unfortunately, our app is incompatible with your phone, so you CANNOT participate in our study. We apologize for the inconvenience. "
+                },
                 ];
 
 /*Questions to set up participant notifications so that notifications are customized to participant's schedule*/
 var participantSetup = [
+                        // - 10
                         {
 						"type":"number",
 						"variableName": "participant_id",
 						"questionPrompt": "Please enter your participant ID:"
                         },
+                        // -9
+                        {
+                        "type":"mult1",
+                       	"variableName":"osType",
+                       	"questionPrompt":"What type of device do you have?",
+                       	"minResponse":0,
+                       	"maxResponse":1,
+                       	"labels": [
+                       		{"label":"iPhone or Other Apple Device"},
+                       		{"label":"Android Phone or Android Device"}
+                       	]
+                        },
+                        // -8
+                        {
+                        "type":"mult1",
+						"variableName": "testNotification",
+						"questionPrompt": "Next, we will test whether the notification system is working on your phone. Please click the button below to test the notification system. You will receive a notification in ten seconds. If you see the notification, do <b>NOT</b> click on it. Clicking on it will interrupt your app setup. <br/><br/>If you have an Apple device, please go to your home screen after you click the button below, so you can see the notification. If you stay in the app, you will NOT see the notification. Please return to the app after you have seen the notification or 10 seconds have passed. ",
+						"minResponse": 1,
+                       	"maxResponse": 1,
+                       	"labels": [
+                                {"label": "Test notification now"},
+                        ]
+                        },
+                        // -7
+                        {
+                        "type":"mult1",
+                       	"variableName":"notificationWorked",
+                       	"questionPrompt":"Did you receive the test notification?",
+                       	"minResponse":0,
+                       	"maxResponse":1,
+                       	"labels": [
+                       		{"label":"No"},
+                       		{"label":"Yes"}
+                       	]
+                        },
+                        // -6
+                        {
+                        "type":"instructions",
+                       	"variableName":"notificationFail",
+                       	"questionPrompt":"It looks like your notification system is not working. You are ineligible to participate in our study. ",
+                        },
+                        // -5
 						{
 						"type":"timePicker",
 						"variableName": "weekdayWakeTime",
 						"questionPrompt": "What time do you normally wake up on weekdays?"
                         },
+                        // -4
 						{
 						"type":"timePicker",
 						"variableName": "weekdaySleepTime",
 						"questionPrompt": "What time do you normally go to sleep on weekdays?"
                         },
+                        // -3
 						{
 						"type":"timePicker",
 						"variableName": "weekendWakeTime",
 						"questionPrompt": "What time do you normally wake up on weekends?"
                         },
+                        // -2
 						{
 						"type":"timePicker",
 						"variableName": "weekendSleepTime",
 						"questionPrompt": "What time do you normally go to sleep on weekends?"
                         },
+                        // -1
 						{
 						"type":"text",
 						"variableName": "networkString",
@@ -1013,6 +1110,9 @@ renderQuestion: function(question_index) {
 	if (questionPrompt.indexOf('PID') >= 0) {
 		questionPrompt = questionPrompt.replace("PID", function replacer() {return localStore.participant_id;});
       	}
+    if (questionPrompt.indexOf('NAME') >= 0) {
+		questionPrompt = questionPrompt.replace("NAME", function replacer() {return partName;});
+      	}
     question.questionText = Mustache.render(questionTextTmpl, {questionPrompt: questionPrompt});
     //Now populate the view for this question, depending on what the question type is
     //This part of the function will render different question formats depending on the type specified
@@ -1026,9 +1126,9 @@ renderQuestion: function(question_index) {
             	//If you want to implement piped text in your wording choice, you would place it here
     			//Below is an example of how you would look for the NAME placeholder in your surveyQuestion labels
     			//and replace it with
-//                 if (label.indexOf('NAME') >= 0){
-//             		label = label.replace("NAME", function replacer() {return name;});
-//             		}
+                if (label.indexOf('NAME') >= 0){
+            		label = label.replace("NAME", function replacer() {return partName;});
+            		}
             	question.buttons += Mustache.render(buttonTmpl, {
                                                 id: question.variableName+i,
                                                 value: i,
@@ -1046,7 +1146,7 @@ renderQuestion: function(question_index) {
             for (var j = question.maxResponse; j >= question.minResponse; j--) {
                 var label = question.labels[label_count++].label;
                 if (label.indexOf('NAME') >= 0){
-            		label = label.replace("NAME", function replacer() {return name;});
+            		label = label.replace("NAME", function replacer() {return partName;});
             		}
                 question.buttons += Mustache.render(buttonTmpl, {
                                                     id: question.variableName+j,
@@ -1066,7 +1166,7 @@ renderQuestion: function(question_index) {
         	for (var i = question.minResponse; i <= question.maxResponse; i++) {
             	var label = question.labels[label_count++].label;
             	if (label.indexOf('NAME') >= 0){
-            		label = label.replace("NAME", function replacer() {return name;});
+            		label = label.replace("NAME", function replacer() {return partName;});
             		}
             	question.buttons += Mustache.render(checkListTmpl, {
                                                 	id: question.variableName+i,
@@ -1242,13 +1342,19 @@ renderLastPage: function(pageData, question_index) {
 init: function() {
 	//First, we assign a value to the unique key when we initialize ExperienceSampler
 	uniqueKey = new Date().getTime();
-// 	uniqueKey = 1622687432000; 
-	var nowDayOfWeek = new Date().getDay();
+	var now = new Date(); 
+// 	var now = new Date(2021, 6, 30, 10, 0, 0, 0); 
+
+	app.scheduleNotifTrigger(now);
+// 	alert("Your notifications have been scheduled."); 
+	var nowDate = new Date(); 
+// 	alert("nowDate is " + nowDate); 
+	var nowDayOfWeek = nowDate.getDay();
 	var surveyHour, surveyMinutes; 
 	//The statement below states that if there is no participant id or if the participant id is left blank,
 	//ExperienceSampler would present the participant set up questions
 	if (localStore.participant_id === " " || !localStore.participant_id || localStore.participant_id == "undefined") {app.renderQuestion(-NUMSETUPQS);}
-	
+// 	if (localStore.weekendSleepTime === " " || !localStore.weekendSleepTime || localStore.weekendSleepTime == "undefined" || localStore.weekdaySleepTime === " " || !localStore.weekdaySleepTime || localStore.weekdaySleepTime == "undefined") {app.renderQuestion(-NUMSETUPQS);}
 	
 	var weekendSleepTime = localStore.weekendSleepTime.split(":");
 	var weekdaySleepTime = localStore.weekdaySleepTime.split(":");
@@ -1261,27 +1367,42 @@ init: function() {
 		surveyHour = Number(weekdaySleepTime[0]) - 1;
 		surveyMinutes = Number(weekdaySleepTime[1]);
 	}
-	var surveyTime = new Date(); 
-	surveyTime.setHours(Number(surveyHour), surveyMinutes, 0 , 0);
-
+	
+	if (surveyHour < 10){
+		var tomorrow = new Date().getDate() + 1; 
+		var surveyTime = new Date();
+		surveyTime.setDate(tomorrow);
+		surveyTime.setHours(Number(surveyHour), surveyMinutes, 0 , 0);
+	}	
+	else {
+		var surveyTime = new Date(); 
+		surveyTime.setHours(Number(surveyHour), surveyMinutes, 0 , 0);
+	}	
 	var surveyTimeEpoch = surveyTime.getTime(); 
 
 	var nextExpSampling = new Date(); 
-	var tomorrow = new Date().getDate() + 1; 
-	nextExpSampling.setDate(tomorrow);
-	nextExpSampling.setHours(10, 0, 0, 0);
+	var nextExpSamplingHour = nextExpSampling.getHours();
+	if (nextExpSamplingHour != 0 & nextExpSamplingHour > 10){
+		var tomorrow = new Date().getDate() + 1; 
+		nextExpSampling.setDate(tomorrow);
+		nextExpSampling.setHours(10, 0, 0, 0);
+	}
+	else {
+		nextExpSampling.setHours(10, 0, 0, 0);
+	}
 	var nextExpSamplingEpoch = nextExpSampling.getTime(); 
-
-	//otherwise ExperienceSampler should just save the unique key and display the first question in survey questions
+	
+  	//otherwise ExperienceSampler should just save the unique key and display the first question in survey questions
 	
 	if (uniqueKey >= surveyTimeEpoch && uniqueKey < nextExpSamplingEpoch){
+// 		alert("i'm showing the nightly survey"); 		
 		uniqueKey = new Date().getTime();
         localStore.uniqueKey = uniqueKey;
     	var startTime = new Date(uniqueKey);
     	var syear = startTime.getFullYear(), smonth = startTime.getMonth(), sday=startTime.getDate(), shours=startTime.getHours(), sminutes=startTime.getMinutes(), sseconds=startTime.getSeconds(), smilliseconds=startTime.getMilliseconds();
     	localStore[uniqueKey + "_" + "startTime"  + "_" + syear + "_" + smonth + "_" + sday + "_" + shours + "_" + sminutes + "_" + sseconds + "_" + smilliseconds] = 1;
       	networkString = localStore.networkString;
-      	app.renderQuestion(56);
+      	app.renderQuestion(57);
 	}
 	else {
     	uniqueKey = new Date().getTime();
@@ -1293,6 +1414,7 @@ init: function() {
       app.renderQuestion(0);
     }
     localStore.snoozed = 0;
+//     alert("I finished running the init function. "); 
 },
 
 /* Record User Responses */
@@ -1359,12 +1481,14 @@ recordResponse: function(button, count, type) {
         currentQuestion = button.attr('id').slice(0,-1);
     }
     if (count == -NUMSETUPQS) {
-      mediaCondition = response%2;
+    	var participant_id = response; 
+     	mediaCondition = Number(participant_id)%2;
+      	localStore.mediaCondition = mediaCondition; 
     }
     if (count == 5 && response.split(",")[(response.split(",").length) - 1] == (localStore.networkString.split(", ").length)) {
       newPartner = 1;
     }
-    if (count == 24) {
+    if (count == 25) {
       partName = response;
       networkString = networkString + ", " + response;
       localStore.networkString = networkString;
@@ -1392,7 +1516,18 @@ recordResponse: function(button, count, type) {
 		//You will test local notifications in Stage 4 of customizing the app
 		//********IF YOU HAVE NO QUESTION LOGIC BUT HAVE SCHEDULED NOTIFICATIONS, YOU NEED TO UNCOMMENT THE FOLLOWING LINE
 		//TO EXECUTE THE scheduleNotifs() FUNCTION********
-   	if (count == -1){app.scheduleNotifs();app.renderLastPage(lastPage[0], count);app.scheduledNotifs();}
+   	if (count == -8){app.testNotif(); $("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(-7);});}
+   	else if (count == -7 && response == 0) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(-6);});}
+   	 else if (count == -7 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(-5);});}
+    else if (count == -6) {app.renderLastPage(lastPage[2], count);}
+   	else if (count == -1){
+   		app.scheduleNotifs(); 
+   		app.renderLastPage(lastPage[0], count); 
+//    		mediaCondition = Number(localStore.participant_id)%2;
+//       	localStore.mediaCondition = mediaCondition; 
+//       	console.log("mediaCondition is " + mediaCondition); 
+   		app.scheduleNotifs(); 
+   		}
     //Identify the next question to populate the view
 		//the next statement is about the snooze function
 		//This statement says that if the participant says they are currently unable to complete the questionnaire now,
@@ -1416,26 +1551,44 @@ recordResponse: function(button, count, type) {
 		//The second statement, says if the question number is X and the response is not equal to Y, display question number A
 		//Remember that to do question logic for one question, you need to have AT LEAST two conditional statements about what to do if the trigger response is chosen, AND
 		//what to do if the trigger response is NOT chosen.
+    else if (count == 3){console.log("mediaCondition is " + localStore.mediaCondition); $("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(4);});}
+    else if (count == 4 && response == 0 && localStore.mediaCondition == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(37);});}
+    else if (count == 4 && response == 0 && localStore.mediaCondition == 0) {app.renderLastPage(lastPage[0], count);}
     else if (count == 4 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(5);});}
-    else if (count == 4 && response == 0 && mediaCondition == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(37);});}
-    else if (count == 4 && response == 0 && mediaCondition == 0) {app.renderLastPage(lastPage[0], count);}
-    else if (count == 11 && response == 0) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(13);});}
-    else if (count == 11 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(12);});}
-    else if (count == 22 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(23);});}
-    else if (count == 22 && response == 0 && newPartner == 1) {newPartner = 0; $("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(24);});}
-    else if (count == 22 && response == 0 && newPartner != 1) {app.renderLastPage(lastPage[0], count);}
-    else if (count == 23 && newPartner == 1) {newPartner = 0; $("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(24);});}
-    else if (count == 23 && newPartner == 0) {app.renderLastPage(lastPage[0], count);}
-    else if (count == 36) {app.renderLastPage(lastPage[0], count);}
-    else if (count == 37 && response == 0) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(38);});}
-    else if (count == 37 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(39);});}
-    else if (count == 55) {app.renderLastPage(lastPage[0], count);}
+    
+    else if (count == 10 && response != 7) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(12);});}
+    else if (count == 10 && response == 7) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(11);});}
+    
+    
+    // change to 12, 14, and 13
+    else if (count == 12 && response == 0) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(14);});}
+    else if (count == 12 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(13);});}
+
+    // change to 23, 24, 25, 
+    else if (count == 23 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(24);});}
+    else if (count == 23 && response == 0 && newPartner == 1) {newPartner = 0; $("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(25);});}
+    else if (count == 23 && response == 0 && newPartner != 1) {app.renderLastPage(lastPage[0], count);}
+    
+    // change to 24, 25, 24
+    else if (count == 24 && newPartner == 1) {newPartner = 0; $("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(25);});}
+    else if (count == 24 && newPartner == 0) {app.renderLastPage(lastPage[0], count);}
+    
+    // change to 37
+    else if (count == 37) {app.renderLastPage(lastPage[0], count);}
+    
+    // change to 38 and 39
+    else if (count == 38 && response == 0) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(39);});}
+    // change to 38 and 40
+    else if (count == 38 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(40);});}
+    
+    // change to 56
+    else if (count == 56) {app.renderLastPage(lastPage[0], count);}
 
 	// logic in case participant missed the survey link 
 	// go back to survey link if they mixed it
-	else if (count == 57 && response == 1){$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(56);});}
+	else if (count == 58 && response == 1){$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(57);});}
 	// or else, just go to the end of the survey
-	else if (count == 57 && response == 0){app.renderLastPage(lastPage[0], count);}
+	else if (count == 58 && response == 0){app.renderLastPage(lastPage[0], count);}
 // 		//Uncomment the "/*else*/" below only when customizing question logic (Stage 3), so that the app will just proceed to the next question in the JSON database
 // 		//DO NOT uncomment the "/*else*/" below when testing whether questions are being displayed in the right format (Stage 1) OR if you have no question logic
 		//in your questionnaire
@@ -1454,6 +1607,7 @@ pauseEvents: function() {
 sampleParticipant: function() {
     var current_moment = new Date();
     var current_time = current_moment.getTime();
+    app.scheduleNotifTrigger(current_moment);
 //     current_time = 1622687432000; 
     //change X to the amount of time the participant is locked out of the app for in milliseconds
     //e.g., if you want to lock the participant out of the app for 10 minutes, replace X with 600000
@@ -1488,10 +1642,10 @@ sampleParticipant: function() {
     	var syear = startTime.getFullYear(), smonth = startTime.getMonth(), sday=startTime.getDate(), shours=startTime.getHours(), sminutes=startTime.getMinutes(), sseconds=startTime.getSeconds(), smilliseconds=startTime.getMilliseconds();
     	localStore[uniqueKey + "_" + "startTime"  + "_" + syear + "_" + smonth + "_" + sday + "_" + shours + "_" + sminutes + "_" + sseconds + "_" + smilliseconds] = 1;
       	networkString = localStore.networkString;
-      	app.renderQuestion(56);
+      	app.renderQuestion(57);
 	}
 	
-    else if ((current_time - localStore.pause_time) > 100 || localStore.snoozed == 1) { //Liz Here: Return to 10 minutes or 600000 ms
+    else if ((current_time - localStore.pause_time) > 600000 || localStore.snoozed == 1) { //Liz Here: Return to 10 minutes or 600000 ms
         uniqueKey = new Date().getTime();
         localStore.snoozed = 1;
     	var startTime = new Date(uniqueKey);
@@ -1517,17 +1671,23 @@ saveDataLastPage:function() {
             timeout: 180000,
             success: function (result) {
             	var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;//, networkString = localStore.networkString;
-            	var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime; 
+            	var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime, mediaCondition = localStore.mediaCondition; 
+            	var scheduleNotifsTime2 = localStore.scheduleNotifsTime2, installationDate = localStore.installationDate,  networkString = localStore.networkString;
+            	var secondNotifDate = localStore.secondNotifDate; 
             	localStore.clear();
             	localStore.participant_id = pid;
-              localStore.networkString = networkString;
-              localStore.mediaCondition = mediaCondition;
+              	localStore.networkString = networkString;
+              	localStore.mediaCondition = mediaCondition;
             	localStore.snoozed = snoozed;
  				localStore.uniqueKey = uniqueKey;
  				localStore.pause_time = pause_time;
  				localStore.weekendSleepTime = weekendSleepTime; 
  				localStore.weekdaySleepTime = weekdaySleepTime; 
- 				console.log("storage is " + storage);
+ 				localStore.mediaCondition = mediaCondition; 
+ 				localStore.scheduleNotifsTime2 = scheduleNotifsTime2;
+           		localStore.installationDate = installationDate;             	
+           		localStore.secondNotifDate = secondNotifDate; 	
+//  				console.log("storage is " + storage);
             	$("#question").html("<h3>Your responses have been recorded. Thank you for completing this survey.</h3>");
             },
             complete: function(data){
@@ -1560,8 +1720,10 @@ saveData:function() {
             data: storage_save,
             crossDomain: true,
             success: function (result) {
-              var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
-              var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime; 
+              	var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
+              	var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime, mediaCondition = localStore.mediaCondition; 
+            	var scheduleNotifsTime2 = localStore.scheduleNotifsTime2, installationDate = localStore.installationDate,  networkString = localStore.networkString;
+            	var secondNotifDate = localStore.secondNotifDate; 
             	localStore.participant_id = pid;
               	localStore.networkString = networkString;
               	localStore.mediaCondition = mediaCondition;
@@ -1570,7 +1732,10 @@ saveData:function() {
  				localStore.pause_time = pause_time;
  				localStore.weekendSleepTime = weekendSleepTime; 
  				localStore.weekdaySleepTime = weekdaySleepTime; 
-
+				localStore.mediaCondition = mediaCondition; 
+           		localStore.scheduleNotifsTime2 = scheduleNotifsTime2;
+           		localStore.installationDate = installationDate;             	
+           		localStore.secondNotifDate = secondNotifDate; 	
             },
             complete: function(data){
             	console.log("completed");
@@ -1581,104 +1746,61 @@ saveData:function() {
 				console.log("request is " + response);
             	}
             });
-            e.preventDefault();
+//             e.preventDefault();
 },
+
+
+saveDataAndClear:function() {
+	var storage=JSON.stringify(localStore);
+	var storage_save=JSON.parse(storage);	
+    $.ajax({
+		//If you are using the google option, the "type" should be 'get'
+		//If you are using the server option, the "type" should be 'post'
+           type: 'post',
+			//url: 'https://script.google.com/macros/s/AKfycbxeP9Fg9n2Te-RPby7EaVheLqwI0hCWbu1Uo7G-1MltaZf8GDaG/exec',
+			//second server
+			//url: 'https://script.google.com/macros/s/AKfycbwKNBIjN6in_RR4NK6s_IVrKqkp9mhiKIzQUWrcLV5RzDFGQAVs/exec',
+           //third server 
+            url: 'https://script.google.com/macros/s/AKfycbx70b5IZvOh4HzUfgfXRYwnQxngOW-5yfYBB6fVNS6TgP6uq74/exec',
+           data: storage_save,
+           crossDomain: true,
+           success: function (result) {
+              	var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
+              	var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime, mediaCondition = localStore.mediaCondition; 
+            	var scheduleNotifsTime2 = localStore.scheduleNotifsTime2, installationDate = localStore.installationDate;
+            	var networkString = localStore.networkString;
+            	var secondNotifDate = localStore.secondNotifDate; 
+            	localStore.clear();
+            	localStore.participant_id = pid;
+              	localStore.networkString = networkString;
+            	localStore.snoozed = snoozed;
+ 				localStore.uniqueKey = uniqueKey;
+ 				localStore.pause_time = pause_time;
+ 				localStore.weekendSleepTime = weekendSleepTime; 
+ 				localStore.weekdaySleepTime = weekdaySleepTime; 
+				localStore.mediaCondition = mediaCondition; 
+           		localStore.scheduleNotifsTime2 = scheduleNotifsTime2;
+           		localStore.installationDate = installationDate;             	
+           		localStore.secondNotifDate = secondNotifDate; 
+//            		alert("data has been saved"); 	
+           	
+           },
+           complete: function(data){
+            	console.log("completed");
+            },
+           error: function (request, error) {
+            	console.log(error);
+            	var response = JSON.stringify(request);
+				console.log("request is " + response);
+            	}
+            });
+//             e.preventDefault();
+},
+
+
 
 // Local Notifications Javascript
 // Stage 5 of Customization
-//This code is for a interval-contingent design where all participants answer the questionnaire at the same time
-//(i.e., not customized to their schedule)
-// scheduleNotifs:function(){
-// 	//Section 1 - Declaring necessary variables
-// 	//Declare an empty array to hold all your notifications
-// 	var notifs=[];
-// 	//need an interval variable,
-// 	var interval1, interval2, interval3, interval4, interval5, interval6, interval7;
-// 	//a variable for the notification id
-// 	var a, b, c, d, e, f, g;
-//  //one to represent each of new dates to be calculated for each signal
-// 	var date1, date2, date3, date4, date5, date6, date7;
-// 	//Then you need a variable to represent the amount of time from now until the first signal
-// 	var nextDiaryLag;
-// 	//Then you can declare any values that you might use more than once such as the number of milliseconds in a day
-// 	var day = 86400000;
-// 	//You'll also need to get time the app is being installed
-// 	var now = new Date().getTime();
-// 	//Now you can use the date object approach to set the time of the first signal
-// 	//in this example, we will set it to 8PM
-//     var startDate = new Date();
-//     var startDay = startDate.getDate();
-//     var startTime = new Date(now);
-//     startTime.setDate(startTime.getDate() + 1);
-//     startTime.setHours(10, 0, 0, 0);
-
-// 	//Now calculate the amount of time between installation time and the first signal
-// 	nextDiaryLag = (startTime) - (now);
-//     // console.log("this is the now " + now);
-//     // console.log("this is the startDate " + startDate);
-//     // console.log("this is the startDay " + startDay);
-//     // console.log("this is the startTime " + startTime);
-//     // console.log("this is the nextDiaryLag " + nextDiaryLag);
-
-// 	//Section 2 to 5 go inside the for loop
-// 	// Set X to the length of your experience sampling period (i.e., how many days you will
-// 	// be collecting data from your participants)
-// for (i = 0; i < 7; i++){
-
-// 	//Section 2 - Calculate time intervals
-// 	//For this design you just calculate how many milliseconds until the first signal and then add multiples of the
-// 	//number of milliseconds in day to this so that it fires everyday of your experience sampling data collection period
-// 	interval1 = nextDiaryLag + day*i;
-// 	interval2 = ((interval1 + (parseInt(7200)*1000)));
-//     interval3 = ((interval2 + (parseInt(7200)*1000)));
-//     interval4 = ((interval3 + (parseInt(7200)*1000)));
-//     interval5 = ((interval4 + (parseInt(7200)*1000)));
-//     interval6 = ((interval5 + (parseInt(7200)*1000)));
-//     interval7 = ((interval6 + (parseInt(3600)*1000)));
-
-//     //now convert this interval into a new date object that the plugin can use to schedule your notification
-// 	date1 = new Date(now + interval1);
-//     date2 = new Date(now + interval2);
-// 	date3 = new Date(now + interval3);
-// 	date4 = new Date(now + interval4);
-// 	date5 = new Date(now + interval5);
-// 	date6 = new Date(now + interval6);
-// 	date7 = new Date(now + interval7);
-
-// 	//Section 3 - Creating Unique Ids - create a unique notification id so notifications don't overwrite each other
-// 	//set it to the counter value to ensure it is unique
-// 	a = 101 + (parseInt(i)*100);
-// 	b = 102 + (parseInt(i)*100);
-// 	c = 103 + (parseInt(i)*100);
-// 	d = 104 + (parseInt(i)*100);
-// 	e = 105 + (parseInt(i)*100);
-// 	f = 106 + (parseInt(i)*100);
-//     g = 107 + (parseInt(i)*100);
-
-// 	//Section 4 - Scheduling the notification
-// 	//Now put all these properties into the scheduling function of the plugin
-// 	notifs.push({id: a, at: date1, text: 'Time for your next Diary Survey!', title: 'Diary Survey'});
-// 	notifs.push({id: a, at: date2, text: 'Time for your next Diary Survey!', title: 'Diary Survey'});
-// 	notifs.push({id: a, at: date3, text: 'Time for your next Diary Survey!', title: 'Diary Survey'});
-// 	notifs.push({id: a, at: date4, text: 'Time for your next Diary Survey!', title: 'Diary Survey'});
-// 	notifs.push({id: a, at: date5, text: 'Time for your next Diary Survey!', title: 'Diary Survey'});
-// 	notifs.push({id: a, at: date6, text: 'Time for your next Diary Survey!', title: 'Diary Survey'});
-// 	notifs.push({id: a, at: date7, text: 'Time for your Nightly Survey!', title: 'Nightly Survey'});
-
-// 	//Section 5 - Recording notifications
-// 	//Now you want to record your notifications to make sure that they have been scheduled
-// 	//You can also calculate response latencies if you with these values later if you want
-// 	localStore['notification_' + i + '_1'] = localStore.participant_id + "_" + a + "_" + date1;
-//     localStore['notification_' + i + '_2'] = localStore.participant_id + "_" + b + "_" + date2;
-// 	localStore['notification_' + i + '_3'] = localStore.participant_id + "_" + c + "_" + date3;
-// 	localStore['notification_' + i + '_4'] = localStore.participant_id + "_" + d + "_" + date4;
-// 	localStore['notification_' + i + '_5'] = localStore.participant_id + "_" + e + "_" + date5;
-// 	localStore['notification_' + i + '_6'] = localStore.participant_id + "_" + f + "_" + date6;
-// 	localStore['notification_' + i + '_7'] = localStore.participant_id + "_" + g + "_" + date7;
-// }
-//     cordova.plugins.notification.local.schedule(notifs);
-// },
-
 //This code is for signal-contingent designs with varying time intervals between notifications
 scheduleNotifs:function() {
 		//Section 1 - Declaring necessary variables
@@ -1724,12 +1846,22 @@ scheduleNotifs:function() {
    	var day = 86400000;
    	var minDiaryLag = 6000000;
    	var randomDiaryLag = 1200000;
+   	
+   	var installationTime = new Date();
+    var secondNotifDate = new Date();
+    secondNotifDate.setDate(secondNotifDate.getDate()+7);
+    secondNotifDate.setHours(6, 0, 0, 0);
+ 
+ 	var secondLocalNotif = new Date(); 
+ 	secondLocalNotif.setDate(secondLocalNotif.getDate()+7); 
+ 	secondLocalNotif.setHours(10, 0, 0, 0); 
+ 	var secondLocalNotifEpoch = secondLocalNotif.getTime(); 
  
 		//This is a loop that repeats this block of codes for the number of days there are in the experience sampling period
 		//Replace X with the number of days in the experience sampling period (e.g., collecting data for 7 days, replace X with 7)
 		//Note that iOS apps can only have 64 unique notifications, so you should keep that in mind if you are collecting data
 		//for more than longer periods of time
-    for (i = 0; i < 14; i++)
+    for (i = 0; i < 7; i++)
     {
 		//The code below (up to "else { nightlyLag = ...}" is only necessary if you allow the daily data collection period to vary across
 		//weekdays and weekends
@@ -1830,7 +1962,176 @@ scheduleNotifs:function() {
         	localStore['notification_' + i + '_6'] = localStore.participant_id + "_" + f + "_" + date6;
             localStore['notification_' + i + '_7'] = localStore.participant_id + "_" + g + "_" + date7;
     }
+	cordova.plugins.notification.local.schedule({
+                                         id: "999999",
+                                         title: 'Diary Surveys',
+                                         text: `It's time for you to schedule next week's surveys!`,
+                                         at: new Date(secondLocalNotifEpoch),
+                                         });
+    console.log("secondLocalNotifEpoch is " + new Date(secondLocalNotifEpoch)); 
+    localStore.installationDate=installationTime;
+    localStore.secondNotifDate = secondNotifDate;
+//     alert("Your notifications have been scheduled.");  
 },
+
+scheduleNotifs2:function() {
+		//Section 1 - Declaring necessary variables
+		//Declare an empty array to hold all your notifications
+		var notifs=[];
+		//Declares the number of intervals between the notifications for each day (i.e., if beeping participants 6 times, declare 6 intervals)
+    var interval1, interval2, interval3, interval4, interval5, interval6, interval7;
+
+		//Declares a variable to represent the id of each notification for the day
+		//Declare as many letters as you have intervals (i.e., 6 intervals, declare 6 ids)
+    var a, b, c, d, e, f, g;
+
+		//Declare a variable to represent new date to be calculated for each beep
+		//That is, if there are 6 intervals, declare 6 new dates
+    var date1, date2, date3, date4, date5, date6, date7;
+    
+    var epoch1, epoch2, epoch3, epoch4, epoch5, epoch6, epoch7; 
+
+		//The statement below declares the start and end time of the daily data collection period
+		//These variables are not necessary if the start and end time of the daily data collection period do not vary across the experience
+		//sampling data collection period
+    var currentMaxHour, currentMaxMinute, currentMinHour, currentMinMinute, nextMinHour, nextMinMinute;
+
+		//The next three lines create variables for the present time when the notifications are being scheduled
+    var dateObject = new Date();
+    var now = dateObject.getTime();
+    var dayOfWeek = dateObject.getDay(), currentHour = dateObject.getHours(), currentMinute = dateObject.getMinutes();
+    scheduleNotifsTime2 = new Date();
+
+		//The next variables represent the amount of time between the end of the data collection to the start of the next one (nightlyLag),
+		//the interval between the scheduling time and the start of the first data collection period (currentLag), the maximum amount of time
+		//in the data collection period (maxInterval), and the time between until the end of the next data collection period (in our case
+		//Sleep time; SleepInterval)
+    var currentLag, maxInterval, SleepInterval;
+    var surveyHour, surveyMinutes; 
+
+		//These variables represent the participant's time values
+		var weekendSleepTime = localStore.weekendSleepTime.split(":");
+		var weekdaySleepTime = localStore.weekdaySleepTime.split(":");
+
+		//Then you can declare any values that you might use more than once such as the number of milliseconds in a day
+   	var day = 86400000;
+   	var minDiaryLag = 6000000;
+   	var randomDiaryLag = 1200000;
+ 
+		//This is a loop that repeats this block of codes for the number of days there are in the experience sampling period
+		//Replace X with the number of days in the experience sampling period (e.g., collecting data for 7 days, replace X with 7)
+		//Note that iOS apps can only have 64 unique notifications, so you should keep that in mind if you are collecting data
+		//for more than longer periods of time
+    for (i = 0; i < 7; i++)
+    {
+		//The code below (up to "else { nightlyLag = ...}" is only necessary if you allow the daily data collection period to vary across
+		//weekdays and weekends
+   		currentMaxHour = 20;
+   		currentMaxMinutes = 0;
+   		currentMinHour = 10;
+   		currentMinMinutes = 0;
+   		nextMinHour = 10;
+   		nextMinMinutes = 0;
+   		currentLag = (((((24 - parseInt(currentHour) + parseInt(currentMinHour))*60) - parseInt(currentMinute) + parseInt(currentMinMinutes))*60)*1000);
+    	
+    	// determine lag for nightly diary
+    	var alarmDay = dayOfWeek + 1 + i;
+    	if (alarmDay > 6) {alarmDay = alarmDay-7;}
+        //enter time weekendDinnerTime hour and then enter weekendDinnerTime minute
+   		if (alarmDay == 0 || alarmDay == 6) {
+   			surveyHour = Number(weekendSleepTime[0]) - 1;
+   			surveyMinutes = Number(weekendSleepTime[1]);
+   			}
+   				
+   		else {
+   				surveyHour = Number(weekdaySleepTime[0]) - 1;
+   				surveyMinutes = Number(weekdaySleepTime[1]);
+   				}
+   		if (surveyHour <= 10){
+   			surveyLag = (((((48 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
+   		}
+   		else {
+   			surveyLag = (((((24 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
+   		}	
+		
+        //The maxInterval is the number of milliseconds between wakeup time and Sleep time
+        maxInterval = (((((parseInt(currentMaxHour) - parseInt(currentMinHour))*60) + parseInt(currentMaxMinute) - parseInt(currentMinMinute))*60)*1000);
+			//This part of the code calculates how much time there should be between the questionnaires
+			//Change X to the minimum amount of time that should elapse between beeps in seconds
+			//Change Y to the amount of additional time in seconds that should elapse to reach the maximum amount of time
+			//The part of the code that accompanies Y randomly generates a number that allows for notifications to occur randomly between X and X+Y after the previous beep
+			//That is, X + Y = maximum amount of time that can elapse between beeps
+
+			//If designing an interval-based design, delete "Math.round(Math.random()*Y)+" and replace X with the amount of time in seconds between each beep
+   			interval1 = parseInt(currentLag) + (parseInt(Math.round(Math.random()*30))) + day*i;
+   			interval2 = interval1 + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag));
+   			interval3 = interval2 + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag));
+   			interval4 = interval3 + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag));
+   			interval5 = interval4 + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag));
+            interval6 = interval5 + (parseInt(Math.round(Math.random()*randomDiaryLag)+minDiaryLag));
+            // schedule nightly survey link
+            interval7 = parseInt(surveyLag) + day*i;
+
+
+			//This part of the code calculates a unique ID for each notification
+        a = 101+(parseInt(i)*100);
+        b = 102+(parseInt(i)*100);
+        c = 103+(parseInt(i)*100);
+        d = 104+(parseInt(i)*100);
+        e = 105+(parseInt(i)*100);
+        f = 106+(parseInt(i)*100);
+        //survey nightly survey link
+        g = 107+(parseInt(i)*100);
+
+			//This part of the code calculates the time when the notification should be sent by adding the time interval to the current date and time
+        date1 = new Date(now + interval1);
+        date2 = new Date(now + interval2);
+        date3 = new Date(now + interval3);
+        date4 = new Date(now + interval4);
+        date5 = new Date(now + interval5);
+        date6 = new Date(now + interval6);
+        date7 = new Date(now + interval7);
+        
+        epoch1 = date1.getTime(); 
+        epoch2 = date2.getTime();
+        epoch3 = date3.getTime();
+        epoch4 = date4.getTime(); 
+        epoch5 = date5.getTime(); 
+        epoch6 = date6.getTime();
+        epoch7 = date7.getTime();
+        
+        
+
+			//This part of the code schedules the notifications. It pushes all the properties into the notif array
+        	cordova.plugins.notification.local.schedule([
+        		{id: a, trigger: {at: new Date(epoch1)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: b, trigger: {at: new Date(epoch2)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: c, trigger: {at: new Date(epoch3)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: d, trigger: {at: new Date(epoch4)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: e, trigger: {at: new Date(epoch5)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: f, trigger: {at: new Date(epoch6)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: g, trigger: {at: new Date(epoch7)}, text: 'Time for your nightly Diary Survey!', title: 'Nightly Survey'}
+        		
+        	]);
+
+			//This part of the code records when the notifications are scheduled for and sends it to the server
+        	localStore['notification_' + i + '_1'] = localStore.participant_id + "_" + a + "_" + date1;
+        	localStore['notification_' + i + '_2'] = localStore.participant_id + "_" + b + "_" + date2;
+        	localStore['notification_' + i + '_3'] = localStore.participant_id + "_" + c + "_" + date3;
+        	localStore['notification_' + i + '_4'] = localStore.participant_id + "_" + d + "_" + date4;
+        	localStore['notification_' + i + '_5'] = localStore.participant_id + "_" + e + "_" + date5;
+        	localStore['notification_' + i + '_6'] = localStore.participant_id + "_" + f + "_" + date6;
+            localStore['notification_' + i + '_7'] = localStore.participant_id + "_" + g + "_" + date7;
+    
+    }
+//     alert("scheduleNotifsTime2 is " + scheduleNotifsTime2);  
+    localStore.scheduleNotifsTime2 = scheduleNotifsTime2;
+//     alert("localStore.scheduleNotifsTime2 is " + localStore.scheduleNotifsTime2);  
+    app.saveDataAndClear();
+	alert("Your notifications have been scheduled.");
+// 	alert("networkString is " + localStore.networkString); 
+},
+
 
 //Stage 4 of Customization
 //Uncomment lines inside the snoozeNotif function to test the snooze scheduling notification function
@@ -1877,5 +2178,46 @@ validateTime: function(data){
 	else {
 		return true
 	}
-}
+}, 
+
+daysBetweenDates: function( date1, date2 ) {
+  //Get 1 day in milliseconds
+  var one_day=1000*60*60*24;
+
+  // Convert both dates to milliseconds
+  var date1_ms = date1.getTime();
+  var date2_ms = date2.getTime();
+
+  // Calculate the difference in milliseconds
+  var difference_ms = date2_ms - date1_ms;
+    
+  // Convert back to days and return
+  return Math.round(difference_ms/one_day); 
+},
+
+scheduleNotifTrigger: function(now){
+	var daysUntilSecondNotif;
+	if (localStore.secondNotifDate != undefined){
+		var secondNotifDate = new Date(localStore.secondNotifDate);
+		daysUntilSecondNotif = app.daysBetweenDates(now, secondNotifDate);
+//        alert("daysUntilSecondNotif is " + daysUntilSecondNotif);
+	}
+	if (daysUntilSecondNotif <= 0 && localStore.scheduleNotifsTime2 == "undefined"){
+		alert("Your questions will load shortly. Please wait while we schedule your notifications for the next week. ");
+		app.scheduleNotifs2();
+	}
+    
+},    
+
+testNotif:function() {
+    var id = '9999';
+    cordova.plugins.notification.local.schedule({
+                                         icon: 'ic_launcher',
+                                         id: id,
+                                         title: 'Daily Surveys',
+                                         text: 'Your test notification has fired!',
+                                         trigger: {in: 10, unit: 'second'},
+                                         });
+},
+
 };
