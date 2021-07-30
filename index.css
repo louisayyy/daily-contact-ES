@@ -157,7 +157,11 @@ h1 {
 li {
 	margin: 0 0 5px 0;
 }
-
+a:link {
+	color: yellow; 
+	text-decoration: underline; 
+  	background-color: transparent;	
+}
 /*Portrait layout (default)*/
 .app {
     /*background-color:#002A5C;*/
