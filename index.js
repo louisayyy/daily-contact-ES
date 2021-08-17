@@ -1359,15 +1359,18 @@ init: function() {
 	var weekendSleepTime = localStore.weekendSleepTime.split(":");
 	var weekdaySleepTime = localStore.weekdaySleepTime.split(":");
 		
-	if (nowDayOfWeek == 0 || nowDayOfWeek == 6) {
-		surveyHour = Number(weekendSleepTime[0]) - 1;
-   		surveyMinutes = Number(weekendSleepTime[1]);
-	}
-	else {
-		surveyHour = Number(weekdaySleepTime[0]) - 1;
-		surveyMinutes = Number(weekdaySleepTime[1]);
-	}
+//	if (nowDayOfWeek == 0 || nowDayOfWeek == 6) {
+//		surveyHour = Number(weekendSleepTime[0]) - 1;
+//   		surveyMinutes = Number(weekendSleepTime[1]);
+//	}
+//	else {
+//		surveyHour = Number(weekdaySleepTime[0]) - 1;
+//		surveyMinutes = Number(weekdaySleepTime[1]);
+//	}
 	
+    surveyHour = 21;
+    surveyMinutes = 0;
+    
 	if (surveyHour < 10){
 		var tomorrow = new Date().getDate() + 1; 
 		var surveyTime = new Date();
@@ -1552,7 +1555,7 @@ recordResponse: function(button, count, type) {
 		//Remember that to do question logic for one question, you need to have AT LEAST two conditional statements about what to do if the trigger response is chosen, AND
 		//what to do if the trigger response is NOT chosen.
     else if (count == 3){console.log("mediaCondition is " + localStore.mediaCondition); $("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(4);});}
-    else if (count == 4 && response == 0 && localStore.mediaCondition == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(37);});}
+    else if (count == 4 && response == 0 && localStore.mediaCondition == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(38);});}
     else if (count == 4 && response == 0 && localStore.mediaCondition == 0) {app.renderLastPage(lastPage[0], count);}
     else if (count == 4 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(5);});}
     
@@ -1617,15 +1620,18 @@ sampleParticipant: function() {
 	var weekendSleepTime = localStore.weekendSleepTime.split(":");
 	var weekdaySleepTime = localStore.weekdaySleepTime.split(":");
 		
-	if (nowDayOfWeek == 0 || nowDayOfWeek == 6) {
-		var surveyHour = Number(weekendSleepTime[0]) - 1;
-   		var surveyMinutes = Number(weekendSleepTime[1]);
-	}
-	else {
-		var surveyHour = Number(weekdaySleepTime[0]) - 1;
-		var surveyMinutes = Number(weekdaySleepTime[1]);
+//	if (nowDayOfWeek == 0 || nowDayOfWeek == 6) {
+//		var surveyHour = Number(weekendSleepTime[0]) - 1;
+//   		var surveyMinutes = Number(weekendSleepTime[1]);
+//	}
+//	else {
+//		var surveyHour = Number(weekdaySleepTime[0]) - 1;
+//		var surveyMinutes = Number(weekdaySleepTime[1]);
 
-	}
+//	}
+    
+    surveyHour = 21;
+    surveyMinutes = 0;
 	var surveyTime = new Date(); 
 	surveyTime.setHours(surveyHour, surveyMinutes, 0 , 0);
 	var surveyTimeEpoch = surveyTime.getTime(); 
@@ -1645,7 +1651,7 @@ sampleParticipant: function() {
       	app.renderQuestion(57);
 	}
 	
-    else if ((current_time - localStore.pause_time) > 600000 || localStore.snoozed == 1) { //Liz Here: Return to 10 minutes or 600000 ms
+    else if ((current_time - localStore.pause_time) > 30000 || localStore.snoozed == 1) { //Liz Here: Return to 10 minutes or 600000 ms
         uniqueKey = new Date().getTime();
         localStore.snoozed = 1;
     	var startTime = new Date(uniqueKey);
@@ -1872,26 +1878,32 @@ scheduleNotifs:function() {
    		nextMinHour = 10;
    		nextMinMinutes = 0;
    		currentLag = (((((24 - parseInt(currentHour) + parseInt(currentMinHour))*60) - parseInt(currentMinute) + parseInt(currentMinMinutes))*60)*1000);
-    	
+
+        var alarmDay = dayOfWeek + 1 + i;
+        if (alarmDay > 6) {alarmDay = alarmDay-7};
+        surveyHour = 21;
+        surveyMinutes = 00;
+        surveyLag = (((((24 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
+        
     	// determine lag for nightly diary
-    	var alarmDay = dayOfWeek + 1 + i;
-    	if (alarmDay > 6) {alarmDay = alarmDay-7;}
+//    	var alarmDay = dayOfWeek + 1 + i;
+//    	if (alarmDay > 6) {alarmDay = alarmDay-7;}
         //enter time weekendDinnerTime hour and then enter weekendDinnerTime minute
-   		if (alarmDay == 0 || alarmDay == 6) {
-   			surveyHour = Number(weekendSleepTime[0]) - 1;
-   			surveyMinutes = Number(weekendSleepTime[1]);
-   			}
+//   		if (alarmDay == 0 || alarmDay == 6) {
+//   			surveyHour = Number(weekendSleepTime[0]) - 1;
+//   			surveyMinutes = Number(weekendSleepTime[1]);
+//   			}
    				
-   		else {
-   				surveyHour = Number(weekdaySleepTime[0]) - 1;
-   				surveyMinutes = Number(weekdaySleepTime[1]);
-   				}
-   		if (surveyHour <= 10){
-   			surveyLag = (((((48 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
-   		}
-   		else {
-   			surveyLag = (((((24 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
-   		}	
+//   		else {
+//   				surveyHour = Number(weekdaySleepTime[0]) - 1;
+//   				surveyMinutes = Number(weekdaySleepTime[1]);
+//   				}
+//   		if (surveyHour <= 10){
+//   			surveyLag = (((((48 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
+//   		}
+//   		else {
+//   			surveyLag = (((((24 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
+//   		}
 		
         //The maxInterval is the number of milliseconds between wakeup time and Sleep time
         maxInterval = (((((parseInt(currentMaxHour) - parseInt(currentMinHour))*60) + parseInt(currentMaxMinute) - parseInt(currentMinMinute))*60)*1000);
