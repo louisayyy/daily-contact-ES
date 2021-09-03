@@ -1,7 +1,5 @@
 /*EXPERIENCESAMPLER LICENSE
-
 The MIT License (MIT)
-
 Copyright (c) 2014-2020 Sabrina Thai & Elizabeth Page-Gould
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -697,11 +695,10 @@ var surveyQuestions = [
                             "variableName": "mediaInitiate",
                             "questionPrompt": "Did you actively seek out the media?",
                             "minResponse": 0,
-                            "maxResponse": 2,
+                            "maxResponse": 1,
                             "labels": [
                                 {"label": "No"},
                                 {"label": "Yes"},
-                                {"label": "I choose not to answer"}
                             ]
                         },
                         /* 44 pieceMedium */
@@ -729,11 +726,10 @@ var surveyQuestions = [
                         "variableName": "mediaConflict",
                         "questionPrompt": "Was there any conflict depicted in the media?",
                         "minResponse": 0,
-                        "maxResponse": 2,
+                        "maxResponse": 1,
                         "labels": [
                                     {"label": "No"},
                                     {"label": "Yes"},
-                                    {"label": "I choose not to answer"}
                                  ]
                         },
                         /* 46 mediaViolence*/
@@ -742,11 +738,10 @@ var surveyQuestions = [
                          "variableName": "mediaViolence",
                          "questionPrompt": "Was there any violence depicted in the media?",
                          "minResponse": 0,
-                         "maxResponse": 2,
+                         "maxResponse": 1,
                          "labels": [
                                      {"label": "No"},
                                      {"label": "Yes"},
-                                     {"label": "I choose not to answer"}
                                   ]
                          },
                         /*47 mediaHappiness*/
@@ -881,11 +876,10 @@ var surveyQuestions = [
                             "variableName": "mediaReflect",
                             "questionPrompt": "Did the media make you reflect on yourself?",
                             "minResponse": 0,
-                            "maxResponse": 2,
+                            "maxResponse": 1,
                             "labels": [
                                         {"label": "No"},
                                         {"label": "Yes"},
-                                        {"label": "I choose not to answer"}
                                      ]
                             },
                          /* 55 mediaPressure*/
@@ -1671,7 +1665,7 @@ saveDataLastPage:function() {
  	var storage_save=JSON.parse(storage);
      $.ajax({
             type: 'post',
-            url: 'https://script.google.com/macros/s/AKfycbx70b5IZvOh4HzUfgfXRYwnQxngOW-5yfYBB6fVNS6TgP6uq74/exec',
+            url: 'https://script.google.com/macros/s/AKfycbwNbYN3aB6nr-5Qt5oAhXBsq8869ItiXFmCJ6h36nIl1YVGvn_6Y-KiGuZb_rX_J8PW/exec',
             data: storage_save,
             crossDomain: true,
             timeout: 180000,
@@ -1722,7 +1716,8 @@ saveData:function() {
  	var storage_save=JSON.parse(storage);
      $.ajax({
             type: 'post',
-            url: 'https://script.google.com/macros/s/AKfycbx70b5IZvOh4HzUfgfXRYwnQxngOW-5yfYBB6fVNS6TgP6uq74/exec',
+            //https://script.google.com/macros/s/AKfycbwNbYN3aB6nr-5Qt5oAhXBsq8869ItiXFmCJ6h36nIl1YVGvn_6Y-KiGuZb_rX_J8PW/exec
+            url: 'https://script.google.com/macros/s/AKfycbwNbYN3aB6nr-5Qt5oAhXBsq8869ItiXFmCJ6h36nIl1YVGvn_6Y-KiGuZb_rX_J8PW/exec',
             data: storage_save,
             crossDomain: true,
             success: function (result) {
@@ -1767,7 +1762,8 @@ saveDataAndClear:function() {
 			//second server
 			//url: 'https://script.google.com/macros/s/AKfycbwKNBIjN6in_RR4NK6s_IVrKqkp9mhiKIzQUWrcLV5RzDFGQAVs/exec',
            //third server 
-            url: 'https://script.google.com/macros/s/AKfycbx70b5IZvOh4HzUfgfXRYwnQxngOW-5yfYBB6fVNS6TgP6uq74/exec',
+           // https://script.google.com/macros/s/AKfycbwNbYN3aB6nr-5Qt5oAhXBsq8869ItiXFmCJ6h36nIl1YVGvn_6Y-KiGuZb_rX_J8PW/exec
+            url: 'https://script.google.com/macros/s/AKfycbwNbYN3aB6nr-5Qt5oAhXBsq8869ItiXFmCJ6h36nIl1YVGvn_6Y-KiGuZb_rX_J8PW/exec',
            data: storage_save,
            crossDomain: true,
            success: function (result) {
