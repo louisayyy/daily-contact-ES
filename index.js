@@ -183,7 +183,7 @@ var surveyQuestions = [
                         "variableName": "intLocationOther",
                         "questionPrompt": "Please describe where the interaction took place.",
                        },
-                       
+
                         /* 12 intConflict*/
                        {
                        "type":"mult1",
@@ -918,14 +918,14 @@ var surveyQuestions = [
                                         {"label": "I choose not to answer"}
                                      ]
                             },
-                            
+
                          /* 57  nightlySurveyLink*/
                         {
                        		"type":"link",
                        		"variableName": "nightlySurveyLink",
                        		"questionPrompt": "Please click <a href='https://utorontopsych.az1.qualtrics.com/jfe/form/SV_4TKpItlOKb398fr?pid=PID' target='_blank'>HERE</a> to open your nightly survey. The survey will open in a web browser window. <br /> Please return to the app <b>AFTER</b> completing the survey. <br /> <br /> <br /> <br />",
                        		},
-                       	/* 58  goBackToLink*/	
+                       	/* 58  goBackToLink*/
                        {
                        		"type":"mult1",
                        		"variableName": "goBackToLink",
@@ -936,7 +936,7 @@ var surveyQuestions = [
                                 {"label": "No"},
                                 {"label": "Yes"}
                                 ],
-                       }, 
+                       },
                        ];
 
 /*These are the messages that are displayed at the end of the questionnaire*/
@@ -1336,23 +1336,23 @@ renderLastPage: function(pageData, question_index) {
 init: function() {
 	//First, we assign a value to the unique key when we initialize ExperienceSampler
 	uniqueKey = new Date().getTime();
-	var now = new Date(); 
-// 	var now = new Date(2021, 6, 30, 10, 0, 0, 0); 
+	var now = new Date();
+// 	var now = new Date(2021, 6, 30, 10, 0, 0, 0);
 
 	app.scheduleNotifTrigger(now);
-// 	alert("Your notifications have been scheduled."); 
-	var nowDate = new Date(); 
-// 	alert("nowDate is " + nowDate); 
+// 	alert("Your notifications have been scheduled.");
+	var nowDate = new Date();
+// 	alert("nowDate is " + nowDate);
 	var nowDayOfWeek = nowDate.getDay();
-	var surveyHour, surveyMinutes; 
+	var surveyHour, surveyMinutes;
 	//The statement below states that if there is no participant id or if the participant id is left blank,
 	//ExperienceSampler would present the participant set up questions
 	if (localStore.participant_id === " " || !localStore.participant_id || localStore.participant_id == "undefined") {app.renderQuestion(-NUMSETUPQS);}
 // 	if (localStore.weekendSleepTime === " " || !localStore.weekendSleepTime || localStore.weekendSleepTime == "undefined" || localStore.weekdaySleepTime === " " || !localStore.weekdaySleepTime || localStore.weekdaySleepTime == "undefined") {app.renderQuestion(-NUMSETUPQS);}
-	
+
 	var weekendSleepTime = localStore.weekendSleepTime.split(":");
 	var weekdaySleepTime = localStore.weekdaySleepTime.split(":");
-		
+
 //	if (nowDayOfWeek == 0 || nowDayOfWeek == 6) {
 //		surveyHour = Number(weekendSleepTime[0]) - 1;
 //   		surveyMinutes = Number(weekendSleepTime[1]);
@@ -1361,38 +1361,24 @@ init: function() {
 //		surveyHour = Number(weekdaySleepTime[0]) - 1;
 //		surveyMinutes = Number(weekdaySleepTime[1]);
 //	}
-	
-    surveyHour = 21;
-    surveyMinutes = 0;
-    
-	if (surveyHour < 10){
-		var tomorrow = new Date().getDate() + 1; 
-		var surveyTime = new Date();
-		surveyTime.setDate(tomorrow);
-		surveyTime.setHours(Number(surveyHour), surveyMinutes, 0 , 0);
-	}	
-	else {
-		var surveyTime = new Date(); 
-		surveyTime.setHours(Number(surveyHour), surveyMinutes, 0 , 0);
-	}	
-	var surveyTimeEpoch = surveyTime.getTime(); 
 
-	var nextExpSampling = new Date(); 
-	var nextExpSamplingHour = nextExpSampling.getHours();
-	if (nextExpSamplingHour != 0 & nextExpSamplingHour > 10){
-		var tomorrow = new Date().getDate() + 1; 
-		nextExpSampling.setDate(tomorrow);
-		nextExpSampling.setHours(10, 0, 0, 0);
-	}
-	else {
-		nextExpSampling.setHours(10, 0, 0, 0);
-	}
-	var nextExpSamplingEpoch = nextExpSampling.getTime(); 
-	
+surveyHour = 21;
+surveyMinutes = 0;
+var surveyTime = new Date();
+surveyTime.setHours(surveyHour, surveyMinutes, 0 , 0);
+var surveyTimeEpoch = surveyTime.getTime();
+
+var nextExpSampling = new Date();
+// var tomorrow = new Date().getDate() + 1;
+// nextExpSampling.setDate(tomorrow);
+nextExpSampling.setHours(10, 0, 0, 0);
+var nextExpSamplingEpoch = nextExpSampling.getTime();
+
   	//otherwise ExperienceSampler should just save the unique key and display the first question in survey questions
-	
-	if (uniqueKey >= surveyTimeEpoch && uniqueKey < nextExpSamplingEpoch){
-// 		alert("i'm showing the nightly survey"); 		
+
+  // This section implements the experience sampling versus nightly survey
+	if (uniqueKey >= surveyTimeEpoch || uniqueKey < nextExpSamplingEpoch){
+// 		alert("i'm showing the nightly survey");
 		uniqueKey = new Date().getTime();
         localStore.uniqueKey = uniqueKey;
     	var startTime = new Date(uniqueKey);
@@ -1411,7 +1397,7 @@ init: function() {
       app.renderQuestion(0);
     }
     localStore.snoozed = 0;
-//     alert("I finished running the init function. "); 
+//     alert("I finished running the init function. ");
 },
 
 /* Record User Responses */
@@ -1478,9 +1464,9 @@ recordResponse: function(button, count, type) {
         currentQuestion = button.attr('id').slice(0,-1);
     }
     if (count == -NUMSETUPQS) {
-    	var participant_id = response; 
+    	var participant_id = response;
      	mediaCondition = Number(participant_id)%2;
-      	localStore.mediaCondition = mediaCondition; 
+      	localStore.mediaCondition = mediaCondition;
     }
     if (count == 5 && response.split(",")[(response.split(",").length) - 1] == (localStore.networkString.split(", ").length)) {
       newPartner = 1;
@@ -1518,12 +1504,12 @@ recordResponse: function(button, count, type) {
    	 else if (count == -7 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(-5);});}
     else if (count == -6) {app.renderLastPage(lastPage[2], count);}
    	else if (count == -1){
-   		app.scheduleNotifs(); 
-   		app.renderLastPage(lastPage[0], count); 
+   		app.scheduleNotifs();
+   		app.renderLastPage(lastPage[0], count);
 //    		mediaCondition = Number(localStore.participant_id)%2;
-//       	localStore.mediaCondition = mediaCondition; 
-//       	console.log("mediaCondition is " + mediaCondition); 
-   		app.scheduleNotifs(); 
+//       	localStore.mediaCondition = mediaCondition;
+//       	console.log("mediaCondition is " + mediaCondition);
+   		app.scheduleNotifs();
    		}
     //Identify the next question to populate the view
 		//the next statement is about the snooze function
@@ -1552,36 +1538,36 @@ recordResponse: function(button, count, type) {
     else if (count == 4 && response == 0 && localStore.mediaCondition == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(38);});}
     else if (count == 4 && response == 0 && localStore.mediaCondition == 0) {app.renderLastPage(lastPage[0], count);}
     else if (count == 4 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(5);});}
-    
+
     else if (count == 10 && response != 7) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(12);});}
     else if (count == 10 && response == 7) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(11);});}
-    
-    
+
+
     // change to 12, 14, and 13
     else if (count == 12 && response == 0) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(14);});}
     else if (count == 12 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(13);});}
 
-    // change to 23, 24, 25, 
+    // change to 23, 24, 25,
     else if (count == 23 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(24);});}
     else if (count == 23 && response == 0 && newPartner == 1) {newPartner = 0; $("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(25);});}
     else if (count == 23 && response == 0 && newPartner != 1) {app.renderLastPage(lastPage[0], count);}
-    
+
     // change to 24, 25, 24
     else if (count == 24 && newPartner == 1) {newPartner = 0; $("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(25);});}
     else if (count == 24 && newPartner == 0) {app.renderLastPage(lastPage[0], count);}
-    
+
     // change to 37
     else if (count == 37) {app.renderLastPage(lastPage[0], count);}
-    
+
     // change to 38 and 39
     else if (count == 38 && response == 0) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(39);});}
     // change to 38 and 40
     else if (count == 38 && response == 1) {$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(40);});}
-    
+
     // change to 56
     else if (count == 56) {app.renderLastPage(lastPage[0], count);}
 
-	// logic in case participant missed the survey link 
+	// logic in case participant missed the survey link
 	// go back to survey link if they mixed it
 	else if (count == 58 && response == 1){$("#question").fadeOut(400, function () {$("#question").html("");app.renderQuestion(57);});}
 	// or else, just go to the end of the survey
@@ -1605,15 +1591,15 @@ sampleParticipant: function() {
     var current_moment = new Date();
     var current_time = current_moment.getTime();
     app.scheduleNotifTrigger(current_moment);
-//     current_time = 1622687432000; 
+//     current_time = 1622687432000;
     //change X to the amount of time the participant is locked out of the app for in milliseconds
     //e.g., if you want to lock the participant out of the app for 10 minutes, replace X with 600000
     //If you don't have a snooze feature, remove the "|| localStore.snoozed == 1"
-    
+
     var nowDayOfWeek = new Date().getDay();
 	var weekendSleepTime = localStore.weekendSleepTime.split(":");
 	var weekdaySleepTime = localStore.weekdaySleepTime.split(":");
-		
+
 //	if (nowDayOfWeek == 0 || nowDayOfWeek == 6) {
 //		var surveyHour = Number(weekendSleepTime[0]) - 1;
 //   		var surveyMinutes = Number(weekendSleepTime[1]);
@@ -1623,20 +1609,20 @@ sampleParticipant: function() {
 //		var surveyMinutes = Number(weekdaySleepTime[1]);
 
 //	}
-    
+
     surveyHour = 21;
     surveyMinutes = 0;
-	var surveyTime = new Date(); 
+	var surveyTime = new Date();
 	surveyTime.setHours(surveyHour, surveyMinutes, 0 , 0);
-	var surveyTimeEpoch = surveyTime.getTime(); 
-	
-	var nextExpSampling = new Date(); 
-	var tomorrow = new Date().getDate() + 1; 
-	nextExpSampling.setDate(tomorrow);
+	var surveyTimeEpoch = surveyTime.getTime();
+
+	var nextExpSampling = new Date();
+	// var tomorrow = new Date().getDate() + 1;
+	// nextExpSampling.setDate(tomorrow);
 	nextExpSampling.setHours(10, 0, 0, 0);
-	var nextExpSamplingEpoch = nextExpSampling.getTime(); 
-    
-    if (current_time >= surveyTimeEpoch && current_time < nextExpSamplingEpoch){
+	var nextExpSamplingEpoch = nextExpSampling.getTime();
+
+    if (current_time >= surveyTimeEpoch || current_time < nextExpSamplingEpoch){
 		uniqueKey = localStore.uniqueKey;
     	var startTime = new Date(uniqueKey);
     	var syear = startTime.getFullYear(), smonth = startTime.getMonth(), sday=startTime.getDate(), shours=startTime.getHours(), sminutes=startTime.getMinutes(), sseconds=startTime.getSeconds(), smilliseconds=startTime.getMilliseconds();
@@ -1644,8 +1630,8 @@ sampleParticipant: function() {
       	networkString = localStore.networkString;
       	app.renderQuestion(57);
 	}
-	
-    else if ((current_time - localStore.pause_time) > 30000 || localStore.snoozed == 1) { //Liz Here: Return to 10 minutes or 600000 ms
+
+    else if ((current_time - localStore.pause_time) > 10000 || localStore.snoozed == 1) { //Liz Here: Return to 10 minutes or 600000 ms
         uniqueKey = new Date().getTime();
         localStore.snoozed = 1;
     	var startTime = new Date(uniqueKey);
@@ -1671,9 +1657,9 @@ saveDataLastPage:function() {
             timeout: 180000,
             success: function (result) {
             	var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;//, networkString = localStore.networkString;
-            	var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime, mediaCondition = localStore.mediaCondition; 
+            	var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime, mediaCondition = localStore.mediaCondition;
             	var scheduleNotifsTime2 = localStore.scheduleNotifsTime2, installationDate = localStore.installationDate,  networkString = localStore.networkString;
-            	var secondNotifDate = localStore.secondNotifDate; 
+            	var secondNotifDate = localStore.secondNotifDate;
             	localStore.clear();
             	localStore.participant_id = pid;
               	localStore.networkString = networkString;
@@ -1681,12 +1667,12 @@ saveDataLastPage:function() {
             	localStore.snoozed = snoozed;
  				localStore.uniqueKey = uniqueKey;
  				localStore.pause_time = pause_time;
- 				localStore.weekendSleepTime = weekendSleepTime; 
- 				localStore.weekdaySleepTime = weekdaySleepTime; 
- 				localStore.mediaCondition = mediaCondition; 
+ 				localStore.weekendSleepTime = weekendSleepTime;
+ 				localStore.weekdaySleepTime = weekdaySleepTime;
+ 				localStore.mediaCondition = mediaCondition;
  				localStore.scheduleNotifsTime2 = scheduleNotifsTime2;
-           		localStore.installationDate = installationDate;             	
-           		localStore.secondNotifDate = secondNotifDate; 	
+           		localStore.installationDate = installationDate;
+           		localStore.secondNotifDate = secondNotifDate;
 //  				console.log("storage is " + storage);
             	$("#question").html("<h3>Your responses have been recorded. Thank you for completing this survey.</h3>");
             },
@@ -1722,21 +1708,21 @@ saveData:function() {
             crossDomain: true,
             success: function (result) {
               	var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
-              	var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime, mediaCondition = localStore.mediaCondition; 
+              	var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime, mediaCondition = localStore.mediaCondition;
             	var scheduleNotifsTime2 = localStore.scheduleNotifsTime2, installationDate = localStore.installationDate,  networkString = localStore.networkString;
-            	var secondNotifDate = localStore.secondNotifDate; 
+            	var secondNotifDate = localStore.secondNotifDate;
             	localStore.participant_id = pid;
               	localStore.networkString = networkString;
               	localStore.mediaCondition = mediaCondition;
             	localStore.snoozed = snoozed;
  				localStore.uniqueKey = uniqueKey;
  				localStore.pause_time = pause_time;
- 				localStore.weekendSleepTime = weekendSleepTime; 
- 				localStore.weekdaySleepTime = weekdaySleepTime; 
-				localStore.mediaCondition = mediaCondition; 
+ 				localStore.weekendSleepTime = weekendSleepTime;
+ 				localStore.weekdaySleepTime = weekdaySleepTime;
+				localStore.mediaCondition = mediaCondition;
            		localStore.scheduleNotifsTime2 = scheduleNotifsTime2;
-           		localStore.installationDate = installationDate;             	
-           		localStore.secondNotifDate = secondNotifDate; 	
+           		localStore.installationDate = installationDate;
+           		localStore.secondNotifDate = secondNotifDate;
             },
             complete: function(data){
             	console.log("completed");
@@ -1753,7 +1739,7 @@ saveData:function() {
 
 saveDataAndClear:function() {
 	var storage=JSON.stringify(localStore);
-	var storage_save=JSON.parse(storage);	
+	var storage_save=JSON.parse(storage);
     $.ajax({
 		//If you are using the google option, the "type" should be 'get'
 		//If you are using the server option, the "type" should be 'post'
@@ -1761,31 +1747,31 @@ saveDataAndClear:function() {
 			//url: 'https://script.google.com/macros/s/AKfycbxeP9Fg9n2Te-RPby7EaVheLqwI0hCWbu1Uo7G-1MltaZf8GDaG/exec',
 			//second server
 			//url: 'https://script.google.com/macros/s/AKfycbwKNBIjN6in_RR4NK6s_IVrKqkp9mhiKIzQUWrcLV5RzDFGQAVs/exec',
-           //third server 
+           //third server
            // https://script.google.com/macros/s/AKfycbwNbYN3aB6nr-5Qt5oAhXBsq8869ItiXFmCJ6h36nIl1YVGvn_6Y-KiGuZb_rX_J8PW/exec
             url: 'https://script.google.com/macros/s/AKfycbwNbYN3aB6nr-5Qt5oAhXBsq8869ItiXFmCJ6h36nIl1YVGvn_6Y-KiGuZb_rX_J8PW/exec',
            data: storage_save,
            crossDomain: true,
            success: function (result) {
               	var pid = localStore.participant_id, snoozed = localStore.snoozed, uniqueKey = localStore.uniqueKey, pause_time=localStore.pause_time;
-              	var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime, mediaCondition = localStore.mediaCondition; 
+              	var weekendSleepTime = localStore.weekendSleepTime, weekdaySleepTime = localStore.weekdaySleepTime, mediaCondition = localStore.mediaCondition;
             	var scheduleNotifsTime2 = localStore.scheduleNotifsTime2, installationDate = localStore.installationDate;
             	var networkString = localStore.networkString;
-            	var secondNotifDate = localStore.secondNotifDate; 
+            	var secondNotifDate = localStore.secondNotifDate;
             	localStore.clear();
             	localStore.participant_id = pid;
               	localStore.networkString = networkString;
             	localStore.snoozed = snoozed;
  				localStore.uniqueKey = uniqueKey;
  				localStore.pause_time = pause_time;
- 				localStore.weekendSleepTime = weekendSleepTime; 
- 				localStore.weekdaySleepTime = weekdaySleepTime; 
-				localStore.mediaCondition = mediaCondition; 
+ 				localStore.weekendSleepTime = weekendSleepTime;
+ 				localStore.weekdaySleepTime = weekdaySleepTime;
+				localStore.mediaCondition = mediaCondition;
            		localStore.scheduleNotifsTime2 = scheduleNotifsTime2;
-           		localStore.installationDate = installationDate;             	
-           		localStore.secondNotifDate = secondNotifDate; 
-//            		alert("data has been saved"); 	
-           	
+           		localStore.installationDate = installationDate;
+           		localStore.secondNotifDate = secondNotifDate;
+//            		alert("data has been saved");
+
            },
            complete: function(data){
             	console.log("completed");
@@ -1818,8 +1804,8 @@ scheduleNotifs:function() {
 		//Declare a variable to represent new date to be calculated for each beep
 		//That is, if there are 6 intervals, declare 6 new dates
     var date1, date2, date3, date4, date5, date6, date7;
-    
-    var epoch1, epoch2, epoch3, epoch4, epoch5, epoch6, epoch7; 
+
+    var epoch1, epoch2, epoch3, epoch4, epoch5, epoch6, epoch7;
 
 		//The statement below declares the start and end time of the daily data collection period
 		//These variables are not necessary if the start and end time of the daily data collection period do not vary across the experience
@@ -1836,7 +1822,7 @@ scheduleNotifs:function() {
 		//in the data collection period (maxInterval), and the time between until the end of the next data collection period (in our case
 		//Sleep time; SleepInterval)
     var currentLag, maxInterval, SleepInterval;
-    var surveyHour, surveyMinutes; 
+    var surveyHour, surveyMinutes;
 
 		//These variables represent the participant's time values
 		var weekendSleepTime = localStore.weekendSleepTime.split(":");
@@ -1848,17 +1834,17 @@ scheduleNotifs:function() {
    	var day = 86400000;
    	var minDiaryLag = 6000000;
    	var randomDiaryLag = 1200000;
-   	
+
    	var installationTime = new Date();
     var secondNotifDate = new Date();
     secondNotifDate.setDate(secondNotifDate.getDate()+7);
     secondNotifDate.setHours(6, 0, 0, 0);
- 
- 	var secondLocalNotif = new Date(); 
- 	secondLocalNotif.setDate(secondLocalNotif.getDate()+7); 
- 	secondLocalNotif.setHours(10, 0, 0, 0); 
- 	var secondLocalNotifEpoch = secondLocalNotif.getTime(); 
- 
+
+ 	var secondLocalNotif = new Date();
+ 	secondLocalNotif.setDate(secondLocalNotif.getDate()+7);
+ 	secondLocalNotif.setHours(10, 0, 0, 0);
+ 	var secondLocalNotifEpoch = secondLocalNotif.getTime();
+
 		//This is a loop that repeats this block of codes for the number of days there are in the experience sampling period
 		//Replace X with the number of days in the experience sampling period (e.g., collecting data for 7 days, replace X with 7)
 		//Note that iOS apps can only have 64 unique notifications, so you should keep that in mind if you are collecting data
@@ -1880,7 +1866,7 @@ scheduleNotifs:function() {
         surveyHour = 21;
         surveyMinutes = 00;
         surveyLag = (((((24 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
-        
+
     	// determine lag for nightly diary
 //    	var alarmDay = dayOfWeek + 1 + i;
 //    	if (alarmDay > 6) {alarmDay = alarmDay-7;}
@@ -1889,7 +1875,7 @@ scheduleNotifs:function() {
 //   			surveyHour = Number(weekendSleepTime[0]) - 1;
 //   			surveyMinutes = Number(weekendSleepTime[1]);
 //   			}
-   				
+
 //   		else {
 //   				surveyHour = Number(weekdaySleepTime[0]) - 1;
 //   				surveyMinutes = Number(weekdaySleepTime[1]);
@@ -1900,7 +1886,7 @@ scheduleNotifs:function() {
 //   		else {
 //   			surveyLag = (((((24 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
 //   		}
-		
+
         //The maxInterval is the number of milliseconds between wakeup time and Sleep time
         maxInterval = (((((parseInt(currentMaxHour) - parseInt(currentMinHour))*60) + parseInt(currentMaxMinute) - parseInt(currentMinMinute))*60)*1000);
 			//This part of the code calculates how much time there should be between the questionnaires
@@ -1938,27 +1924,27 @@ scheduleNotifs:function() {
         date5 = new Date(now + interval5);
         date6 = new Date(now + interval6);
         date7 = new Date(now + interval7);
-        
-        epoch1 = date1.getTime(); 
+
+        epoch1 = date1.getTime();
         epoch2 = date2.getTime();
         epoch3 = date3.getTime();
-        epoch4 = date4.getTime(); 
-        epoch5 = date5.getTime(); 
+        epoch4 = date4.getTime();
+        epoch5 = date5.getTime();
         epoch6 = date6.getTime();
         epoch7 = date7.getTime();
-        
-        
+
+
 
 			//This part of the code schedules the notifications. It pushes all the properties into the notif array
         	cordova.plugins.notification.local.schedule([
-        		{id: a, trigger: {at: new Date(epoch1)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
-        		{id: b, trigger: {at: new Date(epoch2)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
-        		{id: c, trigger: {at: new Date(epoch3)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
-        		{id: d, trigger: {at: new Date(epoch4)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
-        		{id: e, trigger: {at: new Date(epoch5)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
-        		{id: f, trigger: {at: new Date(epoch6)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: a, trigger: {at: new Date(epoch1)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'},
+        		{id: b, trigger: {at: new Date(epoch2)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'},
+        		{id: c, trigger: {at: new Date(epoch3)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'},
+        		{id: d, trigger: {at: new Date(epoch4)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'},
+        		{id: e, trigger: {at: new Date(epoch5)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'},
+        		{id: f, trigger: {at: new Date(epoch6)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'},
         		{id: g, trigger: {at: new Date(epoch7)}, text: 'Time for your nightly Diary Survey!', title: 'Nightly Survey'}
-        		
+
         	]);
 
 			//This part of the code records when the notifications are scheduled for and sends it to the server
@@ -1976,10 +1962,10 @@ scheduleNotifs:function() {
                                          text: `It's time for you to schedule next week's surveys!`,
                                          at: new Date(secondLocalNotifEpoch),
                                          });
-    console.log("secondLocalNotifEpoch is " + new Date(secondLocalNotifEpoch)); 
+    console.log("secondLocalNotifEpoch is " + new Date(secondLocalNotifEpoch));
     localStore.installationDate=installationTime;
     localStore.secondNotifDate = secondNotifDate;
-//     alert("Your notifications have been scheduled.");  
+//     alert("Your notifications have been scheduled.");
 },
 
 scheduleNotifs2:function() {
@@ -1996,8 +1982,8 @@ scheduleNotifs2:function() {
 		//Declare a variable to represent new date to be calculated for each beep
 		//That is, if there are 6 intervals, declare 6 new dates
     var date1, date2, date3, date4, date5, date6, date7;
-    
-    var epoch1, epoch2, epoch3, epoch4, epoch5, epoch6, epoch7; 
+
+    var epoch1, epoch2, epoch3, epoch4, epoch5, epoch6, epoch7;
 
 		//The statement below declares the start and end time of the daily data collection period
 		//These variables are not necessary if the start and end time of the daily data collection period do not vary across the experience
@@ -2015,7 +2001,7 @@ scheduleNotifs2:function() {
 		//in the data collection period (maxInterval), and the time between until the end of the next data collection period (in our case
 		//Sleep time; SleepInterval)
     var currentLag, maxInterval, SleepInterval;
-    var surveyHour, surveyMinutes; 
+    var surveyHour, surveyMinutes;
 
 		//These variables represent the participant's time values
 		var weekendSleepTime = localStore.weekendSleepTime.split(":");
@@ -2025,7 +2011,7 @@ scheduleNotifs2:function() {
    	var day = 86400000;
    	var minDiaryLag = 6000000;
    	var randomDiaryLag = 1200000;
- 
+
 		//This is a loop that repeats this block of codes for the number of days there are in the experience sampling period
 		//Replace X with the number of days in the experience sampling period (e.g., collecting data for 7 days, replace X with 7)
 		//Note that iOS apps can only have 64 unique notifications, so you should keep that in mind if you are collecting data
@@ -2041,7 +2027,7 @@ scheduleNotifs2:function() {
    		nextMinHour = 10;
    		nextMinMinutes = 0;
    		currentLag = (((((24 - parseInt(currentHour) + parseInt(currentMinHour))*60) - parseInt(currentMinute) + parseInt(currentMinMinutes))*60)*1000);
-    	
+
     	// determine lag for nightly diary
     	var alarmDay = dayOfWeek + 1 + i;
     	if (alarmDay > 6) {alarmDay = alarmDay-7;}
@@ -2050,7 +2036,7 @@ scheduleNotifs2:function() {
    			surveyHour = Number(weekendSleepTime[0]) - 1;
    			surveyMinutes = Number(weekendSleepTime[1]);
    			}
-   				
+
    		else {
    				surveyHour = Number(weekdaySleepTime[0]) - 1;
    				surveyMinutes = Number(weekdaySleepTime[1]);
@@ -2060,8 +2046,8 @@ scheduleNotifs2:function() {
    		}
    		else {
    			surveyLag = (((((24 - Number(currentHour) + Number(surveyHour))*60) - Number(currentMinute) + Number(surveyMinutes))*60)*1000);
-   		}	
-		
+   		}
+
         //The maxInterval is the number of milliseconds between wakeup time and Sleep time
         maxInterval = (((((parseInt(currentMaxHour) - parseInt(currentMinHour))*60) + parseInt(currentMaxMinute) - parseInt(currentMinMinute))*60)*1000);
 			//This part of the code calculates how much time there should be between the questionnaires
@@ -2099,27 +2085,27 @@ scheduleNotifs2:function() {
         date5 = new Date(now + interval5);
         date6 = new Date(now + interval6);
         date7 = new Date(now + interval7);
-        
-        epoch1 = date1.getTime(); 
+
+        epoch1 = date1.getTime();
         epoch2 = date2.getTime();
         epoch3 = date3.getTime();
-        epoch4 = date4.getTime(); 
-        epoch5 = date5.getTime(); 
+        epoch4 = date4.getTime();
+        epoch5 = date5.getTime();
         epoch6 = date6.getTime();
         epoch7 = date7.getTime();
-        
-        
+
+
 
 			//This part of the code schedules the notifications. It pushes all the properties into the notif array
         	cordova.plugins.notification.local.schedule([
-        		{id: a, trigger: {at: new Date(epoch1)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
-        		{id: b, trigger: {at: new Date(epoch2)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
-        		{id: c, trigger: {at: new Date(epoch3)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
-        		{id: d, trigger: {at: new Date(epoch4)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
-        		{id: e, trigger: {at: new Date(epoch5)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
-        		{id: f, trigger: {at: new Date(epoch6)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'}, 
+        		{id: a, trigger: {at: new Date(epoch1)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'},
+        		{id: b, trigger: {at: new Date(epoch2)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'},
+        		{id: c, trigger: {at: new Date(epoch3)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'},
+        		{id: d, trigger: {at: new Date(epoch4)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'},
+        		{id: e, trigger: {at: new Date(epoch5)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'},
+        		{id: f, trigger: {at: new Date(epoch6)}, text: 'Time for your next Diary Survey!', title: 'Diary Surveys'},
         		{id: g, trigger: {at: new Date(epoch7)}, text: 'Time for your nightly Diary Survey!', title: 'Nightly Survey'}
-        		
+
         	]);
 
 			//This part of the code records when the notifications are scheduled for and sends it to the server
@@ -2130,14 +2116,14 @@ scheduleNotifs2:function() {
         	localStore['notification_' + i + '_5'] = localStore.participant_id + "_" + e + "_" + date5;
         	localStore['notification_' + i + '_6'] = localStore.participant_id + "_" + f + "_" + date6;
             localStore['notification_' + i + '_7'] = localStore.participant_id + "_" + g + "_" + date7;
-    
+
     }
-//     alert("scheduleNotifsTime2 is " + scheduleNotifsTime2);  
+//     alert("scheduleNotifsTime2 is " + scheduleNotifsTime2);
     localStore.scheduleNotifsTime2 = scheduleNotifsTime2;
-//     alert("localStore.scheduleNotifsTime2 is " + localStore.scheduleNotifsTime2);  
+//     alert("localStore.scheduleNotifsTime2 is " + localStore.scheduleNotifsTime2);
     app.saveDataAndClear();
 	alert("Your notifications have been scheduled.");
-// 	alert("networkString is " + localStore.networkString); 
+// 	alert("networkString is " + localStore.networkString);
 },
 
 
@@ -2186,7 +2172,7 @@ validateTime: function(data){
 	else {
 		return true
 	}
-}, 
+},
 
 daysBetweenDates: function( date1, date2 ) {
   //Get 1 day in milliseconds
@@ -2198,9 +2184,9 @@ daysBetweenDates: function( date1, date2 ) {
 
   // Calculate the difference in milliseconds
   var difference_ms = date2_ms - date1_ms;
-    
+
   // Convert back to days and return
-  return Math.round(difference_ms/one_day); 
+  return Math.round(difference_ms/one_day);
 },
 
 scheduleNotifTrigger: function(now){
@@ -2214,8 +2200,8 @@ scheduleNotifTrigger: function(now){
 		alert("Your questions will load shortly. Please wait while we schedule your notifications for the next week. ");
 		app.scheduleNotifs2();
 	}
-    
-},    
+
+},
 
 testNotif:function() {
     var id = '9999';
